@@ -1,0 +1,2348 @@
+Page | 1
+OFFICIAL PROS V HANDBOOK
+23 September 2025 v1.5
+Air Force Security Assistance and Cooperation Directorate (AFSAC)
+AFLCMC/WFALC
+Parts and Repair Ordering System (PROS)
+Program Office
+This briefing, presentation, or document is for information only. No U.S.
+Government commitment to sell, loan, lease, co-develop or co-produce defense articles or provide
+defense services is implied or intended.
+This handbook is intended to provide a point of reference for customers and is not intended to conflict with any
+guidance regarding Foreign Military Sales or the PROS V contract. PROS users should contact the PROS Program
+Management Office with issues, concerns, or recommendations with the content of this handbook.
+
+-- 1 of 62 --
+
+Page | 2
+Revision History
+Date 	Version 	Summary
+4 Mar 17 	1.0 	Initial version
+28 Nov 18 	1.1 	Minor updates
+28 Feb 22 	1.2 	Updated Program Fee "not to exceed" amount
+11 May 22 	1.3 	Update AM Modifier/TO SOO Template, added BPC Note to SDR process
+28 Jul 22 	1.4 	Update to include TAC and Ship To/Mark For requirement
+23 Sept 25 	1.5 	Updated the SOO/added Pre-SOO information
+23 Sept 25 	1.5 	Removed P&A Information and Updated Numbering of Sections After
+23 Sept 25 	1.5 	Administrative Changes
+
+-- 2 of 62 --
+
+Page | 3
+Contents
+I. 	PROS V Overview ............................................................................................................................................................... 5
+A. PROS V Purpose .............................................................................................................................................................. 5
+B. Roles and Responsibilities ......................................................................................................................................... 5
+C. Contract Overview/Fees ............................................................................................................................................ 5
+D. PROS Information and Contacts ............................................................................................................................. 6
+II. PROS Access/Systems ...................................................................................................................................................... 6
+A. AFSAC On-Line ............................................................................................................................................................... 6
+1. AFSAC On-Line>PROS >PROS V>Country Summary Report ................................................................. 8
+2. AFSAC On-Line>PROS >PROS V>Detailed Requisition Status Report ............................................... 9
+B. SAMIS ................................................................................................................................................................................. 10
+C. Other Logistics Information Sources ................................................................................................................... 12
+III. Requisitions ....................................................................................................................................................................... 13
+A. 	Requisitions Overview ............................................................................................................................................. 13
+1. Eligible Items ........................................................................................................................................................... 13
+2. Level of Service (LOS) Categories ................................................................................................................... 20
+3. Fill Fees ...................................................................................................................................................................... 21
+4. Contract Awards ..................................................................................................................................................... 21
+5. LOA Sole Source ...................................................................................................................................................... 23
+6. Suggested Sources ................................................................................................................................................. 23
+7. Contractor Tasks .................................................................................................................................................... 23
+8. 	Estimated Shipping Date (ESD) ....................................................................................................................... 25
+9. 	Finance ....................................................................................................................................................................... 25
+B. 	Supply ............................................................................................................................................................................. 27
+1. National Stock Number (NSN) Requisitions ............................................................................................... 27
+2. Part-Numbered (P/N) Requisitions ............................................................................................................... 28
+3. Supply Requisition Form .................................................................................................................................... 29
+4. Entering A05 (P/N) Supply Requisitions ..................................................................................................... 29
+5. Alternate Part Number/Condition ................................................................................................................. 30
+6. Package Buys ........................................................................................................................................................... 30
+7. Quantity Adjustments .......................................................................................................................................... 31
+8. Minimum Order Quantity (MOQ) .................................................................................................................... 32
+C. Maintenance/Repair Requisitions ........................................................................................................................ 32
+1. General....................................................................................................................................................................... 31
+2. Entering Non-Standard Maintenance Requisitions ................................................................................. 33
+3. Contractor Responsibility .................................................................................................................................. 36
+4. Receipt/Shipment Transaction Codes: ......................................................................................................... 38
+5. Pricing......................................................................................................................................................................... 38
+6. Repair and Replace (H-Coded Requisitions): ............................................................................................. 38
+7. Beyond Economical Repair (BER)/Beyond Physical Repair (BPR): ................................................. 38
+8. Shipment: .................................................................................................................................................................. 38
+D. Communications ......................................................................................................................................................... 39
+1. Customer – Contractor ........................................................................................................................................ 39
+2. Customer Questions/Requests: ....................................................................................................................... 39
+3. Contractor Questions/Request ........................................................................................................................ 39
+4. Customer/Vendor Relations. ............................................................................................................................ 40
+
+-- 3 of 62 --
+
+Page | 4
+5. Customer/Program Office Relations. ............................................................................................................ 40
+6. Message Matrix ....................................................................................................................................................... 40
+E. 	Controlled Exception (CEX) Errors. ................................................................................................................... 41
+F. 	Modifying Requisitions............................................................................................................................................ 41
+G. 	Cancellations ................................................................................................................................................................ 42
+1. Common AC cancellations .................................................................................................................................. 42
+2. Customer Initiated Cancellation Process (AC1/AC3) ............................................................................. 42
+3. Contractor Responses to Customer Initiated Cancellations ................................................................ 43
+4. Automatic Cancellations (AC4) ........................................................................................................................ 43
+5. Contractor Initiated Cancellations (Status Codes/Fees) ....................................................................... 44
+H. Quality Assurance/SDRs/Title and Ownership ............................................................................................ 45
+1. SDR Submission ...................................................................................................................................................... 45
+2. SDR Validation ........................................................................................................................................................ 45
+3. Communication ...................................................................................................................................................... 45
+4. Passage of title and ownership: ....................................................................................................................... 45
+5. One Year Warranty ............................................................................................................................................... 45
+6. Process ....................................................................................................................................................................... 45
+7. SDR Documentation .............................................................................................................................................. 45
+8. SDR Time Frames .................................................................................................................................................. 46
+9. Shipping ..................................................................................................................................................................... 46
+10. Credits: ....................................................................................................................................................................... 46
+11. Final Authority ........................................................................................................................................................ 46
+IV. Task Orders ........................................................................................................................................................................ 46
+A. 	Task Order Overview ............................................................................................................................................... 47
+B. 	Task Order Process ................................................................................................................................................... 47
+C. 	BPC as Task Order Process………………………………………………………………………………………………..51
+V. Program Reviews ............................................................................................................................................................. 54
+A. 	Overview ....................................................................................................................................................................... 54
+B. 	Semi-Annual Program Management Reviews (PMR): ................................................................................ 54
+VI. Commonly Used SAMIS Codes ................................................................................................................................... 54
+VII. 	Acronyms ........................................................................................................................................................................... 57
+VIII. Glossary ............................................................................................................................................................................ 58
+
+-- 4 of 62 --
+
+Page | 5
+I. PROS V Overview
+A. PROS V Purpose
+1. 	The Parts and Repair Ordering System (PROS) is a major procurement system managed
+by the Air Force Security Assistance and Cooperation (AFSAC) Directorate, Air Force Lifecycle
+Management Center, Air Force Materiel Command, WPAFB OH, to support logistics
+requirements for Foreign Military Sales (FMS) customers. PROS provides supply and
+maintenance support for a wide range of non-standard and difficult-to-support standard items
+and is also a contracting vehicle for specialized technical services through task orders. PROS is a
+tri-service program capable of supporting Air Force, Army, and Navy FMS customers.
+2. 	Prior to 1990, over 60% of FMS requisitions were cancelled because there was no
+effective way for FMS customers to acquire non-standard supply and maintenance support.
+PROS was developed to fill that need. Within the PROS IV contract, less than 10% of FMS
+requisitions have been cancelled due to the inability to locate a qualified source. This sixth-
+generation program has provided over 30 years of successful support.
+B. Roles and Responsibilities
+1. 	The PROS Program Office manages the overall program and serves as an intermediary,
+when required, between FMS customers, country teams, and the prime contractor. The PROS
+Program Office provides program guidance, contract management, and assistance to customers
+and country teams in processing requisitions for eligible items, to include supply, repair, and
+task orders. Additionally, the Program Office reviews Supply Discrepancy Reports (SDRs) and
+processes invoices for payment to the prime contractor.
+2. 	Customers, to include Foreign Liaison Officers (FLOs) and country teams, are responsible
+for clearly identifying their supply, repair, and task order requirements. As appropriate,
+customers will either input their requisitions or provide adequate detail on either the PROS
+Supply or Maintenance Request Form to enable the Program Office to input requisitions on their
+behalf. All PROS Maintenance/Supply requisitions must contain the mandatory information,
+including Transportation Account Code (TAC) and Ship To/Mark For addresses
+3. 	The prime contractor accepts requisitions from customers, ensures the requirement is
+fully defined, solicits the vendor base, receives and reviews quotes to ensure competition is
+achieved, negotiates, and awards contracts. Adequate detail in each requisition is required to
+enable the contractor to quickly identify the requirement and select a qualified source capable
+of providing supply, maintenance, or task order support at a fair and reasonable price. The
+contractor maintains a stable base of qualified sources/vendors who are eligible to compete for
+PROS requirements.
+C. Contract Overview/Fees
+1. 	The Prime Contractor for PROS V is S&K Aerospace (SKA). The PROS V contract consists
+of a 5-year base ordering period, five 1-year option ordering periods, and a 5-year close-out
+period for a maximum Period of Performance of 15 years.
+2. 	The PROS Program functions similar to an Air Logistics Complex with the exception of
+standard item source approval and First Article Testing (FAT). The contractor is responsible for
+contracting for:
+a. 	Supply items to include spares and end items.
+b. 	Maintenance services to include repair, overhaul, upgrade, modification, and
+calibration/testing.
+c. 	Task order support for installation, studies, analysis, technical support, and
+familiarization training. This list is not all inclusive.
+
+-- 5 of 62 --
+
+Page | 6
+3. 	To remain a viable program, PROS customers incur fees for the service(s) being
+performed. In addition to materiel costs, customers may be charged the following fees:
+a. 	Fill Fee - The prime contractor earns a fee for each filled requisition based on LOS and
+material value.
+b. 	Research Fee - The prime contractor earns a fee for requisitions that are cancelled after
+research has begun (BZ), but prior to the submittal of a quote (IQ/PQ/PA).
+c. 	Cancellation Fee - The prime contractor earns a fee for requisitions that are cancelled
+after the submittal of a quote (IQ/PQ), but prior to contract award (IV/BV).
+d. 	Expedite Fee - The prime contractor earns a fee when the customer requests the
+requisition be expedited after contract award (IV/BV).
+e. 	Termination Charges - The supporting vendor earns termination charges when the
+customer cancels a requisition after contract award (IV/BV).
+f. 	Program Fee - The PROS Program Office receives a fee for each filled requisition.
+g. 	Contingency Fee -If a customer has been assigned a contingency project code by Defense
+Security Cooperation Agency (DSCA), and they request surge support, contractor may
+assess a Contingency Operations Fee.
+NOTE: All fees collected are to compensate the associated organization for the work they
+have performed.
+D. PROS Information and Contacts
+Additional information concerning the program to include briefings, POCs, etc., is accessible via
+AFSAC Online at https://afsac.wpafb.af.mil/ or by using the contact list below:
+Supply Issues: 	AFSAC.PROS.supply@us.af.mil
+Maintenance Issues: 	AFSAC.PROS.repair@us.af.mil
+SDRs/Quality: 	AFSAC.SDR.customer.service@us.af.mil
+Financial Issues: 	AFSAC.PROS.Financial@us.af.mil
+Contracting: 	AFSAC.PROS.contracting@us.af.mil
+Task Order 	AFLCMC.PROS.TaskOrders@us.af.mil
+II. PROS Access/Systems
+A. AFSAC On-Line (https://afsac.wpafb.af.mil/) contains a variety of tools and program
+information useful to anyone involved in FMS. With respect to PROS, available information
+includes: briefings and documents, PROS Program Office contact list, Security Assistance
+Management Information System (SAMIS) status codes, and requisition forms. Additionally, the
+PROS Communication Tool and PROS reporting are available for communicating with the contractor
+and/or for generating reports.
+The following screen shots are a sample of screens users see when accessing PROS information via
+AFSAC Online.
+
+-- 6 of 62 --
+
+Page | 7
+The PROS Application Dashboard will open in a separate window. Click on PROS V:
+
+-- 7 of 62 --
+
+Page | 8
+Select desired report/function:
+The AFSAC Online Login Screen will open in a separate window. Enter Username/Password and
+click “Log In”:
+1. AFSAC On-Line>PROS >PROS V>Country Summary Report
+This report provides a summary-level view of requisitions and financial data by country.
+Select desired parameters (service, country, case (opt), line (opt), start/end date, format, etc.)
+then submit:
+
+-- 8 of 62 --
+
+Page | 9
+Sample report:
+
+-- 9 of 62 --
+
+Page | 10
+2. AFSAC On-Line>PROS >PROS V>Detailed Requisition Status Report
+This report provides detailed status on a country’s requisitions, to include: Document Control
+Numbers (DCNs), National Stock Numbers (NSNs), current status, and applicable dates.
+The following screen shots illustrate the process to generate the report.
+Select appropriate parameters (Service, and Country) then Submit:
+Sample Report: Tabs at the bottom will allow you to review open, completed (invoiced), and
+shipped requisitions.
+B. 	SAMIS – The Security Assistance Management Information System (SAMIS) is used to manage
+requisitions for AFSAC’s FMS customers. SAMIS can be accessed from Good Morning AFSAC or AFSAC
+Online under the Resources tab.
+
+-- 10 of 62 --
+
+Page | 11
+The MIAP (DISA) Screen will open in a separate window. Click on “Login”:
+Click on “Enter MIAP Portal”:
+
+-- 11 of 62 --
+
+Page | 12
+C. 	Other Logistics Information Sources: Numerous other resources are available to help in
+research of supply or repair requisitions. Two of the more commonly used resources are Haystack
+Gold and WebFLIS.
+1. Haystack Gold
+A parts and logistics system that enables users to find data using a wide range of search
+criteria across multiple databases. A link to access Haystack Gold is available on Good Morning
+After authenticating, access, click on SAMIS:
+
+-- 12 of 62 --
+
+Page | 13
+AFSAC (https://usaf.dps.mil/sites/GMA/SitePages/GMA-Sitemap.aspx). Public searches are
+available at that web site, but customers are able to obtain a subscription to Haystack by
+submitting a requisition under PROS. In order to do so, the customer needs to input an A05
+requisition into SAMIS and include all the below information:
+a. CAGE: 6A920 (Example)
+b. P/N: Haystack
+c. 	QTY: 1
+d. 	UI: (EA - Each)
+e. 	RIC: FX5
+f. 	MODE TRANSMISSION/DISP: M
+g. 	ROUTING MEDIA PROCESS CODE: N
+h. 	Include all essential data in the narrative, to include the number of users, location of
+users, and the duration of the subscription (i.e. 1 year)
+If you have questions, please send email to afsac.pros.supply@us.af.mil.
+2. WebFLIS
+The Federal Logistics Information System Web Search (WebFLIS) provides essential
+information about supply items including the National Stock Number, the item name,
+manufacturers and suppliers (including part numbers), through a web interface connected to
+FLIS data. This information is primarily used by DLA, military services, and United States
+Government (USG) sponsored contractors doing business with the USG. Access is available at
+https://www.dla.mil/Working-With-DLA/Applications/Details/Article/2876998/webflis-
+web-federal-logistics-information-system/
+III. Requisitions
+A. Requisitions Overview 1. Eligible Items
+PROS exists to support non-standard and difficult-to-support standard materiel. PROS
+eligible items may consist of any part number (P/N) or National Stock Number (NSN) item
+included in government data bases (e.g. D043A - Master Item Identification Data System or
+WebFLIS) or commercial data base (e.g. Haystack Gold) that are needed in support of the
+Security Assistance Program Country’s military infrastructure. PROS support is limited to
+platforms or systems of US origin.
+NOTE: Ammunition and explosive portions of cartridge actuated devices and propellant
+devices (CAD/PAD), classified items, items with hazardous materials, Night Vision Devices
+(NVDs)/Intensifier Tubes, and items containing ozone depleting substances may be
+supported by PROS but require Program Office approval PRIOR to requisition submission.
+a. Non-Standard
+Any item that is not actively managed by the United States Air Force (USAF) (see table
+below). The contractor is required to openly compete all non-standard requisitions, and
+contracts must be awarded to qualified sources. When another service (i.e. Navy) is Primary
+Inventory Control Agency (PICA), the contractor will treat the requisition as non-standard.
+b. Standard
+Any item that is actively managed by the USAF (see table below), this includes actively
+managed NSNs, as well as P/Ns that cross-reference to an actively managed NSN. The
+
+-- 13 of 62 --
+
+Page | 14
+PROS contract allows for the support of standard items when the USAF does not have
+the capability and/or contractual support available. The contractor is required to award
+all standard item requisitions to the provided USAF Engineering Source Authority (ESA)
+approved source.
+Eligibility
+Determination
+Managed
+by ALC
+Acquisition
+Advice Code
+(AAC)
+Materiel
+Management
+Aggregation Code
+(MMAC)
+Expendability,
+Recoverability,
+Reparability Code
+(ERRC)
+Nonstandard 	No 	P, V, Y, L, T, X,
+F and J1
+EX, PU, XA, XG, XL,
+XN, XT, XU, XV, XW,
+XY and XZ
+N or P (maintenance
+only)
+Standard (AF PICA) 2 	All Others 	All Others 	￼All Others
+Standard (AF SICA)3 	Yes 	All Others 	All Others 	All Others
+1If PN/NSN is identified with Acquisition Advice Code (AAC) J and the ALC provided a directed source,
+that source shall be used. If there is not a directed source, contractor shall treat as nonstandard.
+2Standard (AF PICA) are eligible for PROS support, contractor shall use AF ESA approved source(s).
+3Standard (AF SICA) are eligible for PROS support and shall be openly competed.
+c. 	DLA/GSA Items
+When customers submit a DLA/GSA managed (RIC: SMS/GSA) item directly to PROS,
+that item will be retained/treated as a non-standard item. PROS will proceed with
+openly competing the requirement amongst qualified sourced. ESA approved sources
+are not required.
+d. 	Cases
+PROS orders are to be processed against blanket order requisition cases such as E, M, Q,
+R, S and the cross-reference codes need to be either blank, spares (R) or maintenance
+(M). D, L, O*, and Y cases may be used, but should be coordinated with the process
+owner. A, C, G, K**, N, P, T, V, and Z cases are not able to be used for PROS requisitions.
+* O-case, materiel is only procurable if it is not considered CLASS I COMSEC – (See
+COMSEC paragraph below).
+**If a standard supply item is passed to PROS, it can continue on the K-Case.
+Maintenance efforts will have to be moved to another case.
+e. 	Type of Assistance Codes (TACs)
+Eligible TACs are 3-8, M, N, U, or Z. It is not necessary to establish a PROS specific line to
+use this program.
+f. 	PROS Exclusions: SAMIS conducts internal checks to determine if requisitions are
+eligible for PROS support. For instance, SAMIS checks the project code, case, etc. when
+making its determination. The following is a list of PROS exclusions identified by SAMIS,
+these could be helpful when needing to identify why a requisition did not process for
+PROS support.
+1) Any advice code that reflects fill/kill, e.g. 2C, 2J, 22.
+2) New materiel with a not yet defined “ND” NSN.
+
+-- 14 of 62 --
+
+Page | 15
+3) Project code 857 = Special Defense Acquisition Fund (SDAF).
+4) Sole source of 6V/BV advice code on defined order cases.
+5) Drawdown or “H” coded requisitions.
+6) Requisitions with assigned cases that are not eligible for PROS (see Cases paragraph
+above); some ineligible cases may be used if the PROS Program Office provides
+approval.
+7) MG1 transactions.
+8) Classified materiel; classified materiel may be supported if PROS Program Office
+provides approval.
+f.
+g. 	Night Vision Devices (NVDs)
+PROS can procure NVDs. Please reference NVD section for specific guidance on
+processing procedures.
+h. 	Program Office Review Required
+The below items require review/coordination/waiver by the PROS Program Office
+PRIOR to requisition input. Program Office will ensure item eligibility and validate
+security, transportation, and other logistics plans are in place to manage the requisition
+through all phases of movement.
+1) Military Defense Equipment (MDE)
+2) Significant Military Equipment (SME)
+3) Classified
+4) COMSEC
+5) CAD/PAD (Explosive type items)
+6) Munitions
+7) Ozone Depleting Agents
+8) Hazardous Items
+9) Package Buys
+10) NVDs/Intensifier Tubes
+11) Task Orders
+12) Selective Availability Anti-Spoofing Module (SAASM)
+i. 	Re-cataloging of AAC by ALC
+When the Item Manager (IM) determines that a standard item needs to be recataloged as
+nonstandard they will initiate a catalog change. The IM will input a SAMIS NIIN
+narrative advising the change has been initiated. If the NIIN narrative states that the
+associated item is eligible for PROS and includes approved source data, then PROS can
+process the requisition. The requisition must have the appropriate NIIN narrative noted
+within the SAMIS narrative page. Failure to do so, will result in the requisition being
+cancelled and a research fee incurred.
+j. 	Country Preference Tables (QAID – 1303I)
+The Country Preference Table functionality allows for the restriction of specific requisition types
+from being forwarded to PROS for support. Management of the Country Preference Table falls
+under the purview of the respective AFSAC Country Team.
+
+-- 15 of 62 --
+
+Page | 16
+To ensure proper authorization and documentation, all modification requests must adhere to the
+following procedure:
+1. 	Submit an AFSAC Track-it ticket.
+2. 	Include an email attachment containing explicit approval from the AFSAC Country
+Team for the requested changes.
+Requests that do not include documented Country Team approval will be closed and returned to
+the originating AFSAC Country Team. See screenshots below for the definition of blocking
+country requisitions.
+Enter 1303I into QAID field:
+Enter data in fields based on the below instructions:
+
+-- 16 of 62 --
+
+Page | 17
+BLOCK ALL REQUISITIONS: Defines which requisitions are to be blocked from passing to the PROS
+contractor. Blocked requisitions will generate a controlled exception for review by the Command
+Country Manager (CCM) or ALC system program director.
+A = prevents ALL requisitions from passing to the contractor
+N = allows NMCS/Highest Level of Service (HLS) only requisitions to be passed to the contractor
+Blank = allows all requisitions to be routed to the contractor
+BLOCK A01s: Defines A01 requisitions to be blocked from passing to the PROS contractor. Blocked
+requisitions will generate a controlled exception for review by the Command Country Manager (CCM)
+or ALC system program director.
+A = prevents ALL A01 requisitions from passing to the contractor
+N = allows NMCS/HLS (A01 only) requisitions to be passed to the contractor
+Blank = allows all A01 requisitions to be routed to the contractor
+BLOCK MIN/MAX DOLLAR VALUE: Defines which requisitions are to be blocked from passing to the
+PROS contractor based on dollar value. Blocked requisitions will generate a controlled exception for
+review by the CCM or ALC system program director.
+BLOCK MIN/MAX DOLLAR VALUE IF NMCS/HLS: Defines which NMCS/HLS requisitions are to be
+blocked from passing to the PROS contractor based on dollar value. This allows customer to exempt
+NMCS/HLS requisitions from the defined criteria.
+A = prevents NMCS/HLS requisitions that have a dollar value less than/exceeding the specified
+minimum/maximum value from being passed to the contractor
+N = allows NMCS/HLS requisitions with a dollar value less than/exceeding the specified
+minimum/maximum dollar value to be passed to the contractor Blank = no
+minimum/maximum dollar value
+BLOCK STANDARD ITEMS: Defines standard item requisitions to be blocked from passing to the PROS
+contractor via the standard item process. Blocked requisitions will generate a controlled exception for
+review by the CCM or ALC system program director.
+A = prevents standard requisitions from being passed to the contractor
+N = allows NMCS/HLS only requisitions to be passed to the contractor
+Blank = allows all standard requisitions to be passed to the contractor
+k. 	NVD
+WR-ALC has management authority for USAF NVDs; WR-ALC has identified PROS as the
+support vehicle for FMS customer NVD requirements. PROS is responsible for the
+procurement of the NVD and any associated support equipment; WR-ALC is the source
+of procurement for Test Sets.
+Elbit is the approved source for procurement of NVDs and Intensifier Tubes and will be
+used for all PROS NVD requisitions. LOA sole source is not required.
+The CCM is responsible for contacting Harris to obtain pricing in support of the LOA. The
+PROS Program Office recommends increasing the obtained price quote to account for
+the following; this will alleviate underestimating the procurement cost:
+
+-- 17 of 62 --
+
+Page | 18
+1) 	Add 15% to cover any unforeseen price changes (to include Transportation cost)
+2) 	Contractor fill fee
+3) 	AFSAC Program fee (2% of materiel value, Not To Exceed $15,000)
+The PROS Program Office is responsible for inputting ALL NVD and Intensifier
+Tube requisitions. All others (Support Equipment, Spare Parts, Test Sets, etc.) are the
+country’s responsibility to input. Requisitions received by the contractor without FDO
+and Program Office approval will be directed to the PROS Program Office. The following
+information must be provided to the Program Office for input of the requisition:
+1) DCN (Ensure that the Delivery Term Code (DTC) within the Document Control
+Number (DCN), matches that on the Transportation Plan. This is position 34 of the
+MILSTRIP or 5 th position of the DCN).
+2) Quantity
+3) P/N or NSN
+4) Cage Code (Always 13567 Harris)
+5) Supplementary address
+6) Country Priority Code
+7) Case/Line
+8) DSCA Releasability letter.
+9) DSCA or Defense Technology Security Administration approval letter.
+10) Copy of the Defined Order LOA clearly identifying the items to be procured; NVDs
+are Significant Military Equipment (SME) and must be on defined order lines. Non-
+SME NVD support equipment and spare parts can be procured on Blanket Order
+lines.
+11) A copy of the approved Transportation plan Annex C; items must be transported via
+Delivery Term Code (DTC) 7, 8, or 9 IAW DTR, Part II, Chapter 205, Table 205-7 and
+IAW SAMM Chapter C7.15.2 since these are identified as a security risk with a CIIC
+code of 4.
+12) NVDs being shipped via Pilot pick-up must have a supplementary address of D2Z.
+DCMA will be involved with all shipments going DTS (DTC 7, 8 or 9) or pilot pickup.
+All the above required info should be sent to: afsac.pros.repair@us.af.mil
+l. 	Communications Security (COMSEC) Support
+It is the customer’ responsibility to identify COMSEC items for supply or maintenance
+requisitions. This determination can be made by reviewing the CIIC code associated
+with the PN/NSN in Haystack Gold, WebFLIS, etc.
+All COMSEC requirements must be processed against an O, Q, or S case and submitted to
+the PROS Program Office for review and input. PROS cannot support CLASS I COMSEC
+Materiel.
+If a supply or maintenance requisition is received by the contractor and determined to
+be COMSEC, and there is NOT a Program Office narrative providing authorization to
+proceed with procurement, the contractor will immediately notify the Program Office to
+determine if the item is classified. If the Contractor receives an unscheduled item
+suspected of being COMSEC, they will immediately secure the item and notify the
+Program Office. The customer is liable for all associated costs the contractor incurs due
+to investigation/incident report and storage.
+Process for submitting COMSEC requisitions:
+1) 	Customer responsibilities
+
+-- 18 of 62 --
+
+Page | 19
+a) 	Complete the Supply/Maintenance Requisition Form located on AFSAC Online.
+The following must be included in addition to the “Mandatory Information” on
+the PROS Worksheet:
+(1) 	CIIC Code
+(2) 	Customer’s COMSEC Account (CA) Information
+(3) 	Suggested Source COMSEC Account (CA) Information (if known)
+b) 	Provide a copy of the approved transportation plan. It is the customer’s
+responsibility to ensure the mode of transportation in the plan agrees with the
+LOA. (NOTE: Ensure that the Delivery Term Code (DTC) within the provided
+Document Control Number (DCN), matches that on the Transportation Plan.
+This is position 34 of the MILSTRIP or 5th position of the DCN.)
+c) 	All documentation is to be emailed to the applicable mailbox:
+afsac.pros.supply@us.af.mil or afsac.pros.repair@us.af.mil.
+2) 	Program Office responsibilities
+a) 	Review customer request for completeness
+(1) 	Ensure the requested item is included in the approved transportation plan.
+For NATO countries, Australia, and New Zealand, COMSEC materiel may be
+transported through the designated freight forwarder; for all other
+countries, materiel MUST be transported by DTC 7, 8, or 9 only.
+b) Input requisition
+(1) 	COMSEC will clearly be identified in SAMIS Narrative.
+(2) 	SAMIS narrative will be documented confirming transportation plan was
+provided to the contractor.
+3) 	Contractor responsibilities
+a) 	Solicit qualified sources
+b) 	Materiel will be tracked throughout the procurement to ensure proper handling;
+an AS3 will be processed when the materiel is shipped.
+c) 	For maintenance requisitions:
+(1) 	If vendor’s COMSEC information was not provided in the original
+Transportation Plan, contractor will advise customer; country team will be
+responsible for updating the Transportation Plan and providing to the
+contractor.
+(2) 	Process an X8 status code instructing customer to ship the asset directly to
+the repair vendor and ensure the item is packaged and marked
+appropriately. Failure to follow shipping guidance will result in a
+reportable security violation.
+m. Classified Support
+It is the customer’s responsibility to identify classified items for supply or maintenance
+requisitions. This determination can be made by reviewing the CIIC code associated
+with the PN/NSN in Haystack Gold, WebFLIS, etc.
+Classified requirements are to be approved by the Program Office PRIOR to requisition
+input. Customer shall inform Program Office of classified requirements via email
+(afsac.pros.supply@us.af.mil or afsac.pros.repair@us.af.mil); message shall include a
+copy of the Transportation Plan. Program Office will review the request/provided
+
+-- 19 of 62 --
+
+Page | 20
+transportation plan. If supportable, Program Office will input requisition, provide
+contractor with Transportation Plan, and advise customer requisition has been entered.
+For maintenance requisitions, the contractor will process an X8 status code instructing
+the customer to ship the asset directly to the repair vendor and ensure the item is
+packaged and marked appropriately. Failure to follow shipping guidance will result in a
+reportable security violation.
+Materiel will be tracked throughout the procurement to ensure proper handling; an AS3 will be
+processed when the materiel is shipped. If a supply or maintenance requisition is received by the
+contractor and determined to be classified, and there is NOT a Program Office narrative providing
+authorization to proceed with procurement, the contractor will immediately notify the Program Office. If
+the Contractor receives an unscheduled item suspected of being classified, they will immediately secure
+the item and contact the Program Office. The customer is liable for all associated costs the contractor
+incurs due to investigation/incident report and storage.
+n. 	SAASM
+SAASM (Selective Availability Anti-spoofing Module) used by military Global Positioning
+System receivers to allow decryption of precision GPS observations materiel, is tracked
+by the GPS directorate and must be ordered on a Defined order Case/Line, which
+identifies the P/N and quantity. SAASM is not authorized on a Blanket order Case/Line.
+o. 	New country codes
+If a new country code is required to input a requisition, customer must work the issue
+through the AFSAC IT office.
+p. 	Kits
+A kit is a group of associated items linked together by a vendor and able to be processed
+as a single procurement. When inputting requisitions for a kit, KT shall be input as the
+unit of issue. In order for PROS to process a kit requisition, the
+associated kits must have an assigned P/N and be listed in Haystack/Fedlog/WebFLIS or
+within the vendor’s catalog.
+If the kit is developed by a vendor to support a customer's unique requirements, and is
+NOT cataloged, the requisition will be rejected by the PROS contractor. Kits will only be
+supported by a single vendor and shall only include non-standard items.
+2. 	Level of Service (LOS) Categories
+PROS V contains three levels of service: Highest Level of Service (HLS), Urgent, and Routine.
+The LOS is based on the Priority/Requested Delivery Date (RDD) that is documented in
+SAMIS when the requisition is input and determines the contract award objective timeframe
+along with the associated fill fee.
+HLS requirements are most critical to the FMS customer’s military operations. They
+represent requirements that include, but are not limited to, grounded aircraft, Not Mission
+Capable Supply (NMCS), contingency operations, and national disasters. HLS requirements
+will be treated in the most expeditious manner possible from receipt of requisition (BD)
+through shipment (AS3). Expedite fees will not be applied. For HLS the contractor will offer
+quote with best ESD. Fair and reasonable pricing will still be required. During requisition
+submission the customer will be required to input “NAA” in the RDD field.
+
+-- 20 of 62 --
+
+Page | 21
+Urgent requirements are critical to the FMS customer’s military operations. They represent
+requirements that may not constitute emergency or immediate operational impacts.
+Routine requirements are less critical to the FMS customer’s military operations. They
+represent requirements that are not as time sensitive as HLS or Urgent.
+The following service levels apply to the associated Priority/RDD:
+Level of Service 	Priority 	RDD
+Highest Level of Service (HLS) 	2, 3, 7, 8 	NAA
+Urgent 	2, 3, 7, 8 	Leave Blank
+Routine 	5, 6, 9, 10, 12, 13, 14, 15 	Leave Blank
+3. 	Fill Fees
+The contractor earns a fill fee for each requisition in which a contract is awarded and
+materiel is shipped. The fill fee is based on the level of service (HLS, Urgent, or Routine), the
+materiel value of the requisition, and the contractor’s ability to meet the associated contract
+award objective. When the contractor does not meet the contract award objective, their fill
+fee is reduced in accordance with the below table.
+CONTRACTOR DAYS
+At/Before Contract
+Award Objective
+1-15 Days
+Late
+16-30 Days
+Late
+> 30 Days Late
+Fill Fee Earned 	100% 	90% 	75% 	60%
+4. Contract Awards
+a. 	The contractor is to attempt to award contracts IAW the objectives established in the
+below table. If a contract award is not made within 150 contractor days, the requisition
+will be cancelled. Contractor days are calendar days minus any time the contractor is
+awaiting a response from customer or the PROS Program Office (X status). Supply
+requisitions will be measured from receipt of requisition (BD) to contract award (BV).
+Maintenance requisitions will be measured from receipt of requisition (BD) to contract
+award for TTI (IV), and then from the Price Quote (PQ) to the contract award for the
+actual repair (BV)
+
+-- 21 of 62 --
+
+Page | 22
+Level Of
+Service (LOS)
+Supply
+Contractor Days
+to Award
+Maintenance Test
+Teardown and
+Inspection (TTI)
+Maintenance Contractor Days
+to Award after PQ for
+Maintenance
+Contractor Days to
+Award
+HLS 	21 Days 	24 Days 	5 Days
+Urgent 	40 Days 	60 Days 	10 Days
+Routine 	60 Days 	80 Days 	15 Days
+The requisitioning process is an extensive effort. The following paragraphs provide
+some general clarification.
+Once the requisition is available for processing, the contractor will post a BD status code
+in SAMIS to acknowledge the receipt of requisition within 5 calendar days.
+The BZ status code indicates the research/solicitation phase has begun. This is the most
+time-consuming phase in that it consists of ensuring the requirement is fully defined,
+performing research activities, soliciting quotes via the contractor’s bid board,
+evaluation of those quotes once received, fair and reasonable price determination,
+negotiations, the selection of a vendor, and then finalization of the terms and conditions
+of the contract.
+Any contract award is contingent upon several factors to include but not limited to: Fair
+and Reasonable Price Quote (PQ), customer price approval if required (X5/R5), terms
+and conditions between contractor and sub-vendor, etc.
+The BV status code will be posted for supply requisitions when the contract has been
+awarded. Maintenance requisitions have a two-phase approach; there is a TTI phase
+where the contractor evaluates the item to be repaired to determine the extent of the
+repair and the associated cost; the second phase is where the contractor performs the
+actual repair of the item. The IV status code will be posted when the TTI contract is
+awarded. The BV status code will be posted when the actual repair contract is awarded.
+For current status updates, please check SAMIS before contacting the PROS Program
+Office or the Contractor. Please allow the contractor the sufficient time to process the
+requisition. Reference the above contract award objective timeframes.
+b. 	The contractor has a maximum of 150 contractor days to award a contract. If the
+contractor is unable to locate a qualified vendor within that timeframe, a CG cancellation
+will be processed, and the contractor will earn no fee. The contractor may use the below
+exception only when a contract award is imminent:
+1) If a contract is expected to be awarded, but not within 150 contractor days, the
+contractor may process an X3 status code requesting customer approval to exceed
+the 150 contractor day cancellation date.
+
+-- 22 of 62 --
+
+Page | 23
+2) In this instance, the contractor will provide the customer with a narrative
+explanation for the extension and the planned award date.
+3) The Customer has 30 days to respond to the X3. If the customer fails to respond,
+SAMIS will generate an auto-cancellation request.
+5. LOA Sole Source
+If the customer desires for a requirement to be awarded to a specific vendor, the only means
+to accomplish that effort is for the associated LOA to be documented as Sole Source on the
+Case/Line. If the costumer’s requirement is identified as Sole Source within the LOA, the
+customer must provide a copy of the LOA to the Program Office at time of requisition input.
+The Program Office will then add a narrative within SAMIS to document receipt/validation
+of LOA and notify the contractor that the requisition is to be awarded to the listed source
+and not openly competed.
+6. Suggested Sources
+a. 	The customer is encouraged to provide suggested source information within the SAMIS
+narrative at the time the requisition is submitted. At a minimum, the information
+should include the vendor’s name, POC, telephone number and any other information
+pertaining to the defined requirement (i.e. pricing, terms and conditions, etc.) A
+suggested source is not to be construed as an LOA sole source or directed source;
+meaning, a suggested source does not guarantee the source will be selected.
+PROS is required to openly compete all non-standard requisitions. All provided quotes
+will be reviewed and considered.
+b. 	Suggested sources will be reviewed by the contractor to determine the vendor’s
+qualification to support the customer’s requirement. If the vendor is qualified, a Request
+for Quote (RFQ) will be sent to the suggested source.
+c. 	If the customer maintains a vendor database, the customer can provide the list to the
+PROS contractor for review; the contractor will be responsible for determining if the
+sources are qualified. Customers can encourage sources to become registered PROS
+vendors by visiting https://www.pros5.com/Registration.Vendor registration can
+save time in the requisition process.
+7. Contractor Tasks
+a. 	Research. The contractor is only authorized to procure PROS eligible items (see Eligible
+Items section of this document). PROS support is limited to systems/platforms of US
+origin. The customer should verify items are eligible prior to submitting a requisition.
+This is especially important since SAMIS cannot perform an electronic check to
+determine if a P/N item has a NSN assigned to it.
+The contractor is able to receive the following requisitions:
+1) A01 (entered by NSN, will be initially routed to the applicable USG Source of Supply
+(SoS))
+2) A02 (entered by P/N with a reference to an Air Force Technical Order)
+
+-- 23 of 62 --
+
+Page | 24
+3) A04 (entered by P/N, awaiting assignment of a NSN (NC) or items which are called
+non-definitive or one-time buys (ND))
+4) A05 (entered by P/N)
+5) C0R (entered by NSN or P/N)
+6) C0S (entered for Task Orders)
+b. 	Customer Price Approval. The contractor is required to obtain adequate price
+competition as defined in the Federal Acquisition Regulation (FAR) to the maximum
+extent possible. If the vendor’s price meets the criteria contained in the price matrix
+(see Price Approval Matrix section of this document), the contractor must request
+customer price approval through an X5 message.
+c. 	Consolidation of Requisitions. The contractor will review requisitions to consolidate
+purchase requirements in an attempt to obtain a reduced unit price whenever
+practicable. For instance, if a group of customers are procuring the same item and it has
+large production start-up costs, the contractor may issue a call to all known users
+requesting the procurement be consolidated in order to share the costs and take
+advantage of quantity price breaks. Consolidation efforts may not occur if it will impact
+the contract award timeframes.
+d. 	Shipping. Unless otherwise directed by USG, PROS materiel shall be packaged for
+favorable warehouse conditions (level A/B) as referenced in MIL-STD 2073-1E, Change
+1, Paragraphs 3.10 and 5.3, and ship IAW with the requisition’s
+DTC/shipping instructions. When final shipment occurs from PROS to the customer an
+AS3 transaction will be processed in SAMIS; when materiel is brought into the
+contractor’s warehouse prior to final shipment (AS3), an ASH transaction will be posted.
+For DTS shipments the contractor will coordinate with the Defense Contract
+Management Agency (DCMA) to obtain shipping instructions. An XK status code
+signifies when that coordination has begun. The item will be shipped IAW the received
+instructions and an AS3 and RK status code will be processed upon shipment.
+e. 	Requisition Status. As requisitions process through the various phases of procurement,
+the contractor is required to update SAMIS with the applicable status codes and
+narrative. The customer should refrain from requesting updated status until they have
+reviewed the latest transactions in SAMIS; the contractor is expected to post the most
+current status. Also, requests for updated status should not occur until the contract
+award objective timeframes have been exceeded (see Contract Awards section). Please
+reference Section VI for a listing of the status codes and definitions.
+
+-- 24 of 62 --
+
+Page | 25
+8. Estimated Shipping Date (ESD)
+a. 	Valid Estimated Ship Dates (ESD) are provided when a requisition is placed on contract.
+The ESD processed with the contract award of the maintenance TTI (IV) is actually an
+estimated completion date for the TTI effort. The actual ESD is processed in SAMIS with
+the BV transaction for both maintenance and supply requisitions, it is displayed in the
+RDD/ESD field. Any other date in the SAMIS RDD/ESD field should be disregarded. For
+expired ESDs, the customer should check SAMIS status, to include narratives, before
+contacting the Program Office or contractor to request an update.
+b. 	The PROS Contractor is responsible for monitoring requisition status and tracking
+vendors’ progress in meeting ESDs. If the contractor is advised that an ESD is projected
+to slip or can be expedited, the contractor will submit a revised ESD and document
+SAMIS with a narrative explanation.
+9. 	Finance
+a. 	Price Revisions. If the contractor identifies a need to revise a previously provided
+quote (IQ/PQ), an IR or PR status code will be processed along with an X5 status code
+(price approval)/narrative, if necessary, in SAMIS.
+b. 	Not to Exceed (NTE). The NTE function allows the customer to identify the maximum
+materiel value they are willing to pay for a supply requisition; this capability is beneficial
+for customers who have budget limitations. The customer will input a dollar value (no
+cents) into SAMIS (see snapshot below) identifying the NTE value for the materiel
+ordered. NTE requests are to be input in the “NTE” field. The contractor will try to honor
+NTEs listed in a SAMIS narrative for customers who cannot utilize the NTE field.
+NOTE: The NTE value is to account for the total material value being ordered.
+1) If the Contractor is able to obtain a quote at or below the NTE value, they are
+allowed to proceed with awarding a contract. A price quote (PQ) will be processed,
+and upon receipt of the financial approval (OK) from SAMIS, the contract is
+
+-- 25 of 62 --
+
+Page | 26
+authorized to be awarded. This can save time in that it may eliminate the need to
+process a price approval request (X5).
+2) If the Contractor receives a quote above the NTE value, a price approval request (X5)
+will be processed in SAMIS. If customer does not approve the offered price, the
+requisition will be cancelled. The contractor will earn a cancellation fee.
+3) The NTE feature is available through SAMIS; STARR-PC users must contact
+AFSAC/WFS to obtain functionality.
+c. 	Price Approval Matrix. To avoid unexpected costs or price increases to the customer,
+the contractor shall obtain price approval prior to awarding contracts on those
+requisitions which meet the stipulations contained in the below table. When processing
+price approvals with the customer through DAMES/Email/SAMIS, the contractor will
+provide the total requisition value. The customer has 60 days to respond to the message
+requesting price approval (X5 status code). If no response is received or customer
+chooses to not accept the price, SAMIS will automatically generate a cancellation request
+(AC4). The requisition will be cancelled and the contractor will earn a cancellation fee.
+Contractor will submit X5
+IF 	AND
+Supply requisition is between $3,000 and
+$150,000
+Exceeds last procurement price by 50% or
+more from any source (e.g., USG Data Systems,
+D043, contractor generated data); adjusted to
+reflect current year dollars
+Supply requisition is greater than $150,000
+Maintenance requisition is greater than
+$100,000
+Supply requisition is greater than $3,000 	No procurement history exists
+Price revision is submitted for a Supply
+requisition above $3,000
+Price revision exceeds previously approved PQ
+by 15% or more
+Price revision is submitted for maintenance
+requisition that exceeds previously approved PQ
+by 15% or more
+Supply/Maintenance requisition incur
+termination costs due to customer
+cancellation after contract award
+PQ exceeds customer submitted NTE value
+Contractor will submit X9
+IF 	AND
+Maintenance requisition; Beyond
+Economical Repair (BER) - If estimated cost
+of a maintenance requisition, including
+labor and materiel, is determined to be
+greater than 75% of a new and current
+acquisition item cost
+
+-- 26 of 62 --
+
+Page | 27
+d. 	Funding Issues. SAMIS checks for the availability of funds; if funds are not available,
+SAMIS will generate an OH status code and a PRNM/PR28 CEX error. CEX Errors will
+need to be worked IAW SAMIS help screens (see CEX Error section).
+1) PRNM - Not Enough Case Funds to Support this order. Resolution: The CCM/Case
+Manager must add/move sufficient case funds and release (“A”) the CEX error within
+60 days, otherwise SAMIS will generate an auto-cancellation.
+2) PR28 - CMCS Funds Not Available. Resolution: The CCM/Case Manager must
+add/move sufficient direct cite funds and release (“A”) the CEX error within 60 days,
+otherwise SAMIS will generate an auto-cancellation.
+3) No Fee Cancellation - If the PRNM/PR28 errors cannot be worked due to case or
+direct cite funds not being available, and the customer is going to input a
+replacement requisition with a new case/line, the customer may request a No Fee
+(NF) cancellation for the original requisition. The country team or customer will
+cancel the original DCN and forward the NF request to the contractor through a
+SAMIS narrative. The contractor will review the NF request and determine if
+approval will be granted.
+NOTE: the NF is not a contractual requirement since the contractor has expended effort
+against the original requisition and additional effort may be required to re-
+accomplish the work. Therefore, the contractor has the right to deny the NF request.
+If the NF is approved, the contractor will hold the NF until a PQ has been posted to the
+replacement requisition. Upon receipt of the cancellation, the contractor will
+process a BQ status code in SAMIS to complete the original requisition. The country
+team or customer will input the replacement requisition and cross-reference the
+original DCN; this enables the contractor maximum visibility for processing the
+replacement DCN as quickly as possible by linking the two DCN’s together. The
+contractor will acknowledge receipt of the replacement requisition by processing a
+BD status code. Once the PQ has been processed on the replacement requisition and
+SAMIS has checked and confirmed the availability of funds, SAMIS will generate an
+OK status code. At this time the associated CEX error (PRNF) generated on the
+original requisition can be deleted.
+e. Taxes
+1) Per FAR, federal immunity to state taxes does not apply to a contractor buying for
+the federal government. Federal immunity only applies when the federal
+government is doing the purchasing for itself.
+2) State and local tax codes decide whether state and local taxes apply to an asset
+bought for the federal government by a contractor. Therefore, a contracting firm
+should expect vendors to include state taxes in their costs, when appropriate. This
+cost gets passed on to the purchasing country. When a requisition is exempt of taxes
+that information should be annotated in the purchase order between the prime
+contractor and the supporting vendor.
+B. Supply
+1. National Stock Number (NSN) Requisitions
+All USAF managed NSN requisitions (A01s) will be routed to the USG SoS to check for asset
+availability. If the item is available, the SoS will fill the requirement. If the SoS can only fill a
+portion of the requirement, the remaining balance will be canceled -- SAMIS will NOT
+forward the remaining balance to PROS.
+
+-- 27 of 62 --
+
+Page | 28
+Actively Managed items can be passed by the USG SoS to PROS for support. If the SoS
+determines organic or contractual support does not exist, the SoS will cancel (CA) the
+requirement. SAMIS will check customer blocker edits contained in the preference table. If
+the country has blocker edits, SAMIS will generate a PR03 controlled exception. The PR03
+will need to be worked IAW SAMIS help screens (see CEX Error section).
+If the country has no edits and the item is not actively managed by the USAF, the
+requirement will automatically pass to the PROS contractor. If the country has no edits and
+the item is actively managed, SAMIS will generate a P200 controlled exception. 	The P200
+controlled exception allows the customer to determine whether to pass the requirement to
+PROS or not. The P200 controlled exception will need to be worked IAW SAMIS help screens
+(see CEX Error section).
+Additionally, for actively managed items, the USG SoS must provide the USAF
+Engineering Source Authority (ESA) approved source data package which identifies the
+approved source(s) to be used in support of the requirement. This information is provided
+to the contractor via SAMIS narrative. Actively managed NSNs (standard items) are only to
+be awarded to the provided approved source(s).
+NOTE: If the USAF ESA approved source data package is not provided, the customer or
+country team must contact the FMS Workflow and request assistance in obtaining the
+approved source data package prior to releasing the P200 error.
+2. 	Part-Numbered (P/N) Requisitions
+SAMIS will send P/N requisitions (A05s) directly to the PROS contractor for support when
+the requisition reflects FX5 as the routing identifier code (RIC). A05 requisitions shall not
+be input for USAF actively managed NSN (standard) items in an attempt to circumvent the
+SAMIS edits. The customer may input an actively managed NSN as a P/N (A05) requisition
+ONLY if a NIIN narrative, to include approved source data, exists in SAMIS identifying the
+materiel as being eligible for PROS.
+NOTE: It is the customer’s responsibility to ensure that the NIIN narrative/approved source
+data package is copied and pasted into the SAMIS narrative upon requisition input;
+otherwise, the requisition may be cancelled and fees incurred. NIIN narratives can be
+located within SAMIS by using the 283 screen; valid narratives reflect that the associated
+NSN is eligible for PROS support and supplies the approved source(s).
+a. 	If a customer submits an A05 (P/N) requisition directly to PROS and the contractor
+identifies it has an associated NSN that is actively managed by the USAF, the contractor
+will CY cancel the requisition. SAMIS will automatically pass the requisition to the
+supporting USG SoS, and the contractor will earn a research fee.
+b. 	If customer submits an A05 (P/N) requisition and research reveals the item is not
+supportable, but an alternate/substitute item does exist which has an associated NSN
+that is actively managed by the USAF, the contractor will process a CJ cancellation.
+SAMIS will automatically pass the requisition to the supporting USG SoS, and the
+contractor will earn a research fee. If the requisition contains a “Do Not Substitute”
+advice code (e.g. 2B, 26), the contractor will cancel the requisition using a CG status
+code.
+If the customer submits an A05 (P/N) requisition and research reveals the item is not supportable, but
+the contractor is able to locate an alternate/replacement P/N that is not catalogued, the contractor will
+request customer approval to proceed with the alternate/replacement P/N via an X2 message before
+proceeding. The contractor will obtain the applicable technical data from vendor and forward to
+customer for review. If customer does not accept the replacement/alternate P/N, the requisition will be
+
+-- 28 of 62 --
+
+Page | 29
+cancelled, and the contractor will earn a research fee.If the customer submits an A05 (P/N) requisition
+and research reveals the item is not supportable, but the contractor is able to locate an Interchangeable
+and Substitutable (I&S) P/N, which is catalogued and linked to the NSN associated with the P/N that was
+originally requested, the contractor may process a BH status, reflect the P/N change, and continue with
+procurement.
+3. 	Supply Requisition Form: Available at AFSAC Online, provides information the contractor
+will require to properly support the supply effort. The more information provided at
+requisition input will result in fewer delays in the contracting process.
+4. 	Entering A05 (P/N) Supply Requisitions: It is the customer’s responsibility to ensure items
+procured through PROS are eligible for PROS support. Failure to perform research could result
+in cancellations and fees. a. SUPPLY - A05 requisitions input by P/N.
+1) Step 1
+a) 	Enter “RQN” in QAID field to get to below screen.
+b) 	Enter “6” to select “A05 Requisition” option.
+2) Step 2
+a) 	Enter “FX5” as “Routing Identifier”
+b) 	Enter manufacturer’s CAGE code in the “Cage Code” field; sources can be
+identified by using systems such as Haystack or WebFLIS
+c) 	Input the P/N in the “Part Number” field; if the P/N field does not hold the
+complete P/N, ensure the P/N is complete in the P/N field in the narrative.
+d) Enter “N” in “Routing Media Process Code” field
+) Step 3
+a) 	A narrative must be entered. Within the narrative screen, input any additional
+information to assist the contractor in defining exactly what is to be procured. If
+there is a known/suggested source, input vendor’s name, POC, telephone
+number, email, and any other pertinent information. If a quote has been
+provided by a vendor, input a statement concerning the quote value, terms and
+conditions, warranty and forward a copy of the quote to supply@pros5.com,
+including the DCN on the front page of the quote and in the subject line of the
+email. For actively managed (standard) items entered as an A05, a NIIN
+narrative will be required which states that the materiel is eligible for PROS and
+provides the ESA approved source data.
+b) 	<Hit> F5 key to save narrative
+c) 	<Hit> Enter to stage requisition
+The below Process Desk Guide (PDG) hyperlinks reflect additional information to be
+supplied in support of the requirement; providing as much information as possible can
+eliminate the need for the contractor to request clarification and reduce the procurement
+timeline. Please look for PDG entitled, “Inputting Requisitions”.
+AFSAC USG PDG: https://usaf.dps.mil/teams/22252/PDG/default.aspx
+FLO: https://afsac.wpafb.af.mil/flo/
+
+-- 29 of 62 --
+
+Page | 30
+5. 	Alternate Part Number/Condition:
+a. 	If a vendor cannot provide the requested part in new condition and offers either an
+alternate P/N or surplus materiel, the contractor must request customer approval via an
+X2 message prior to proceeding. If the item is an alternate P/N, the vendor will provide
+documentation to allow customer to make an informed decision as to whether the
+materiel is same form, fit, and function.
+b. 	If customer requires a specific P/N, a Do Not Substitute Advice Code (i.e. 2b) must be
+entered at requisition input.
+6. 	Package Buys:
+a. 	Requisitions may qualify as a package if the following criteria are met:
+1) The number of line items under a single package buy requisition may range from 2
+to 10; on an exception basis, with USG and contractor approval, the line items may
+exceed this determined range.
+2) Must be a supply requisition.
+3) Must only include non-standard items.
+4) Level of support must be routine as requirements are manually intensive.
+5) All items must be available and purchased from a single supplier.
+6) HAZMAT items cannot be shipped in a package buy with non-HAZMAT.
+7) Must use one SHIP TO address per requisition - Items will be staged for a single
+shipment; no split shipments.
+NOTE: The fill fee will be based on the sum total of line item materiel costs in the
+requisition.
+b. 	Package Buy Process:
+1) Program Office approval is not required prior to Package Buy input. The contractor
+will validate Package Buy requisitions. The country team or customer must research
+items and ensure they are eligible for PROS before requisition submission; if not
+eligible, fees may be incurred.
+a) 	The following information may be required to input a Package Buy requisition:
+(1) 	P/Ns
+(2) 	NSNs (if known)
+(3) 	AACs
+(4) 	Nomenclature/Item Name (if known, include a description, catalog
+information/number, make, model, etc.)
+(5) 	CIIC (Controlled Inventory Item Code - classified/unclassified).
+(6) 	HMIC (Hazardous Materiel Indicator Code)
+(7) 	Quantities of each individual item in the package buy
+(8) 	Manufacturer’s CAGE code if a recommended source is known, to
+include point of contact information and address
+(9) 	Estimated unit cost of each item
+(10) 	DCN
+(11) 	Priority – Must be Routine
+(12) 	Case/Line (Country team must ensure adequate funds are available)
+(13) 	Supplemental address
+
+-- 30 of 62 --
+
+Page | 31
+2) The package buy will be processed as an A05 requisition. The contractor shall
+review all Package Buy requisitions. If any discrepancies exist, contractor shall
+notify the customer and request clarification via an X2 message.
+3) Upon input of the A05 requisition, the following data must be provided:
+a) 	CAGE code field must contain the vendor’s CAGE
+b) 	PKGBUY must be entered in the P/N field
+c) 	Quantity must be 1
+d) Unit of Issue must be PK
+e) 	Narrative must include a list of each individual item in the package buy, to
+include P/N or catalog number, NSN (if known), nomenclature, quantity of each
+item, estimated cost, and any other known data.
+4) Upon receipt of the requisition, the contractor will:
+a) 	Research the items to confirm eligibility and contact customer if any items need
+to be removed.
+b) 	If contractor identifies that lead time on some items will impact total delivery
+schedule, customer will be notified that it may be beneficial to separate into
+multiple package buys as to not delay shipment of the materiel that will be
+available sooner.
+5) Always check SAMIS before requesting an update; if there is not a current status or
+narrative reflected in SAMIS, the customer may request an update by using the “Ask
+the PROS Contractor a Question” function (XQ) within the AFSAC Online
+Communication Tool.
+6) Fees related to Package Buy cancellations:
+a) 	When the customer cancels the entire package buy requisition before a PQ status
+code has been posted in SAMIS, a research fee may apply.
+b) 	When the customer cancels the entire package buy requisition after a PQ status
+code has been posted in SAMIS, the contractor will earn a cancellation fee.
+c) 	When the customer cancels any line item within the package buy after a PQ
+status code has been posted in SAMIS, there will be no cancellation fee; however,
+the fill fee will be based on the initial PQ, which included the cancelled item.
+7. 	Quantity Adjustments: The contractor will respond to a one time only SAMIS narrative
+request from customer for a quantity change prior to PQ (for no additional fee). In order
+to receive confirmation, customer may submit quantity change request through the “Ask
+the PROS Contractor a Question” function within the AFSAC Online Communication Tool;
+this approach will generate an XQ status code in SAMIS and the contractor will be
+required to provide a response (RQ).
+a. 	Quantity Adjustment Process:
+1) Contractor shall solicit for a new quote and inform customer through SAMIS
+narrative of revised quantity. The quantity will be adjusted within SAMIS when the
+PQ is processed.
+2) If the request for quantity change is received after the PQ is posted in SAMIS, the
+contractor will instruct the customer to cancel the current requisition and input a
+new one with the correct quantity. If the customer chooses to cancel, the contractor
+will earn a cancellation fee.
+
+-- 31 of 62 --
+
+Page | 32
+8. Minimum Order Quantity (MOQ): There are instances where a vendor only supports a
+minimum order quantity/buy. The contractor shall provide information to customer via
+an X2 message requesting approval for MOQ buy.
+a. 	If customer rejects MOQ buy or if X2 timeframe (90 calendar days) is exceeded,
+SAMIS will generate an auto cancellation request, and the contractor shall respond
+to the cancellation.
+b. 	If customer accepts the MOQ, the contractor will adjust the quantity upon the
+submission of the PQ being posted in SAMIS. If the customer accepts MOQ
+requisition and then cancels the requisition after the PQ has been posted in
+SAMIS, a cancellation fee will be charged to customer; the cancellation fee charged to
+customer shall be associated with the accepted MOQ quote.
+C. 	Maintenance/Repair Requisitions
+1. 	General: Items eligible for repair in PROS includes materiel that is not actively managed by the
+USAF (non-standard) and items that are actively managed by the USAF (standard items), when
+the USG SoS is unable to support and, therefore, provides approval for use of PROS. Reference
+Eligible Items section. Most maintenance efforts are repair and return; meaning, the same item is
+returned to the customer that was shipped in for maintenance. Each repairable must have its
+own DCN; the DCN and serial number (if available) are used for tracking purposes. Customers
+requiring maintenance support for other than repair/return thru PROS should contact the
+Program Office.
+a. 	Scheduled/Unscheduled Maintenance. There are two methods for processing
+maintenance requirements, scheduled and unscheduled.
+b. 	Scheduled Maintenance. Scheduled is the preferred maintenance method; the
+customer or Program Office submits a C0R maintenance requisition.
+c. 	Unscheduled Maintenance. The use of unscheduled maintenance is highly
+discouraged, is not intended for large volumes of materiel, and should be used on an
+exception basis only. Unscheduled maintenance occurs in the following circumstances:
+1) Customer ships the asset to the PROS contractors’ warehouse/vendor prior to
+submitting a C0R and receiving shipping instructions
+2) Requisition is cancelled due to the asset being received after the 120 day X8
+timeframe
+NOTE: Be advised that the use of unscheduled maintenance could result in a lengthy
+delay in processing and customer will incur storage fees.
+For unscheduled maintenance, the contractor will process an XDW transaction to SAMIS.
+The Program Office will receive the XDW notification and work with the customer to
+resolve the error and establish a replacement maintenance requisition. The Program
+Office will input the requisition, allowing the contractor to proceed with the repair
+process. The requisition should be input into SAMIS within 5 business days of receipt of
+the replacement DCN and verification that the asset has been received.
+NOTE: In the event that the replacement requisition is not placed on contract within the
+150-day timeframe, the DCN will be cancelled and shipped back to country.
+
+-- 32 of 62 --
+
+Page | 33
+d. 	Non-Standard Requisitions. The country team or customer is responsible for inputting
+non-standard maintenance requisitions (C0Rs); SAMIS will send the requisition directly
+to the PROS contractor for support when the requisition reflects FX5 as the RIC. It is the
+customer’s responsibility to ensure the P/N does not cross-reference to an actively
+managed NSN (standard item). The country team must ensure case and direct cite funds
+are available; the case also must be coded as “I” prior to C0R input.
+e. 	Standard/Classified Requisitions. Only the Program Office is authorized to input
+standard or classified repair requisitions (C0Rs). If the associated NSN is actively
+managed by the USAF, the country team or customer must ensure there is a NIIN
+narrative authorizing PROS support with the ESA approved source information. NIIN
+narratives can be located within SAMIS by using the 283 screen; valid narratives reflect
+that the associated NSN is eligible for PROS support and supplies the approved
+source(s).
+NOTE: If a NIIN narrative is not available, the country team or customer must contact
+the FMS Workflow (AFGLSC.FMS@us.af.mil) and request assistance in obtaining a NIIN
+narrative that signifies the NSN to be repaired is eligible for PROS support. This action
+must be taken prior to requesting support from the Program
+Office.
+f. 	Maintenance Requisition Form. The PROS Maintenance Request Form, available on
+AFSAC Online, provides information the contractor will require to properly support the
+repair effort. It is critical the customer fully describe the failure/fault and indicate if
+they expect the item to be repaired, overhauled, upgraded, modified, etc. The more
+information provided at requisition input will result in fewer delays in the contracting
+process.
+g. 	Program Office Responsibility. For Non-Standard requirements, customer will input
+their own requisitions. For Standard requirements, the customer must provide a
+completed Maintenance Request Form, available on AFSAC Online, or email AFSAC PROS
+repair team at (afsac.pros.repair@us.af.mil).
+The Program Office repair team will input the requisition using the provided
+information. If the form has incorrect or missing information, the customer will be
+required to revise the form and re-send it to the repair team mailbox. The requisition
+should be input into SAMIS within 5 business days of receipt of complete/correct
+Maintenance Request Form.
+The country team must ensure the case and line has direct cite funds available; the case
+also must be coded as “I” prior to C0R input.
+2. 	Entering Non-Standard Maintenance Requisitions:
+a. 	Step 1: Start at the ALT OPT field, then enter “CC” within SAMIS. Press enter key. Enter
+the following information:
+1) DCN
+2) Case and Line
+3) NSN if available , if not use the P/N
+
+-- 33 of 62 --
+
+Page | 34
+4) 	Select “B” for C0R
+5) Press enter key
+Step 2: Enter the following information:
+1) Unit of issue: EA
+2) Supplementary Address
+3) Priority
+4) Noun
+5) Serial Number
+6) Weapon System
+7) CAGE Code
+8) If requisition is replacing an H-coded requisition, enter H-coded DCN as a
+crossreference
+
+-- 34 of 62 --
+
+Page | 35
+b. 	Step 3: Include as much information as possible in the narrative fields. The more
+information provided upfront, the fewer questions and delays will be experienced.
+NOTE: SAMIS will auto-populate CAGE and P/N fields, if not able to provide complete
+CAGE or P/N on initial input screens, ensure the complete information is provided on
+this screen.
+1) Cage Code – Known Vendor (MANDATORY)
+2) P/N (MANDATORY)
+3) MFG. CAT & DATE
+4) Name (noun)
+5) Serial Number
+6) Provide the Make, Model, Color, and/or Size data if available; when complete, select
+the F5 key to save data, then Enter to proceed to next screen.
+9) Press Enter
+
+-- 35 of 62 --
+
+Page | 36
+c. 	Step 4: Complete additional repair description fields.
+1) Once complete, press F5 to save.
+2) Press Enter to stage the requisition.
+3) Requisition is staged. Check SAMIS the next day to ensure it processed (see last
+screen shot).
+3. Contractor Responsibility. Once the requisition is available for processing, the contractor
+will transmit a BD status code to SAMIS, acknowledging receipt of the requisition, within five
+calendar days. The contractor will comply with any special instructions included in the
+requisition narrative (e.g. special shipping instructions, etc.).
+
+-- 36 of 62 --
+
+Page | 37
+A BZ status code will then be posted indicating the requisition is in the research/solicitation
+phase. Do not contact the contractor for status until the contract award objectives have
+elapsed (see Contract Awards section). Contacting the contractor for status prior to these
+timeframes could result in a delay.
+The contractor will attempt to locate a qualified vendor, obtain a quote for the TTI portion of
+the repair, and process that quote with an IQ status code. The IQ will be followed by an IV
+status code signifying the contract award of the TTI, to include an ESD which reflects an
+estimated date for completion of the TTI.
+Once the contractor has identified a qualified repair vendor, customer will be instructed (via
+X8 message) to ship the asset to the repair facility or contractor’s warehouse.
+When the contractor is highly confident a repair contract will be awarded, they may request
+the customer send the repair asset to their warehouse in advance of contract award (IV).
+This approach can be advantageous because all materiel will be shipped to the same
+location/address, allowing customers to coordinate shipments in advance; plus, by getting
+the materiel enroute prior to the contract being awarded, it’s possible
+that the overall requisition processing time will be reduced. The contractor will store the
+asset; upon contract award (IV), the contractor will ship the asset to the appropriate repair
+vendor. With this approach, the customer will incur some additional transportation and
+storage costs. If the item cannot be placed on contract it will be returned to country. The
+Contractor will pay for transportation to the Freight Forwarder.
+NOTE: If the customer is interested in using this advance shipment process, they must
+notify the PROS Program Office. The contractor will be instructed to request the associated
+customer ship repair assets direct to contractor warehouse.
+If the repair asset has not been received within 120 days of the X8 being processed in SAMIS,
+the requisition will be cancelled.
+NOTE: If an asset has shipped but is not going to be delivered in the X8 timeframe of 120-
+days, country may request an extension by emailing AFLCMC.WFALC.PROS_PMO@us.af.mil.
+Extension Request Criteria:
+Only one extension request will be granted per requisition.
+Extension requests for multiple requisitions are limited to a maximum of 10 at a time at one
+time.
+The maximum extension period granted is 60 days.
+Mandatory Condition: The asset must be received at the vendor or designated source of
+repair within the 60-day extension period. Failure to meet this deadline will result in
+cancellation of the requisition.
+NOTE: X8 messages are only listed in the AFSAC Online Communication Tool for visibility
+purposes; it is the contractor’s responsibility to track the receipt of the asset at the vendor's
+facility and process the R8 status code. It is highly recommended that customer’s track and
+report the movement of the asset through XD SAMIS transactions. If an asset has been
+received by the vendor and the R8 has not been processed, the customer can use the “Ask
+the PROS Contractor a Question” function (XQ) to inform the contractor that materiel is at
+vendor’s facility and request that the R8 be processed.
+
+-- 37 of 62 --
+
+Page | 38
+Upon completion of TTI, the contractor will obtain a fixed price quote for the actual repair of
+the item. The contractor will transmit a PQ and X5 (If necessary) status code to SAMIS
+indicating the cost of the repair. Upon receipt of country’s response provided within the
+AFSAC Online Communication Tool, an R5 and narrative will be posted in SAMIS.
+Should customer disapprove the cost identified in the X5 message by submitting a
+cancellation in the AFSAC Online Communication Tool, an AC cancellation code will be
+generated in SAMIS. The contractor will then contact the vendor to determine termination
+costs; the customer will be informed of the associated cost to cancel the repair requisition
+via an X6 status code and will need to confirm if they want to proceed with the cancellation
+(R6). If customer decides to cancel, they must provide disposition instructions for the asset.
+The contractor will process a BV status code when the contract for the actual repair has
+been awarded along with an ESD. Notification of shipment (AS3) will occur when the item
+has been shipped to the customer.
+4. 	Receipt/Shipment Transaction Codes: To provide visibility of the reparable through the
+maintenance process, the following XD_ codes will be used:
+a. 	XDA - Receipt of asset at the repair vendor/Contractor warehouse
+b. 	XDB - Shipped from Contractor warehouse to repair vendor or from repair vendor to
+location as directed by customer (warehouse, FF, special shipping instructions)
+c. 	XDW - Receipt of unscheduled asset by contractor
+5. 	Pricing: Upon COR input, if the item is stock listed, SAMIS will default to last known SAMIS/catalog
+stock price. If the item is not stock listed, SAMIS will default to $2,000. In both instances, price can
+manually be adjusted.
+6. 	Beyond Economical Repair (BER)/Beyond Physical Repair (BPR):
+If a vendor completes the TTI phase and identifies the item as BER/BPR, the contractor will
+process an X9 status code and narrative; the narrative will identify the condition of the
+materiel and request disposition instructions if necessary. If the customer does not provide
+a response to the X9 within the AFSAC Online Communication Tool in 30 days,
+the requisition will be cancelled, the asset will be returned to country, and
+cancellation/termination charges will apply.
+7. 	Shipment:
+Upon completion of the repair, the vendor will ship the asset as directed by customer. If the
+asset is shipped to the freight forwarder, the contractor will input an AS3 transaction in
+SAMIS upon notification of shipment.
+If the contractor brings the asset into their warehouse for the purpose of a quality
+inspection, an ASH will be processed in SAMIS upon receipt, and an AS3 will be processed
+upon shipment.
+If the contractor is required to move the materiel through their warehouse due to the
+requisition being a DTS shipment, the contractor will process an ASH and XK status code.
+Upon shipment, the contractor will process an RK status code along with an AS3 transaction
+in SAMIS.
+
+-- 38 of 62 --
+
+Page | 39
+After final shipment (AS3), the contractor will process the invoice completing the
+maintenance requirement.
+D. Communications
+1. 	Customer – Contractor
+a. 	Communication between the PROS contractor and customer primarily takes place within
+the PROS Communication Tool that is available on AFSAC Online beneath the PROS tab.
+b. 	Per the contract, all official, requisition related communications between the customer,
+USG, and contractor is to be documented in SAMIS. SAMIS is the official system of record
+for the PROS Program. When other forms of communication are used, such as Microsoft
+Office Email, and DAMES (coordination with the Program Office and PROS contractor is
+required for use of DAMES), it is both the customer and contractor’s responsibility to
+ensure all relevant correspondence is documented in the SAMIS narrative. The use of
+SAMIS narratives provide a clear audit trail for all actions that have been requested
+and/or taken.
+2. 	Customer Questions/Requests:
+The “Ask the PROS Contractor a Question” function (XQ) within the PROS
+Communication Tool is to be used when customers have questions related to a specific
+requisition or are in need of a status update. XQ may also be used if customer needs
+clarification on an open X message (this does not delay the auto-cancellation related to an X
+message from generating in SAMIS – Reference Automatic Cancellations (AC4) section).
+Prior to posting a question or requesting status, the customer should adequately research
+SAMIS to ensure the information is not already available. As a guide, questions/requests
+concerning contract award times should not be submitted to the PROS contractor until the
+contract award objective timeframes have expired (see Contract Awards section).
+Questions/requests submitted via the Communication Tool are automatically posted in
+SAMIS with an XQ status code and the associated narrative. The contractor is to provide
+responses within 7 calendar days; please allow 10 calendar days due to system processing
+time. Responses may come in the form of an interim (R7) or final/complete (RQ) response.
+Final responses are to be complete and specific to allow customers to make necessary
+decisions.
+3. 	Contractor Questions/Request. The PROS contractor is authorized to communicate with the
+customer when approvals or additional information is required. The following list (not all inclusive)
+includes some instances where the contractor will communicate with the customer:
+a. 	X2 status code/narrative – Contractor is requesting clarification because the requisition
+contains inaccurate or missing information.
+b. 	X5 status code/narrative – Contractor is requesting price approval because a price quote
+meets the criteria contained in the Price Approval Matrix (see Price Approval Matrix
+section).
+c. 	X6 status code/narrative – Contractor is identifying termination costs due to customer
+requesting cancellation after the requisition is on contract.
+d. 	X9 status code/narrative – Contractor is notifying customer that a repair asset is
+BER/BPR.
+e. 	ESD - When an ESD expires, the contractor will update the system with a new BV/ESD
+transaction and notify the customer as to the reason for the update.
+
+-- 39 of 62 --
+
+Page | 40
+f. 	XH status code/narrative – Contractor is notifying customer that supporting vendor is
+offering less than a one-year warranty and requesting approval to proceed.
+NOTE: The customer is required to respond to all contractor questions/requests (X
+messages) through the AFSAC Online Communication Tool. The tool identifies each
+open X message and the amount of time it has been open; once a response is input,
+SAMIS will be automatically updated with the corresponding R status code and the
+associated narrative.
+Please refrain from responding to open X messages with a question. Doing so, will only
+delay the overall requisitioning process. If customer has a question related to the X
+message content, the “Ask the PROS Contractor a Question” function (XQ) is to be used.
+4. 	Customer/Vendor Relations.
+The customer is encouraged to provide any information received from vendor prior to or at
+the time the requisition is submitted to PROS. This would include company name, POC,
+phone number, address, etc. If customer has a vendor quote, they are encouraged to
+document SAMIS narrative with that information and send the quote to the applicable
+contractor mailbox (supply@pros5.com or repair@pros5.com). When providing quotes,
+ensure the DCN is provided in the title of the email message.
+NOTE: Please bear in mind that vendor quotes may not include all applicable PROS charges
+(i.e. contractor fill fee, program fee, transportation/warranty costs, etc.).
+The customer is not to communicate with the vendor after a requisition has been submitted
+to the PROS contractor for processing. Communication after the contractor has accepted the
+order can impact support time, cost, and add confusion. If a vendor contacts the customer,
+the customer is not to engage in discussions; the customer is to direct the vendor to the
+PROS contractor.
+5. 	Customer/Program Office Relations.
+The Program Office exists to support the customer and manage the PROS contractor; we
+provide support to both parties. If the customer has an issue, needs assistance, requires
+meeting support, etc., please contact the PROS Program Office. Contact information is
+available on AFSAC Online beneath the PROS tab.
+6. 	Message Matrix
+a. 	The contractor is required to use DAMES and Microsoft Office email to transmit
+messages to the customer; the contractor is also responsible for ensuring messages are
+posted to SAMIS narrative to support the official audit trail. The contractor sends
+messages per the PROS Message Matrix. The matrix identifies the email
+addresses/COMMRIs each country has designated for receipt of messages from the PROS
+contractor.
+b. 	The Message Matrix is maintained by the Program Office. It is the responsibility of the
+customer to identify and provide updates to the Program Office.
+NOTE: Personal email accounts are not allowed in the Message Matrix for USG
+employees; this is to alleviate the need to update the matrix each time there is a
+personnel change. Only organizational email accounts are accepted; within those
+accounts auto-forward rules can be established to have messages sent directly to
+personal email accounts. Assistance can be obtained in establishing an autoforward rule
+by inputting a Track-It to AFSAC IT.
+
+-- 40 of 62 --
+
+Page | 41
+E. Controlled Exception (CEX) Errors.
+During overnight batch processing, SAMIS validates each transaction and assigns a CEX error number
+to those that fail the validation process.
+NOTE: P200/PR03 CEX errors are generated when the USG SoS is unable to provide support
+and requests customer permission to pass the requisition to PROS.
+1. 	Automatic CEX error notifications are based on the current CCM listing; if revisions are
+required, country team is responsible for updating the CCM listing and submitting a Track-It
+to AFSAC IT to have the listing updated in SAMIS.
+2. 	Open CEX errors can be viewed by using the SAMIS QAID 138A screen, an Oracle query, or
+through AFSAC Online beneath the Supply Application tab. For additional information
+pertaining to CEX errors please see the Process Desk Guides (PDGs) for CEX Errors. SAMIS
+QAID FCEX screen will guide users through clearing processes for each type of error. Listed
+below are some of the common CEX errors received against PROS requisitions:
+a. 	PR28: Case Management Control System (CMCS) funds not available
+b. 	PRNM: Not enough case funds to support the provided price quote
+c. 	PRNT: PROS P/N Order (A05) with no text narrative
+d. 	PRNF: Status of "NF" received with no fees committed in SAMIS
+e. 	PRWC: Wrong or inconsistent CAGE
+f. 	PRWP: Wrong P/N
+g. 	PR20: RIC of FX_ conflicts with case type
+h. 	PRCM: CAGE Code missing
+i. 	P200: Notification that USG SoS is attempting to pass requisition to PROS
+j. 	PR03: Notification that country preference table has assigned blocker edits that are
+prohibiting the requisition from passing to PROS
+F. Modifying Requisitions
+1. 	Customer(s) may modify the Project Code, Priority, RDD and the first three positions of the
+supplemental address; no part of the DCN can be changed. If the requisition requires any
+other changes, customer is required to cancel and resubmit a new requisition. A
+modification is signified in SAMIS by either an AM1 or AM5 transaction. When a
+modification is required, follow these steps: a. Enter STAT In the ALT Option field in SAMIS.
+b. 	Input AM1 or AM5, and enter the DCN to be modified.
+c. 	Press Enter.
+NOTE: Recommend posting narrative in SAMIS describing reason for modification request.
+The below Process Desk Guide (PDG) hyperlinks reflect additional step-by-step instructions
+for processing an AM modification. Please look for PDG entitled, “Modifying Requisitions”.
+AFSAC USG PDG: https://usaf.dps.mil/teams/22252/PDG/default.aspx
+FLO PDG: https://afsac.wpafb.af.mil/flo/
+2. 	Level of Service Change Prior to Contract Award for Routine/Urgent Requisition. If a
+modification request is received prior to the requisition being placed on contract with the
+vendor (IV/BV), and the priority designator and/or the RAD/RDD field have been updated,
+the LOS may be upgraded from routine to urgent or HLS by reassigning the LOS code. This is
+done by changing the Priority Designator to the desired designator (ex. 6 to 3). If the
+
+-- 41 of 62 --
+
+Page | 42
+requisition LOS is HLS, the requirement is already being treated in the most expeditious
+manner; inputting an AM modifier prior to contract award on an HLS requisition will not
+generate a change. Contractor's fees will be adjusted to reflect the new LOS.
+3. 	Expedite Request. After the requisition is on contract (BV), submit the AM Modifier with no
+changes; this will constitute an expedite request from the customer to obtain an improved
+ESD. The priority or level of support will not be upgraded; however, due to the additional
+workload for the contractor, an expedite fee may be incurred regardless of whether or not
+the ESD can be improved.
+4. 	Confirmation of Modification to Requisition. The contractor confirms modifications by
+processing a BK status code in SAMIS. If the BK status code is received in response to an
+expedite request after contract award (IV/BV), it indicates PROS contractor has obtained an
+improved ESD; the contractor will process a new BV with an updated ESD.
+5. 	Rejection of Modification to Requisition. The contractor is able to reject a modification
+request with a B2 status code; when the B2 is in response to an expedite request after
+contract award (IV/BV), the contractor will document SAMIS narrative indicating the
+vendor could not improve the ESD.
+6. 	Support During Contingency. In the event a customer has been assigned a project code by
+DSCA, a modification request must be submitted with an updated Project Code to advise the
+PROS contractor of a surge requirement.
+G. 	Cancellations
+1. 	Common AC cancellations:
+a. 	AC1 – Cancellation generated by in-country personnel.
+b. 	AC3 – Cancellation generated by CONUS personnel (i.e. AFSAC).
+c. 	AC4 – Automatic Cancellation generated by SAMIS due to non-response from customer,
+see below for further details.
+2. Customer Initiated Cancellation Process (AC1/AC3)
+The customer may cancel a requirement at any point in the requisition process, (prior to
+shipment), so long as the requisition is shown as being open in SAMIS. The customer may
+incur charges/fees based upon when the cancellation is processed (see Paragraph 3 -
+Contractor Responses to Customer Initiated Cancellations (Status Codes/Fees)).
+When a cancellation is required, follow these steps:
+a. 	Enter STAT In the ALT Option field in SAMIS.
+b. 	Input AC1 or AC3 as the Document Identifier.
+c. 	Enter the DCN to be cancelled.
+d. 	Press Enter.
+(Next Screen):
+a. 	Enter quantity to be cancelled in the “Cancellation Request Qty” field.
+b. 	Enter L in the “Signal Code” field.
+c. 	Hit (F5) to save, then Press Enter for overnight batch processing
+NOTE: Recommend posting narrative within requisition describing reason for cancellation
+request. The below Process Desk Guide (PDG) hyperlinks reflect additional step-by-step
+instructions for processing an AM modification. Please look for PDG entitled, “Cancelling
+Requisitions”.
+AFSAC USG PDG: https://usaf.dps.mil/teams/22252/PDG/default.aspx
+
+-- 42 of 62 --
+
+Page | 43
+3. 	Contractor Responses to Customer Initiated Cancellations (Status Codes/Fees)
+CODE 	EXPLANATION 	FEE ASSESSED
+BQ 	Contractor confirmation of a cancellation
+request (AC1/AC3 transaction)
+- Prior to quote (IQ/PQ) 	Research Fee
+- After quote (IQ/IR/PQ/PR),
+prior to award (IV/BV)
+Cancel fee
+B8 	Contractor denial of a cancellation request 	None
+B4 	Contractor confirmation of a cancellation 	Cancel fee
+request after contract award (IV/BV);
+Contractor cancellation fees apply and
+vendor termination charges may be incurred
+Termination charges
+NOTE: When customer cancels the full quantity, funds are returned to the Case/Line after
+the cancellation is acknowledged if there are no fees incurred. If fees are incurred, any
+remaining funds will be returned to the Case/Line once the requisition has been completed
+in SAMIS and final billing has occurred. When customer processes a partial quantity
+cancellation, funds are returned to the Case/Line after the PQ is processed in SAMIS with the
+adjusted quantity.
+4. 	Automatic Cancellations (AC4). The contractor processes an X_ status code and narrative
+in SAMIS whenever a customer response is required. When customer fails to respond
+within the timeframe identified in the narrative/email/DAMES message, SAMIS will
+automatically generate an AC4. The contractor will earn a research or cancellation fee in all
+instances.
+a. 	X2: Request for customer clarification, additional information, approval of alternate
+P/N, etc. Customer has 90 days, unless otherwise documented, to provide response.
+b. 	X3: Request for customer to approve delay in contract award due to vendor’s inability
+to provide a quote within the 150 day cancellation timeframe. Customer has 30 days,
+unless otherwise documented, to provide response.
+c. 	X5: Request for customer price approval. Customer has 60 days, unless otherwise
+documented, to provide response.
+d. 	X6: Request for approval of cancellation/termination. Customer has 30 days, unless
+otherwise documented, to provide response.
+e. 	X8: Provides shipment instructions to customer for maintenance requisitions.
+Customer has 120 days, unless otherwise documented, to provide proof of delivery.
+f. 	X9: Request for disposition instructions after BER/BPR or permission to proceed with
+the repair (BER only). Customer has 30 days, unless otherwise documented, to provide
+response.
+g. 	XH: Request for approval of warranty that is less than one year in duration. Customer
+has 60 days, unless otherwise documented, to provide response.
+h. 	OH: Signifies requisition lacks sufficient funding to continue with support. Customer has
+60 days to resolve the funding issue.
+
+-- 43 of 62 --
+
+Page | 44
+5. 	Contractor Initiated Cancellations (Status Codes/Fees)
+CODE 	EXPLANATION 	FEE ASSESSED
+CA 	Cancellation of a standard or LOA sole source item 	Research Fee
+due to contractor being unable to obtain a quote.
+CG Cancellation due to contractor being unable
+to locate and/or obtain a quote from a qualified
+source.
+No Fee
+CU Cancellation of a previously CG cancelled
+requisition due to contractor’s inability to
+locate a qualified vendor.
+Research fee
+CY 	Cancellation of A05
+Requisition due to materiel being classified
+as standard; will be passed to the USG SoS for
+continued support.
+Research fee
+GY 	Cancellation of standard item maintenance
+requisition when USAF maintenance
+capability exists; will be passed to USG SoS for
+continued support.
+Research fee
+CJ 	(1) Cancellation due to a substitute NSN being
+available and actively managed by USAF; will
+be passed to the USG SoS for continued
+support. (2) Cancellation due to obsolescence
+(no stock or replacement exists); contractor
+shall obtain and maintain supporting
+documentation.
+Research fee
+H. Quality Assurance/SDRs/Title and Ownership
+1. 	SDR Submission: The customer submits warranty claims via the SDR process. SDRs can be
+reported within the warranty timeframe for the following reasons: overage, duplicate
+shipment, wrong item, misdirected materiel, non-receipt, shortage, quality/materiel
+deficiency, damaged or improperly packed shipment, insufficient shelf life, and billing
+errors. SDRs are submitted by customer to USG and contractor via Standard Form (SF) 364
+using WebSDR or SDR-A.
+NOTE: Building Partner Capability (BPC) requisitions cannot have SDRs submitted
+against them. PROS customers can submit new requisitions (e.g. A01 or A05) to address
+discrepancies with BPC requisitions.
+2. 	SDR Validation: The contractor will cooperate with the USG and provide a
+recommendation for the USG to determine SDR validity.
+a. 	Except for latent defects, the period of liability is determined by either one year from
+date of shipment from vendor or the expiration of the customer accepted warranty
+period, effective from the date of shipment from the vendor.
+b. 	For latent defect SDRs, the time period is governed by the latest version of Defense
+Logistics Manual (DLM) 4000.25
+c. 	SDRs for total non-receipt must be submitted within one year from the billing period.
+
+-- 44 of 62 --
+
+Page | 45
+3. 	Communication: The customer shall not communicate directly with any vendor after
+submitting a SDR. All SDR-related communication is to be processed through the SDR
+system. The customer may be required to communicate with the PROS Contractor through
+the AFSAC PROS Program Office and/or SDR section; customer will be notified when this
+type of communication is necessary. If a vendor contacts the customer without pre-
+approval from AFSAC or the PROS contractor, the customer is not to engage in discussions;
+the customer shall direct the vendor to the PROS contractor. Failure to comply with this
+guidance could result in an unfavorable SDR resolution.
+4. 	Passage of title and ownership: Title transfer occurs at the vendor’s out-shipment dock
+on the date of shipment from the vendor to the freight forwarder or other shipping agent.
+This means that the customer owns the materiel at the Vendor’s dock and the warranty
+period begins at that moment.
+5. 	One Year Warranty: The PROS contractor will attempt to obtain a one year warranty on
+materials and workmanship. If a one year warranty cannot be obtained or if vendor
+requires exhibit to be at its facility (versus USG turn-in point) within specified warranty
+timeframe, contractor will notify customer (XH) and must receive approval (RH) prior to
+award. For latent defects, the warranty timeframe is governed by the latest version of DLM
+4000.25. It is customer’s responsibility to be cognizant of and abide by warranty terms and
+conditions for all PROS supported requirements. A copy of the warranty terms and
+conditions will be provided as part of the shipping documentation. It is the customer’s
+responsibility to ensure all SDRs are submitted in a timely manner.
+6. 	Process: Customer submits a SDR (SF 364) through their AFSAC Online account. If country
+does not have access to AFSAC Online, a hardcopy of the SF 364 with all supporting
+documentation is sent to afsac.SDR.customer.service@us.af.mil which will load the SDR into
+AFSAC Online. If the SDR passes all the edits (extended dollar value is greater than $200.00,
+filed within one year, and details are adequate to support the customer’s complaint in
+accordance with DLM 4000.25), AFSAC Online will feed the SDR into WebSDR. WebSDR
+sends notification to the contractor and the PROS Program
+Office that an SDR exists. The contractor will use WebSDR to review the report and ensure it is within the
+warranty period. If the warranty has expired, the contractor will reject the SDR and state that the SDR
+was received outside of the warranty period. If the SDR is within the warranty period, the contractor will
+provide the documentation to the vendor involved for review. Vendor will provide their analysis to the
+contractor; the contractor will determine if the vendor’s response is adequate. If it is not, the contractor
+will return the response to the vendor for re-accomplishment; if the response is sufficient, the contractor
+will input the response into WebSDR. WebSDR will then feed the information into AFSAC Online and be
+made visible to the customer. The purpose of WebSDR is to compile all SDRs in an integrated transaction
+environment which provides an effective means to report and measure discrepancy related data.
+7. 	SDR Documentation: It is critical that the FMS customer perform a receipt inspection at
+the time the asset is initially received. If a discrepancy is identified upon receipt, the SDR
+process should be initiated immediately. SDRs are more easily resolved when they are
+submitted promptly, especially since the vendor warranty timeframe has begun. Also, a
+complete document package is key to effective SDR resolution, such as photographs, test
+data, test equipment used, software versions or Tech Order data and especially the Next
+Higher Assembly into which a sub-unit is installed, to include its version (commercial or
+
+-- 45 of 62 --
+
+Page | 46
+military) and/or useable-on-code. Photos must have CURRENT digital date/time stamp that
+coincides with CURRENT SDR submitted. Photos not having current date/time stamps will
+be rejected and current photos will be requested for further consideration of the claim.
+8. 	SDR Time Frames: After customer submits the SF 364, the SDR Office will review the
+customer’s complaint within 5 work days and either validate the claim and pass to the
+contractor or reject it back to customer for additional information. The contractor has 50
+days to review the claim, pass it to vendor and ensure vendor provides either an interim
+response indicating why there is a delay in processing or an actionable response back to
+customer. If vendor needs additional information, the customer will be notified and will be
+given 45 days to provide the necessary information. If vendor requests return of SDR
+exhibit, customer will be notified and will be given 180 days to return the exhibit to USG
+custody. Customer has 45 days to submit a Reconsideration SDR if no materiel was returned
+on original SDR or 90 days if materiel was returned on original SDR. If customer does not
+meet these timeframes, the SDR Office will close-out the SDR in the SDR system and no
+further action will be allowed.
+NOTE: It is imperative that the customer files the SDR in a timely manner since all orders
+processed through PROS have associated vendor warranty timeframes.
+9. 	Shipping: When a customer must return materiel, it is critical it be packaged, handled and
+shipped as if new to prevent further damage. The customer must strictly adhere to
+Electrostatic Discharge procedures at all levels of materiel handling from repair shop to
+shipment and all points in between, even on failed units to prevent further damage.
+Electrostatic Discharge sensitive devices will first be tested for indications of Electrostatic
+Discharge damage and claims will be rejected if Electrostatic Discharge damage is
+discovered. On valid SDRs, the contractor will be responsible for the CONUS transportation
+costs, the customer is responsible for the OCONUS transportation costs. If vendor requires
+exhibit to be at its facility and turn-in date will occur in less than 180 days, contractor will
+notify customer of condensed return time.
+10. Credits: On valid SDRs where a credit is the resolution, the customer will be provided full
+credit for the materiel value of the requisition. The contractor fill fee and PROS program fee
+are non-refundable. These fees are not reimbursed due to the actions performed by the
+contractor to award a contract and process the SDR, and the Program Offices effort of
+administering the contract and providing oversight/surveillance of the contractor. The
+contractor fill fee and USG program fee are collected to compensate both entities for work
+that has been accomplished prior to and during the processing of the SDR.
+11. Final Authority: The SDR office, Program Office, and Contracting Officer employ a team
+approach throughout the entire SDR process. The USG is the final authority for determining
+SDR validity and closure.
+
+-- 46 of 62 --
+
+Page | 47
+IV. Task Orders
+A. Task Order Overview: There will be times when a Foreign Military Sales (FMS) customer has a
+requirement that cannot be supported through the “normal” supply or maintenance PROS
+processes. The AFSAC Program Office will determine if a PROS Task Order is the appropriate
+vehicle to provide support. Task Orders are typically used for requirements of a technical nature,
+such as, but not limited to, studies, analysis, installation, familiarization training, and travel that is
+associated with a PROS procurement.
+NOTE: PROS Task Orders can be be directly associated with PROS requirements. If you require
+additional information pertaining to Task Orders, contact the Program Office.
+B. 	Task Order Process
+1. 	Initial Request
+a. 	The process begins when the FMS customer submits a requirement to the AFSAC
+Command Country Manager (CCM). It must be in writing in the form of e-mail, telefax,
+letter or message.
+b. 	The CCM forwards the request to the PROS Program Office.
+c. 	The Program Office reviews the request to determine the best means for supporting the
+requirement. If the determination is made that the requirement would be best
+supported via the PROS supply or maintenance processes, the appropriate transaction
+(A05 or C0R) will need to be processed. The Program Office may determine it is unable
+to support the customer’s Task Order request. When that occurs, the PROS Contracting
+Officer may recommend a separate services contract (outside of PROS) to support the
+customer’s requirement.
+2 	Statement of Objective (SOO)
+a 	Task Order requirements are documented on a SOO; a SOO is required for all Task Orders.
+b 	Having a clear definition of the requirement, the FMS Customer in conjunction with the
+CCM is responsible for developing the SOO. (See sample SOO at end of this section). The
+CCM must also provide a copy of the LOA/Amendment funding this effort. If the Task
+Order is for familiarization training, the CCM must obtain an email from the Air Force
+Security Assistance Training Squadron (AFSAT) concurring that AFSAT will not be
+contracting for the same training effort; this correspondence needs to be provided to the
+Program Office. NOTE: AFSAT has the first right of refusal for all training.
+c 	If the Program Office determines the requirement should be supported via a Task Order,
+the PMO will conduct a SOO review meeting with the FMS customer, CCM, PROS PMO
+and Contracting. This meeting aims to facilitate open discussion, provide a platform for
+all parties to discuss objectives, address questions, resolve any potential issues before
+package is sent to contractor and confirm agreement on project scope.
+NOTE: Under no circumstances shall the SOO be written by the PROS contractor.
+Once the FMS customer/CCM develops/reviews the SOO, it is submitted to the Program
+Office via email. The Program Office reviews the SOO to ensure sufficient information
+has been supplied, holds a SOO review meeting, and forwards the documentation to the
+PROS Contracting Officer for review and approval/disapproval.
+
+-- 47 of 62 --
+
+Page | 48
+d 	If the Contracting Officer approves the SOO as written, the Program Office will generate a
+formal requirements package through email to the Contracting Officer to be forwarded
+to the contractor. The Program Office will enter the DCN provided in the SOO into SAMIS
+as a placeholder (usually for $3,000.00), the requisition will be input using a C0S code in
+SAMIS. The contractor will use this DCN to enter their proposal preparation cost and
+eventual task order costs for this task order effort.
+e 	After the task order has been sent to PROS Contractor for request for proposal, the
+customer shall not communicate with the PROS contractor or the supporting vendor. All
+communications must be coordinated through the Program Office.
+3 	Task Order Issued/Performance:
+a. 	The contractor will request vendor provide proposal within 30 days of notification.
+Upon receipt of vendor proposal, the PROS contractor will provide proposal preparation
+cost within 14 calendar days of receipt of RFP in SAMIS and the PROS Program Office
+will initiate the technical evaluation/contract negotiations.
+b. 	After negotiations are concluded, the Program Office will request funding for the total
+cost of effort, to include PROS program fee. The certified fund cite is provided to the
+Contracting Officer, who then issues a task orderto the contractor for performance of the
+Task Order (DD Form 1155, Order for Supplies or Services). The Task Order
+encompasses the services, costs, hours, and hourly rates for personnel (including
+subcontractors), accounting/appropriation data, and the Period of Performance. The
+final contract is awarded and an electronic copy is provided to the Program Office for
+their records.
+c. 	The Program Office monitors performance of the Task Order, to include participating in
+meetings and performing TDY (as necessary), reviewing performance and expenditures,
+approving invoices prior to payment, and working with the Contracting Officer,
+contractor, CCM, and FMS customer to resolve any problems that arise.
+Task Order Completion: The Task Order is complete when all requirements have been satisfied and an FMS
+customer representative or CCM has signed the Certificate of Performance. Contractor submits a final report and
+invoice to the Program Office for certification and final delivery reporting in SAMIS. The value of submitted invoice
+must match the negotiated value of the task order. When the above is accomplished, the requisition is completed
+in SAMIS.
+
+-- 48 of 62 --
+
+Page | 49
+STATEMENT OF OBJECTIVE (SOO)
+FOR
+(Equipment)
+(Type of Service)
+TASK ORDER FA8630-2x-F-XXXX
+(DD MMM 202x)
+Description: (Type of Service) for (Equipment)
+Country:
+Country POC: (Name)
+(Flight)
+(Phone)
+(Email address)
+Contracting Office POC: 	Sarah Harris
+AFLCMC/WFKC
+sarah.harris.11@us.af.mil
+afsac.pros.contracting@us.af.mil
+Contracting Officer: 	Daniela Marton
+AFLCMC/WFKC
+daniela.marton@us.af.mil
+afsac.pros.contracting@us.af.mil
+Task Order Manager: 	Task Orders Manager
+AFLCMC/WFALC
+AFLCMC.PROS.TaskOrders@us.af.mil
+Contractor POC: 	Kendra Williams
+S&K PROS V Program Manager
+(478) 971-6772
+kwilliams@pros5.com
+1. 	BACKGROUND
+The XX Air Force purchased (Equipment) via the PROS V contract under document numbers XX, XX, FMS Case/LOA
+XX-X-XXX, Line XXX. The equipment has an estimated ship date of XXX. The supplier is (Vendor). The suggested
+source to perform the familiarization training at XX Air Force Base – (Country) is (Vendor). This effort will be
+supported under FMS Case/LOA XX-X-XXX Line XXX, which authorizes transfer of the material/services. The
+Document Control Number (DCN) for this effort is ______________.
+
+-- 49 of 62 --
+
+Page | 50
+2.0 REQUIREMENTS
+2.1 SCOPE OF WORK:
+Contractor shall provide
+3.0: (TYPE OF SERVICE) WORKSCOPE
+3.1 Contractor shall provide….(EXAMPLE FOR TRAINING: Contractor shall provide familiarization to the (Country)
+personnel in the operation, calibration and maintenance of the supplied system. This familiarization shall be
+provided at the XX Air Force Base Operations facility in (Country). All familiarization shall be performed on the
+(Equipment). The familiarization shall be limited to X persons for X days and provided in written and spoken
+English.)
+3.2 Task Order shall include…
+3.2.2.1 Be sure to state if country has any requirements for visas/passports, country entry, etc.) Example:
+Country requires 60 days prior to travel to country to process Visas/Passports.
+3.3 Be sure to provide exact training requirements (Day 1, Day 2, etc.)
+3.4 Export Requirements: The contractor shall be responsible for obtaining any required Technical Assistance
+Agreements, Manufacturing License Agreements, and/or Export Licenses if required for the deliverables specified
+in this SOW.
+4.0 WORK SITUATION
+4.1: Task Order Location: XX Air Force Base – XXX.
+4.2: Normal working hours will be Monday - Friday, 0800 -1700. (***NOTE*** Please validate this information
+w/country, do not assume! Some country’s have different hours of operation depending on the seasons. Whatever
+is annotated here, once put on contract, the vendor must abide, there will be no exceptions).
+4.3: Use of telephone, e-mail, fax services, as needed to perform this Task Order, shall be the responsibility of the
+contractor.
+4.4: Acceptance of services performed: A signature from the project manager or senior ranking POC involved in
+the oversight of the onsite work/training will be required to sign the Certificate of Performance (CoP) to confirm
+the work has been completed. Final acceptance will be by a USAF in-country representative.
+4.5: Point of contact is (USG POC, office symbol, phone number).
+5.0 REPORTS
+5.1: Contractor shall submit a Certificate of Performance. Required signatures shall be the contractor’s field
+technician, (Country) project officer, and USAF in-country government representative as required per paragraph
+4.4.
+C. BPC as Task Orders
+1. Due to a plocy update in 2024, BPC requirements must be processed via the task order process. The
+process remains the same as the task order process mentioned above.
+2. The SOO is updated for the BPC task order and the template is below.
+
+-- 50 of 62 --
+
+Page | 51
+BUILDING PARTNERSHIP CAPACITY (BPC)
+STATEMENT OF OBJECTIVE (SOO)
+SOLICITATION # FA8630-25-R-XXXX
+(DD MMM 2025)
+BPC Description: (Type of Service) for/of (Equipment/platform/etc)
+EXAMPLE: Procurement of C-130 spare parts
+BPC Customer: Provide Country, Branch of Service, and Organization (if applicable)
+BPC Customer POC: 	Name:
+Organization:
+Phone:
+Email address:
+Contracting Office POC: Sarah Harris
+AFLCMC/WFKC
+937-656-1326
+sarah.harris.11@us.af.mil
+afsac.pros.contracting@us.af.mil
+Contracting Officer: 	Daniela Marton
+AFLCMC/WFKC
+937-257-3923
+daniela.marton@us.af.mil
+afsac.pros.contracting@us.af.mil
+Task Order Manager: 	Ericka LaForse
+AFLCMC/WFALC
+AFLCMC.PROS.TaskOrders@us.af.mil
+Contractor POC: 	Kendra Williams
+S&K PROS V Program Manager
+478-971-6772
+kwilliams@pros5.com
+1.0 	BACKGROUND: BPC procurement of multiple items against a single task order DCN.
+1.1 The suggested source to procure these items is (Vendor – please include point of contact
+information and address.) This effort will be supported under FMS Case/LOA XX-X-XXX
+Line XXX, which authorizes transfer of the material/services.
+OR (Choose One). Then please delete the one not utilized.
+1.1 The LOA Sole Source vendor to procure these items is (Vendor, Cage Code). This effort
+will be supported under FMS Case/LOA XX-X-XXX Line XXX, which authorizes transfer of
+the material/services.
+OR (Choose One). Then please delete the one not utilized.
+
+-- 51 of 62 --
+
+Page | 52
+1.1 No suggested or LOA sole source is provided. This effort will be supported 	under FMS
+Case/LOA XX-X-XXX Line XXX, which authorizes transfer of the material/services.
+1.2 Current Market Research from vendor (aka Estimated Price Quote or Rough Order of
+Magnitude (ROM) has been accomplished and is attached as part of this SOO Package
+requirement.
+1.3 A copy of the current Implemented LOA (reflecting the FMS Case/Line supporting this task
+order) is attached as part of this SOO package requirement. (Country team must ensure
+adequate funds are available prior to completion of the next step.)
+1.4 The country team or customer must research items and ensure they are eligible for PROS
+before SOO submission and ensure the following criteria has been met:
+1.4.1 	Items include non-standard items only and all items must be relatable to the next
+higher assembly
+1.4.2 	Maintenance/repair requirements cannot be utilized via BPC task order process,
+only procurement.
+1.4.3 	HAZMAT items cannot be shipped on this Task Order with non-Hazmat. They
+must be separate requisitions.
+1.4.4 	Must use one SHIP TO address per requisition.
+2.0 REQUIREMENTS:
+2.1 REQUISITIONS: (Please fill in each requisition requirement as reflected in the below
+format/order, after confirming all eligibility requirements have been met in 1.4 above). These DCN’s
+will not be input into SAMIS, rather input by PMO in COS DCN narrative.
+DCN #1 (input DCN) - P/N, NSN (if known), Acquisition Advice Code, Nomenclature/Item
+Name (include a description (if known), catalog information/number, make, model, etc., CIIC
+(Controlled Inventory Item Code - classified/unclassified), (HMIC (Hazardous Materiel Indicator
+Code) – Quantity
+DCN #2 (input DCN) - P/N, NSN (if known), Acquisition Advice Code, Nomenclature/Item
+Name (include a description (if known), catalog information/number, make, model, etc., CIIC
+(Controlled Inventory Item Code - classified/unclassified), (HMIC (Hazardous Materiel Indicator
+Code) – Quanty
+DCN #3 (input DCN) etc. should reflect like Examples in DCN #1 and DCN #2 above.
+10 DCN’s is the maximum amount of DCN’s on a task order.
+2.2 REQUEST FOR PROPOSAL PACKAGE/COMMUNICATION:
+
+-- 52 of 62 --
+
+Page | 53
+2.2.1. The Task Order must be input by the PROS PMO and processed as a C0S
+requisition (PMO will create DCN) for $3,000 when the Request for Proposal has been
+sent to our Contracting Office.
+2.2.1. Contractor shall review all items and if any discrepancies exist, Contractor shall
+notify the PROS PMO and request clarification via an email to the AFSAC PROS Task
+Orders AFLCMC.PROS.TaskOrders@us.af.mil
+2.1.1.1 	Once the RFP has been submitted, all further communication must be
+communicated via the PROS PMO at the AFSAC PROS Task Orders
+email above.
+2.1.1.2 	The PROS PMO will contact the CCM/AFSAC Country team via email
+with any discrepancies noted by the contractor.
+2.1.1.3 	The CCM/AFSAC Country team will provide a response to the PROS
+PMO email within 7 calendar days, excluding USG holidays.
+2.2.2. Upon submission of the RFP package AFSAC Country team/Customer will cease
+communications with all vendors (Contractors, including S&K Aerospace) associated
+with this Task Order. Continued communications from this point are considered
+DCS discussions and may result in the PROS program's cancellation of this
+effort.
+3.0 EXPORT REQUIREMENTS: Contractor shall be responsible for obtaining any required Technical
+Assistance Agreements, Manufacturing License Agreements, and/or Export Licenses if required for
+the deliverables specified in this SOO.
+4.0 REPORTS: Contractor shall submit a Certificate of Conformance and Proof of Delivery upon
+completion.
+5.0 INSPECTION/ACCEPTANCE/PAYMENT
+5.1 POC at the receiving location will prepare an inspection and receiving document
+and confirm that the items meet the contract requirements.
+5.2 Inspection and receiving documentation (an email is sufficient) will be sent to
+AFLCMC.PROS.TaskOrders@us.af.mil
+5.3 Acceptance in Wide Area Workflow (WAWF) is the method that attests to the fact
+the supply or service has been delivered or performed in accordance with the
+contractual document and immediate payment is authorized.
+5.4 The contractor cannot be paid until the inspection and receiving report is received.
+5.5 If a discrepancy or question arises during the inspection and receipt of product or
+services, Country will contact PROS Task Order team immediately.
+5.6 PMO will not accept the invoice in WAWF until country is completely satisfied that
+the contractor has fulfilled its responsibilities under the purchase order or contract.
+
+-- 53 of 62 --
+
+Page | 54
+V. Program Reviews
+A. Overview: The PROS Program Office and contractor are able to provide support for customer
+program reviews. Based on contractual requirements for contractor attendance/participation in
+meetings, the Program Office and/or a USG representative MUST accompany the contractor at all
+times and minutes of all discussions are to be provided by the customer to the Program Office upon
+completion. The Program Office shall be contacted prior to any meetings between the contractor
+and customer.
+1. 	CONUS Support:
+a. 	Data Only: Provide the Program Office three weeks’ notice to generate data in support of
+a program review. First step is for country team or customer to check the reports
+available on AFSAC On-Line to identify if the needed information already exists. If you
+are in need of unique data, forward an email to the PROS Program Manager
+(kevin.cruze.1@us.af.mil) and Deputy Program Manager (chad.vorhis@us.af.mil) and
+request assistance.
+b. 	Participation of Program Office (Customer Funded): As soon as need is known, and at
+least four weeks in advance, the CCM shall send an email detailing the requirement to
+the PROS Program Manager and Deputy Program Manager requesting meeting
+attendance. Agenda items not provided in advance may result in action items to be
+worked after return from the meeting.
+c. 	Participation of PROS contractor (Customer Funded): As soon as need is known, and at
+least three months in advance, the CCM shall contact the PROS Task Order Manager for
+additional guidance.
+2. 	OCONUS Support:
+a. 	Data Only: Same as above.
+b. 	Participation of Program Office/contractor: At least four months’ notice is required or as
+determined by the need for country clearance/notification. Country must fund all
+OCONUS travel for PROS Program Office and Contractor support. Upon Program Office
+approval, the CCM must contact the PROS Task Order Manager for additional guidance.
+B. Semi-Annual Program Management Reviews (PMR): The PROS Program Office and contractor
+will host a Semi-annual PMR to discuss program performance and present items of interest. During
+the meeting, FLOs will be provided the opportunity to schedule individual meetings to discuss
+specific requisitions or items of interest specific to the country.
+VI. Commonly Used SAMIS Codes
+Code 	Explanation
+B2 	Rejects modifications requested via “AM” transaction.
+B4 	Confirms customer cancellation with termination charges.
+B8 	Denies cancellation request (AC1, AC3, AC4)
+B7 	SAMIS generates to provide the unit cost to customer (SAMIS adds the AFSAC program fee to the
+“OK” and divides by the total quantity to achieve B7/unit price.)
+BD 	Acknowledges receipt of requisition.
+BH 	Reports change in item PN/NSN.
+
+-- 54 of 62 --
+
+Page | 55
+BK 	Confirms modifications requested via "AM" transaction.
+BQ 	Confirms cancellation requested via "AC" transaction.
+BV 	Reports contract award and provides ESD.
+BZ 	Identifies beginning of research/solicitation phase.
+CA 	Cancels requisition of a standard item or LOA directed item due to vendor no-bid.
+CG 	Cancels requisition due to contractor inability to award. NOTE: Subsequent CGs for same PN/NSN will
+use CU. No fee earned and counts against contractor’s metrics.
+CJ 	(1) Rejects standard supply NSN, or acceptable substitute, requisition to the USG (applicable
+ALC).
+(2) Rejects requisition when OEM has confirmed obsolescence and no further means of support
+is available/approved.
+Contractor earns a research fee.
+CY 	(1) Rejects standard P/N requisition to the USG (applicable ALC).
+(2) Rejects ineligible supply items.
+(3) Rejects a standard item requisition when vendor cannot perform IUID.
+Contractor earns a research fee.
+CU 	Cancels requisition due to vendor no-bid of a non-standard item received after a previous requisition
+has been CG cancelled.
+NOTE: Contractor shall attempt to fill all received requisitions and cannot use a previous CG as the
+basis for CU cancelling.
+Contractor earns research fee and does not count against contractor’s metrics.
+GY 	(1) 	Rejects ineligible maintenance requisitions.
+(2) 	Rejects maintenance requisition due to available USG maintenance capability. Contractor
+earns research fee.
+IQ 	Provides initial quote for TTI.
+IR 	Provides revised TTI quote (IQ).
+IV 	Reports contract award for TTI and provides estimated completion date within ESD field.
+NF 	No Fees (NF) are at the Contractor’s discretion. Typically, applies when customer moves a requisition
+from one FMS case to another, due to lack of funds on the original case. The original requisition must be
+cancelled and a new order submitted. The NF can only be processed after an AC is received on the
+original DCN and a PQ is posted on the replacement DCN.
+OH 	Advises contractor there are insufficient customer funds to award contract. Customer must resolve
+funding issue to allow for the financial approval to process (OK).
+OK 	Advises funds are available.
+PA 	Provides Price & Availability quote.
+PB 	Provides revised Price & Availability quote.
+PQ 	Provides quote for supply requisition and the actual repair effort on a maintenance requisition
+(includes materiel, transportation, and fill fee).
+PR 	Provides revised quote (includes materiel, transportation, and fill fee).
+X1/R1 	X1 - Request for AF ESA approved source from USG (applicable ALC) for standard items. This
+status code shall be accompanied by a narrative explanation.
+R1 - Acknowledges receipt of AF ESA approved source. This status code shall be accompanied
+by a narrative explanation.
+
+-- 55 of 62 --
+
+Page | 56
+X2/R2 	X2 - Request for customer clarification. This shall be accompanied by narrative explanation.
+R2 - Acknowledges receipt of customer clarification. This is accompanied by narrative
+explanation.
+X3/R3 X3 – If a contract is able to be awarded, but not within 150 contractor days, contractor shall process an
+X3 status code requesting customer approval to exceed the 150 contractor day cancellation date. R3 -
+Acknowledges receipt of customer response. This status will be accompanied by narrative copy (or
+summary) of the customer reply.
+X4/R4 	X4 - Reports a delay awaiting USG decision/guidance. This status code is accompanied by
+narrative explanation.
+R4 - Reports receipt of USG decision/guidance. This is accompanied by narrative copy (or summary)
+of reply.
+X5/R5 	X5 - Request for customer price approval. This shall be accompanied by narrative explanation.
+R5 - Acknowledges receipt of customer response. This status will be accompanied by narrative
+copy (or summary) of the reply.
+X6/R6 	X6 - Request customer approval of termination charges. This status code shall be accompanied
+by a narrative explanation.
+R6 - Acknowledges receipt of customer response. This status will be accompanied by narrative
+copy (or summary) of the customer reply.
+X7/R7 	X7 - Not Applicable
+R7 - Reports interim response from contractor to customer questions (XQ). This status shall be
+accompanied by a narrative explanation.
+X8/R8 	X8 - Provides shipping instructions to customer for maintenance requisitions. This status shall be
+accompanied by a narrative copy of the shipping instructions.
+R8 - Acknowledges receipt of the reparable asset or proof of shipment from the Freight Forwarder to
+the repair vendor.
+X9/R9 	X9 - Request Customer Disposition Instructions for BER/BPR or permission to proceed
+with the repair (BER only). This status code shall be accompanied by a narrative
+explanation.
+R9 - Acknowledges receipt of disposition instructions. This status will be accompanied by a narrative
+copy (or summary) of the reply.
+XH/RH XH - Reports requisitions where vendor is offering unique warranty conditions such as less than one
+year warranty.
+RH - Acknowledges response from customer. This status will be accompanied by a narrative copy of
+the customer reply.
+XK/RK XK - Reports when materiel must be moved through DTS channels.
+RK - Reports shipment of DTS materiel to customer (concurrent with AS3).
+XQ/RQ XQ - Reports requisitions where customer asks contractor a question.
+RQ - Reports response from contractor. Status shall be accompanied by a narrative explanation.
+
+-- 56 of 62 --
+
+Page | 57
+VII. Acronyms
+AAC 	Acquisition Advice Code
+AF 	Air Force
+AFB 	Air Force Base
+AFMC 	Air Force Materiel Command
+AFSAC 	Air Force Security Assistance and Cooperation Directorate
+AFSAT 	Air Force Security Assistance Training Squadron
+ALC 	Air Logistics Complex
+BPC 	Building Partner Capability
+CAGE 	Commercial and Government Entity
+CCM 	Command Country Manager
+COMSEC 	Communications Security
+DAASC 	Defense Automated Addressing System Center
+DAMES 	DAASC Automated Message Exchange System
+DCMA 	Defense Contract Management Agency
+DLA 	Defense Logistics Agency
+DLM 	Defense Logistics Manual
+DOD 	Department of Defense
+DSCA 	Defense Security Cooperation Agency
+DTC 	Delivery Term Code
+DTS 	Defense Transportation System
+ERRC 	Engine Regional Repair Center
+ESA 	Engineering Source Authority
+ESD 	Estimated Ship Date
+FAR 	Federal Acquisition Regulation
+FEDLOG 	Federal Logistics
+FLO 	Foreign Liaison Officer
+FMS 	Foreign Military Sales
+GBL 	Government Bill of Lading
+GSA 	General Services Administration
+ILCS 	International Logistics Communication System
+ILS 	Integrated Logistics Support
+ISO 	International Standards Organization
+LOS 	Level of Service
+MILSTRIP 	Military Standard Requisitioning and Issue Procedures
+MMAC 	Materiel Management Aggregation Code
+NATO 	North Atlantic Treaty Organization
+NIIN 	National Item Identification Number
+NMCS 	Non Mission Capable Support
+
+-- 57 of 62 --
+
+Page | 58
+NOA 	Notice of Availability
+NSN 	National Stock Number
+NTE 	Not-To-Exceed
+OEM 	Original Equipment Manufacturer
+P&A 	Price and Availability
+P/N 	Part Number
+PQ 	Price Quote
+PROS 	Parts & Repair Ordering System
+QAID 	Quick Access Identification
+RDD 	Required Delivery Date
+SAMIS 	Security Assistance Management Information System
+SDR 	Supply Discrepancy Report
+SOO 	Statement of Objectives
+SOS 	Source of Supply
+STD 	Standard
+TTI 	Test, Teardown & Inspection
+UI 	Unit of Issue
+US 	United States
+USAF 	United States Air Force
+USG 	United States Government
+WPAFB 	Wright-Patterson Air Force Base
+
+-- 58 of 62 --
+
+Page | 59
+VIII. Glossary
+Acquisition Advice Code (AAC): A code indicating how (as distinguished from where) and under what
+restrictions an item will be acquired.
+Advice Code - The coding structure for the purpose of transmitting instructions for requisitions; is
+considered by the creators of the requisitions to be essential to the desired supply action. Insertion of
+advice codes is at the discretion of the initial document creator.
+Air Force Security Assistance and Cooperation Directorate (AFSAC) - Organization located at
+WPAFB, Ohio, responsible for managing Foreign Military Sales (FMS) programs for the Air Force and is
+the program manager for PROS.
+Air Logistics Complex (ALC) - Air Force inventory control point that normally fills FMS requisitions;
+serves as the PROS contractor's source for technical data, when needed to procure an item.
+Beyond Economic Repair (BER) – Determination on a repair item where cost to repair is at least 75%
+of procurement cost.
+Beyond Physical Repair (BPR) – Determination that a repair item cannot be returned to serviceable
+condition due to excessive damage or component obsolescence.
+Business Days – Five (5) days per week, Monday through Friday, except US Government holidays.
+Case - A contractual sales agreement between the US and an eligible foreign country or international
+organization documented by a LOA (DD Form 1513). One Foreign Military Sales (FMS) case identifier is
+assigned for the purpose of identification, accounting, and data processing for each offer (DD Form
+1513).
+Case Manager (CM) - Air Force individual, usually located in the AFSAC, who is responsible for an FMS
+case from receipt of the LOR for a LOA through case closure. The case manager has the authority to
+direct case actions necessary to satisfy case management and purchaser requirements.
+Certificate of Conformance (COC) - A certificate signed by a specific representative of a company
+stating that the item meets specifications and quality assurance standards.
+Command Country Manager (CCM) - AFSAC personnel responsible for ensuring command support for
+the Country Program, including all FMS sales and Security Assistance needs for a given customer
+country.
+Consolidation - Situation when several customers' requisitions for one item (may be multiple
+quantities) are grouped together by the contractor for the sole purpose of obtaining a discount buy while
+still maintaining individual shipping, packaging, etc., and instructions per the customer's individual
+requisition. To ensure sufficient funds are available, stand-alone pricing is provided for each individual
+requisition before the requisitions are consolidated for a reduced cost.
+Contractor Days – Calendar days minus customer delay calendar days (X-Time).
+Controlled Item – Those items designated as having characteristics that require that they be identified,
+accounted for, secured, segregated, or handled in a special manner to ensure their safeguard or integrity.
+Customer – The Foreign country procuring materiel or services.
+Customer Delay Calendar Days - Anytime the Contractor requires a response from customer, they will
+place the requisition in an X-status. This time is not counted against the contractor.
+
+-- 59 of 62 --
+
+Page | 60
+Defense Automatic Addressing System Center (DAASC) - Located at Wright-Patterson Air Force Base
+(AFB), houses the database that maintains the DAMES message addresses for the DoD.
+Defense Automated Message Exchange System (DAMES) - A fully automated telecommunications
+system that provides the subscriber with a standalone, also referred to as a turn-key,
+telecommunications terminal, or it can be designed to function as a communications front-end processor
+which is linked to a subscriber's existing telecommunications network.
+Defense Automatic Addressing System (DAAS) - An automated communication system used by DOD
+logistics activities, FMS customers and contractors. It is located at Wright Patterson AFB, Ohio. The
+"ILCS" communication system mentioned later in this document is a part of DAAS.
+Defense Transportation System (DTS) - Department of Defense (DOD) transportation resources (air
+or surface transportation that is owned, operated, controlled, or arranged by DOD). This includes air or
+surface movement by government bill of lading (GBL) on US flag commercial carriers or by foreign flag
+carriers when movement is DOD or USAF arranged and shipment remains under DOD or USAF auspices
+and control.
+Expendability, Recoverability, Reparability Code (ERRC) - A code employed by the Air Force to
+categorize inventory into management groupings. The three-position ERRC designator and the
+oneposition ERRC Code are interchangeable. Generally, the three-position designator is used in
+correspondence and publications and the one-position designator is used in automatic data processing
+programs.
+Estimated Shipping Date (ESD) - The date the item is to be shipped from the vendor, identified in the
+BV status transaction.
+Factory New (N, FN, or NE)- is a product, assembly, accessory, component, part or material produced on
+conformity with approved data that is accompanied by a manufacturer’s material certification at the
+time of sale, and has no operating time or cycles. (It is a never-used item from the factory that comes
+with manufacturer’s material certification.)
+Fair and Reasonable Prices (FRP) – The PROS contractor must document how fair and reasonable
+prices were obtained for all requisitions, competitive or non-competitive. A Fair and reasonable price is
+the price paid by a prudent person in a similar situation.
+Freight Forwarder - The agent designated by a Security Assistance customer country to complete or
+control FMS materiel shipment from CONUS or third countries to the purchaser's destination. This is
+usually a licensed international broker or freight forwarding agent.
+Interchangeable - Two or more items which possess such functional and physical characteristics as to
+be equivalent in performance, fit and durability, and are capable of being exchanged one for the other
+without alteration of the items themselves or of adjoining items, except for adjustment.
+International Logistics Communication System (ILCS) - A subsystem of DAAS specializing in Foreign
+Military Sales (FMS) business. The PROS contractor uses ILCS text messages to communicate with ALCs,
+AFSAC managers and FMS customers. Depending on practical considerations, ILCS may also be
+prescribed as the channel for mechanized communication between the PROS contractor and SAMIS.
+Alternatively, direct file transfer may be prescribed.
+In-Transit Staging - The collecting and holding of materiel in specified areas prior to shipment to a final
+destination. Staging may be necessary to facilitate beneficial consolidations of shipments or simply to
+delay shipment until storage facilities are made ready at the final point of receipt.
+
+-- 60 of 62 --
+
+Page | 61
+Kit Requisition – A cataloged part number or national stock number with a unit of issue of Kit (KT). For
+commercial items, the part must be listed as a kit in the vendor's catalog in order to be procured through
+PROS.
+Letter of Offer and Acceptance (LOA) - The document (DD Form 1513) by which the US
+Government offers to sell to a foreign government or international organization defense articles and
+defense services pursuant to the Arms Export Control Act of 1976, as amended. The form lists the items
+and/or services, estimated costs, the terms and conditions of the sale, and provides for the foreign
+government's signature to indicate acceptance.
+Level of Service (LOS) – The country determined level at which the service will be provided/performed.
+There are two LOS for supply and maintenance, being Urgent and Routine.
+Long Lead-Time – Delivery of an item 12 months after contract award or when the item requires
+production to support the part or materiel.
+Materiel Management Aggregation Code (MMAC) - A two position alpha code used in conjunction
+with/at the end of the national stock number (NSN) (rp 21-22 of DLSS transactions), to identify specific
+items (NSNs) to be managed by a specific manager. Separate MMACs apply to systems, programs,
+aggregations, selected federal stock classifications (FSCs), and technology groups.
+Military Standard Requisitioning and Issue Procedures (MILSTRIP) - A DOD standard for automated
+logistics transactions. It defines a variety of records, differentiated by 3-position "Document Identifier"
+codes (DICs), and is used to requisition items and report status.
+National Stock Number (NSN) - A number assigned to each item of supply under the Federal
+Catalog System. It consists of the 4-digit Federal Supply Class (FSC) and 9-digit National Item
+Identification Number (NIIN).
+National Stock Number (NSN) Items - 13-position number in the DOD catalog. Normally, assigned to
+items the DOD manages (or once managed) for its own use.
+New Surplus (NS) - comes from a specified quantity of a new item which is over and above that
+required to meet forecasted stock requirements in support of normal stock operations. (It is an item
+from extra stock that did not sell as expected.)
+Non-Standard Items – An item that is not actively managed (procured, stocked, stored, or issued)
+within the DoD logistics system. All part numbers not cross-referencing to active NSNs are considered
+non-standard items.
+Not Mission Capable-Supply (NMCS) - The condition of an item which renders the aircraft, equipment
+or system inoperable, and maintenance work cannot be performed to return it to an operational
+condition until the required item(s) of supply become available at the work site.
+Notice of Availability (NOA) – A document that notifies the designated FMS Country Representative or
+freight forwarder that the materiel is ready for shipment.
+Overhauled Condition (OH) - is the result of (1) partial or complete disassembly of the item; (2)
+inspection to detect damaged, defective, or worn parts; (3) repair or replacement of those parts; and (4)
+reassembly, testing, and trial-run prior to returning the item to its full operating level. (The asset has
+been taken apart, inspected, repaired, put back together, re-tested, and then operated/run to be sure the
+asset functions completely and properly).
+
+-- 61 of 62 --
+
+Page | 62
+Package Buy - Procurement of multiple line items against a single DCN; for one customer; supplied from
+one vendor; shipped at the same time; with status and pricing provided against the single requisition.
+Part Numbered (P/N) Items - Items ordered by manufacturers part number.
+Parts and Repair Ordering System (PROS) Contractor - The contracted organization responsible for
+satisfying FMS orders and reporting status. The PROS contractor receives MILSTRIP requisitions,
+reports MILSTRIP (and unique) status to SAMIS, supplies the required materiel/service and provides
+invoices that result in billings to the FMS customer.
+Price and Availability Data (P&A) - A response to a foreign government request for preliminary data
+for the possible purchase of a defense article or service. This is not to be used in support of LOA data.
+Program Office - The USG office responsible for administering the PROS contract.
+PROS Program Fee – The cost charged to the customer by the Program Office, which is 2% of the
+materiel value, not to exceed $15,000.
+Qualified Source – For standard items, a qualified source is a vendor determined to be competent by the
+cognizant Design Control Activity to manufacture or repair parts for specific weapon systems. For non-
+standard items, a qualified source must meet or exceed the design specifications established by the
+commercial vendor base, Federal Aviation Administration, or the OEM.
+Requisition - An order for materiel or services that defines the customer country's requirement, i.e.,
+quantity, stock number.
+Routing Identifier Code (RIC) - Three position code identifying the source of supply.
+Security Assistance - A group of programs authorized by the Foreign Assistance Act of 1961, as
+amended, and the Arms Export Control Act of 1976, as amended, or other related statutes by which the
+United States provides defense articles, military training, and other defense-related services, by grant,
+loan, credit, or cash sales in furtherance of national policies and objectives.
+Security Assistance Management Information System (SAMIS) - The AFSAC system for managing and
+accounting for FMS orders. SAMIS transmits electronic orders to the PROS contractor, receives status,
+approves purchases (except where additional customer approval is mandated), accepts invoices and
+interfaces with the FMS customer. As such, SAMIS acts as the official instrument AFSAC uses to manage
+the PROS contract.
+Standard Item – An item that has a valid and active NSN that is centrally acquired and managed or
+supports DoD logistics needs.
+Substitute Item - An item that performs the same functions as the one it replaces.
+Total Requisition Value - The price provided to the customer which includes the vendor's cost (i.e.,
+materiel value, transportation costs, and any additional reported costs), the contractor's fill fee, and the
+AFSAC-applied program fee. (Within SAMIS, it’s the B7 value multiplied by the total requisition quantity)
+
+-- 62 of 62 --
+

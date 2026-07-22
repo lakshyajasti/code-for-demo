@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WWRS Tools — AFSAC Online</title>
+  <meta name="description" content="WWRS tools landing page for signed-in users with access to legacy and current WWRS website references.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .prosv-subnav {
+      background: var(--navy-700);
+      border-bottom: 2px solid var(--gold);
+    }
+    .prosv-subnav .container { display: flex; align-items: center; }
+    .prosv-subnav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      padding: .65rem 1.1rem;
+      color: rgba(255,255,255,.65);
+      font-size: .84rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: color .15s, border-color .15s;
+    }
+    .prosv-subnav-link:hover { color: white; }
+    .prosv-subnav-link.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .prosv-subnav-link svg { opacity: .6; }
+
+    .wwrs-tools-hero {
+      background: var(--bg-sidebar);
+      border-bottom: 1px solid var(--border);
+      color: var(--text-body);
+      padding: 1.75rem 0;
+    }
+    .wwrs-hero-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .wwrs-hero-text {
+      max-width: 600px;
+    }
+    .prosv-breadcrumb {
+      font-size: .78rem;
+      color: var(--text-muted);
+      margin-bottom: .5rem;
+    }
+    .prosv-breadcrumb a { color: var(--link); text-decoration: none; }
+    .prosv-breadcrumb a:hover { text-decoration: underline; }
+    .prosv-breadcrumb-sep { margin: 0 .3rem; }
+
+    .wwrs-tools-kicker {
+      margin: 0 0 .55rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      font-size: .74rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .wwrs-tools-hero h1 {
+      margin: 0 0 .5rem;
+      color: var(--navy);
+      font-size: 2rem;
+      line-height: 1.15;
+    }
+    .wwrs-tools-hero p {
+      margin: 0;
+      color: var(--text-body);
+      max-width: 600px;
+      font-size: .9375rem;
+      line-height: 1.65;
+    }
+
+    .prosv-tabs {
+      display: flex;
+      gap: .5rem;
+      margin-bottom: 1.75rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .prosv-tab {
+      padding: .5rem 1.25rem;
+      font-size: .875rem;
+      font-weight: 600;
+      font-family: var(--font);
+      color: var(--text-body);
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: white;
+      border-radius:0;
+      white-space: nowrap;
+      transition: background .15s, color .15s, border-color .15s, box-shadow .15s;
+    }
+    .prosv-tab:hover { background: var(--bg-sidebar); border-color: #aab0b8; }
+    .prosv-tab.active {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold-dark);
+      font-weight: 700;
+      box-shadow: 0 1px 4px rgba(253,181,21,.35);
+    }
+    .prosv-tab-group-label {
+      padding: 0 .25rem 0 0;
+      font-size: .72rem;
+      font-weight: 700;
+      font-family: var(--font);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .prosv-layout {
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr);
+      grid-template-areas: "sidebar content";
+      gap: 1.5rem;
+      align-items: start;
+    }
+    .prosv-content {
+      grid-area: content;
+      min-width: 0;
+    }
+    .prosv-sidebar {
+      grid-area: sidebar;
+      align-self: start;
+      position: sticky;
+      top: 0;
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    .wwrs-workspace {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      overflow: visible;
+    }
+    .report-section-head {
+      display: inline-flex;
+      justify-self: start;
+      align-items: center;
+      gap: .75rem;
+      padding: .75rem 1rem;
+      margin-bottom: .75rem;
+      background: var(--navy);
+      border-left: 4px solid var(--gold);
+    }
+    .report-section-head h2 {
+      font-size: 1.05rem;
+      color: white;
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: .03em;
+    }
+    .wwrs-panel {
+      display: none;
+      padding: 1.5rem;
+      gap: .85rem;
+    }
+    .wwrs-panel.is-active {
+      display: grid;
+    }
+    .wwrs-panel h3 {
+      margin: 0;
+      color: var(--navy);
+      font-size: .98rem;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+    .wwrs-panel-intro {
+      margin: 0;
+      font-size: .85rem;
+      color: var(--text-body);
+      line-height: 1.58;
+    }
+    .wwrs-form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .65rem;
+    }
+    .wwrs-field {
+      display: grid;
+      gap: .35rem;
+    }
+    .wwrs-field label {
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .wwrs-field input,
+    .wwrs-field select {
+      min-height: 38px;
+      border: 1px solid var(--border);
+      padding: .4rem .55rem;
+      font-size: .84rem;
+      color: var(--text-body);
+      background: #fff;
+    }
+    .wwrs-field input:focus,
+    .wwrs-field select:focus {
+      outline: 2px solid #2491ff;
+      outline-offset: 1px;
+      border-color: #2491ff;
+    }
+    .wwrs-form-actions {
+      display: flex;
+      gap: .55rem;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+      padding-top: .72rem;
+      margin-top: .1rem;
+    }
+    .wwrs-action-btn {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--navy);
+      padding: .45rem .8rem;
+      font-size: .79rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .wwrs-action-btn:hover {
+      background: var(--bg-sidebar);
+    }
+    .wwrs-action-btn.primary {
+      background: var(--gold);
+      border-color: var(--gold-dark);
+    }
+    .wwrs-action-btn.primary:hover {
+      background: var(--gold-dark);
+      color: #fff;
+    }
+    .wwrs-summary-chip {
+      margin: 0;
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--success);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .wwrs-table-wrap {
+      border: 1px solid var(--border);
+      overflow-x: auto;
+      background: #fff;
+    }
+    .wwrs-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 740px;
+      font-size: .8rem;
+    }
+    .wwrs-table th,
+    .wwrs-table td {
+      border-bottom: 1px solid #e4e8ee;
+      text-align: left;
+      padding: .48rem .52rem;
+      vertical-align: top;
+    }
+    .wwrs-table th {
+      background: #f3f6fb;
+      color: var(--navy);
+      font-size: .73rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    .wwrs-note-box {
+      border: 1px solid var(--border);
+      background: #f7f9fc;
+      padding: .75rem;
+      display: grid;
+      gap: .4rem;
+    }
+    .wwrs-note-box p,
+    .wwrs-note-box li {
+      margin: 0;
+      font-size: .83rem;
+      color: var(--text-body);
+      line-height: 1.55;
+    }
+    .wwrs-note-box ul {
+      margin: 0;
+      padding-left: 1rem;
+      display: grid;
+      gap: .35rem;
+    }
+
+    .prosv-resources-panel { display: flex; flex-direction: column; gap: 1rem; }
+    .prosv-res-card { background: white; border-top: 4px solid var(--gold); border: 1px solid var(--border); border-radius:0; overflow: hidden; }
+    .prosv-res-card-title {
+      background: var(--navy-600);
+      color: white;
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      padding: .5rem .875rem;
+    }
+    .prosv-res-link {
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      padding: .5rem .875rem;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--link);
+      font-size: .84rem;
+      line-height: 1.4;
+      transition: background .12s;
+    }
+    .prosv-res-link:hover {
+      background: var(--bg-sidebar);
+      text-decoration: none;
+    }
+    .prosv-res-link:last-child {
+      border-bottom: 0;
+    }
+    .status-key-card {
+      margin-top: 1rem;
+      border: 1px solid var(--border);
+      background: white;
+    }
+    .status-key-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      border: none;
+      background: var(--navy-600);
+      color: var(--gold);
+      padding: .5rem .875rem;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      cursor: pointer;
+    }
+    .status-key-header:hover { background: var(--navy); }
+    .status-key-panel {
+      display: none;
+      padding: .65rem .75rem;
+      background: #f8f9fb;
+      border-top: 1px solid var(--border);
+    }
+    .status-key-panel.open { display: block; }
+    .status-key-note {
+      font-size: .75rem;
+      color: var(--text-muted);
+      margin-bottom: .5rem;
+      line-height: 1.5;
+    }
+    .status-key-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: .3rem;
+    }
+    .status-key-item {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: .45rem;
+      align-items: start;
+      font-size: .76rem;
+      color: var(--text-body);
+      line-height: 1.35;
+      border: 1px solid #d7dce5;
+      background: white;
+      padding: .35rem .45rem;
+    }
+    .status-key-code {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #b7c0cc;
+      background: white;
+      color: var(--navy);
+      font-weight: 700;
+      padding: .1rem .25rem;
+      min-width: 30px;
+    }
+    .status-key-desc {
+      color: var(--text-body);
+    }
+    .status-key-desc strong {
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .prosv-res-note {
+      padding: .8rem .85rem .9rem;
+      font-size: .81rem;
+      color: var(--text-body);
+      line-height: 1.52;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .wwrs-hero-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 1040px) {
+      .prosv-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "content"
+          "sidebar";
+      }
+      .prosv-content,
+      .prosv-sidebar {
+        grid-area: auto;
+      }
+      .prosv-sidebar {
+        position: static;
+      }
+      .wwrs-form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="site-page">
+
+<div class="gov-banner">
+  <div class="container">
+    <div class="gov-banner-flag">
+      <svg width="18" height="13" viewBox="0 0 18 13" fill="none" style="flex-shrink:0"><rect width="18" height="13" fill="#B22234"/><rect y="1" width="18" height="1" fill="white"/><rect y="3" width="18" height="1" fill="white"/><rect y="5" width="18" height="1" fill="white"/><rect y="7" width="18" height="1" fill="white"/><rect y="9" width="18" height="1" fill="white"/><rect y="11" width="18" height="1" fill="white"/><rect width="7" height="7" fill="#3C3B6E"/></svg>
+      An official website of the United States Government &mdash; Air Force Security Assistance &amp; Cooperation Directorate
+    </div>
+    <div class="gov-banner-right">
+      <span class="gov-banner-notice">Authorized Users Only</span>
+      <button class="gov-banner-dismiss">Dismiss</button>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">
+        <div class="logo-emblem"></div>
+        <div class="logo-text">
+          <span class="logo-title">AFSAC Online</span>
+          <span class="logo-subtitle">Air Force Security Assistance &amp; Cooperation</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="main-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="toolbox.html">Applications</a></li>
+          <li class="nav-dropdown"><a href="flo.html">Resources <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a><div class="nav-dropdown-menu"><a href="flo.html">FLO Information</a><a href="#">LOR</a><a href="#">Report2Web</a><a href="#">SCIP Portal</a><a href="#">DSAMS</a></div></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <form class="search-form" role="search" onsubmit="return false">
+          <svg class="search-icon" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" class="search-input" placeholder="Search WWRS tools&hellip;" aria-label="Search">
+        </form>
+        <span id="header-user-display" style="font-size:.84rem;color:var(--gold);font-weight:600"></span>
+        <a href="login.html" class="header-login-btn" id="signout-btn" style="display:none">Sign Out</a>
+      </div>
+      <button class="hamburger" aria-label="Open menu">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a><a href="about.html">About Us</a><a href="toolbox.html">Applications</a><a href="flo.html">Resources</a><a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="prosv-subnav">
+  <div class="container">
+    <a href="wwrs-tools.html" class="prosv-subnav-link active">WWRS</a>
+    <a href="wwrs.html" class="prosv-subnav-link">
+      WWRS Website
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </a>
+    <a href="https://afsac4.wpafb.af.mil/WWRS/" target="_blank" rel="noopener noreferrer" class="prosv-subnav-link">
+      Legacy WWRS
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </a>
+  </div>
+</div>
+
+<section class="wwrs-tools-hero">
+  <div class="container">
+    <div class="wwrs-hero-inner">
+      <div class="wwrs-hero-text">
+        <div class="prosv-breadcrumb">
+          <a href="apps.html">AFSAC Online</a>
+          <span class="prosv-breadcrumb-sep">/</span>
+          <a href="apps.html">WWRS</a>
+          <span class="prosv-breadcrumb-sep">/</span>
+          <span>WWRS Tools</span>
+        </div>
+        <h1>WWRS Tools</h1>
+        <p>Select a module tab to open WWRS tools directly in the workspace below, following the same tab-first flow pattern used in PROS V.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="page-wrapper">
+  <div class="prosv-tabs" role="tablist" aria-label="WWRS modules">
+    <span class="prosv-tab-group-label">Modules</span>
+    <button type="button" class="prosv-tab active" role="tab" aria-selected="true" data-open-tool="inventory">Inventory Search</button>
+    <button type="button" class="prosv-tab" role="tab" aria-selected="false" data-open-tool="broadcasts">Broadcasts</button>
+    <button type="button" class="prosv-tab" role="tab" aria-selected="false" data-open-tool="dashboard">Program Dashboard</button>
+    <button type="button" class="prosv-tab" role="tab" aria-selected="false" data-open-tool="guidance">Seller and Buyer Guidance</button>
+  </div>
+
+  <div class="prosv-layout">
+  <div class="prosv-content">
+  <section class="wwrs-tools-main" aria-label="WWRS tool modules">
+
+    <section class="wwrs-workspace" aria-label="WWRS working tool area">
+      <div class="wwrs-panel card is-active" id="wwrs-panel-inventory" data-tool-panel="inventory">
+        <div class="report-section-head">
+          <h2>Inventory Search</h2>
+        </div>
+        <p class="wwrs-panel-intro">This tool reproduces the core WWRS inventory search behavior with local demo data and working filters.</p>
+        <form id="wwrs-inventory-form">
+          <div class="wwrs-form-grid">
+            <div class="wwrs-field">
+              <label for="inv-nsn" id="inv-primary-label">Search Term (NSN/FSC/NIIN)</label>
+              <input id="inv-nsn" name="nsn" type="text" placeholder="e.g., 1005-01-123-4567">
+              <p class="wwrs-panel-intro" id="inv-search-hint" style="margin:.35rem 0 0;font-size:.8rem">Use this field for the selected Search By mode.</p>
+            </div>
+            <div class="wwrs-field">
+              <label for="inv-part">Part Number</label>
+              <input id="inv-part" name="partNumber" type="text" placeholder="Part number">
+            </div>
+            <div class="wwrs-field">
+              <label for="inv-cage">CAGE Code</label>
+              <input id="inv-cage" name="cageCode" type="text" placeholder="CAGE code">
+            </div>
+            <div class="wwrs-field">
+              <label for="inv-item">Item Name</label>
+              <input id="inv-item" name="itemName" type="text" placeholder="Item name">
+            </div>
+            <div class="wwrs-field">
+              <label for="inv-weapon">Weapon System</label>
+              <select id="inv-weapon" name="weaponSystem">
+                <option value="">All weapon systems</option>
+                <option value="F-16">F-16</option>
+                <option value="C-130">C-130</option>
+                <option value="H-60">H-60</option>
+                <option value="PATRIOT">PATRIOT</option>
+                <option value="F-15">F-15</option>
+                <option value="M1A1">M1A1</option>
+              </select>
+            </div>
+            <div class="wwrs-field">
+              <label for="inv-search-by">Search By</label>
+              <select id="inv-search-by" name="searchBy">
+                <option value="">Any Field</option>
+                <option value="fsc">FSC Code</option>
+                <option value="source">Source of Supply</option>
+                <option value="weapon">Weapon System</option>
+              </select>
+            </div>
+          </div>
+          <div class="wwrs-form-actions">
+            <button type="submit" class="wwrs-action-btn primary">Search</button>
+            <button type="button" class="wwrs-action-btn" id="inv-clear-btn">Clear</button>
+            <button type="button" class="wwrs-action-btn" id="inv-download-filtered-btn">Download Results CSV</button>
+            <button type="button" class="wwrs-action-btn" id="inv-download-all-btn">Download Entire Inventory</button>
+          </div>
+        </form>
+        <p class="wwrs-summary-chip" id="inv-summary">Showing 0 results</p>
+        <div class="wwrs-table-wrap">
+          <table class="wwrs-table">
+            <thead>
+              <tr>
+                <th>NSN</th>
+                <th>Part Number</th>
+                <th>CAGE</th>
+                <th>Item Name</th>
+                <th>Weapon System</th>
+                <th>Source</th>
+                <th>Qty</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="inv-results-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="wwrs-panel card" id="wwrs-panel-broadcasts" data-tool-panel="broadcasts">
+        <div class="report-section-head">
+          <h2>Broadcasts and PMO Notices</h2>
+        </div>
+        <p class="wwrs-panel-intro">Search and filter operational notices similar to the legacy WWRS News and Broadcast flows.</p>
+        <form id="wwrs-broadcast-form">
+          <div class="wwrs-form-grid">
+            <div class="wwrs-field">
+              <label for="bc-keyword">Keyword</label>
+              <input id="bc-keyword" type="text" placeholder="PMR, inventory, seller, PMO...">
+            </div>
+            <div class="wwrs-field">
+              <label for="bc-category">Category</label>
+              <select id="bc-category">
+                <option value="">All categories</option>
+                <option value="event">Event</option>
+                <option value="seller">Seller Update</option>
+                <option value="support">Support Notice</option>
+              </select>
+            </div>
+          </div>
+          <div class="wwrs-form-actions">
+            <button type="submit" class="wwrs-action-btn primary">Apply Filters</button>
+            <button type="button" class="wwrs-action-btn" id="bc-clear-btn">Clear</button>
+          </div>
+        </form>
+        <p class="wwrs-summary-chip" id="bc-summary">Showing 0 notices</p>
+        <div class="wwrs-note-box" id="bc-results"></div>
+      </div>
+
+      <div class="wwrs-panel card" id="wwrs-panel-dashboard" data-tool-panel="dashboard">
+        <div class="report-section-head">
+          <h2>Program Dashboard</h2>
+        </div>
+        <p class="wwrs-panel-intro">Built from inventory records in this demo session to provide quick WWRS operational metrics.</p>
+        <div class="wwrs-form-actions" style="border-top:0;padding-top:0;margin-top:0">
+          <button type="button" class="wwrs-action-btn primary" id="dash-refresh-btn">Refresh Metrics</button>
+          <button type="button" class="wwrs-action-btn" id="dash-download-btn">Download Metrics CSV</button>
+        </div>
+        <div class="wwrs-table-wrap">
+          <table class="wwrs-table" style="min-width:620px">
+            <thead>
+              <tr>
+                <th>Weapon System</th>
+                <th>Line Items</th>
+                <th>Total Quantity</th>
+                <th>Avg Lead Days</th>
+              </tr>
+            </thead>
+            <tbody id="dash-results-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="wwrs-panel card" id="wwrs-panel-guidance" data-tool-panel="guidance">
+        <div class="report-section-head">
+          <h2>Seller and Buyer Guidance</h2>
+        </div>
+        <p class="wwrs-panel-intro">Operational checklist aligned to Buyer Information, Seller Information, PMO, Resources, and Help/Training topics from legacy WWRS navigation.</p>
+        <div class="wwrs-form-grid">
+          <div class="wwrs-note-box">
+            <p><strong>Seller Actions</strong></p>
+            <ul>
+              <li>Validate inventory upload file format and naming.</li>
+              <li>Confirm active points of contact with PMO mailbox.</li>
+              <li>Update listing cadence for available excess stock.</li>
+            </ul>
+          </div>
+          <div class="wwrs-note-box">
+            <p><strong>Buyer Actions</strong></p>
+            <ul>
+              <li>Search inventory by NSN, weapon system, or source.</li>
+              <li>Coordinate need date and priority with program office.</li>
+              <li>Track issue and shipment status after allocation.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="wwrs-form-actions">
+          <button type="button" class="wwrs-action-btn" id="guide-copy-pmo-btn">Copy PMO Contact</button>
+          <button type="button" class="wwrs-action-btn" id="guide-download-btn">Download Guidance CSV</button>
+        </div>
+        <p class="wwrs-summary-chip" id="guide-status">PMO: afsac.wwrspmo@us.af.mil</p>
+      </div>
+    </section>
+  </section>
+  </div>
+
+  <aside class="prosv-sidebar" aria-label="WWRS side resources">
+    <div class="prosv-resources-panel">
+    <div class="status-key-card">
+      <button class="status-key-header" id="wwrs-key-toggle" type="button" aria-expanded="false" aria-controls="wwrs-key-panel">
+        <span>WWRS Acronym Key</span>
+        <span id="wwrs-key-caret">+</span>
+      </button>
+      <div class="status-key-panel" id="wwrs-key-panel">
+        <p class="status-key-note">Quick definitions for common WWRS terms. Keep collapsed for a cleaner workspace.</p>
+        <div class="status-key-grid">
+          <div class="status-key-item"><span class="status-key-code">WWRS</span><span class="status-key-desc"><strong>Worldwide Warehouse Redistribution Services</strong></span></div>
+          <div class="status-key-item"><span class="status-key-code">PMO</span><span class="status-key-desc"><strong>Program Management Office</strong></span></div>
+          <div class="status-key-item"><span class="status-key-code">NSN</span><span class="status-key-desc"><strong>National Stock Number</strong></span></div>
+          <div class="status-key-item"><span class="status-key-code">FSC</span><span class="status-key-desc"><strong>Federal Supply Class</strong></span></div>
+          <div class="status-key-item"><span class="status-key-code">NIIN</span><span class="status-key-desc"><strong>National Item Identification Number</strong></span></div>
+          <div class="status-key-item"><span class="status-key-code">CAGE</span><span class="status-key-desc"><strong>Commercial and Government Entity</strong> code</span></div>
+          <div class="status-key-item"><span class="status-key-code">FMS</span><span class="status-key-desc"><strong>Foreign Military Sales</strong></span></div>
+          <div class="status-key-item"><span class="status-key-code">USG</span><span class="status-key-desc"><strong>United States Government</strong></span></div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </aside>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="footer-brand-logo">
+            <div class="logo-emblem" style="width:48px;height:48px;font-size:.95rem"></div>
+            <span class="footer-brand-title">AFSAC Online</span>
+          </a>
+          <p class="footer-brand-desc">Air Force Security Assistance and Cooperation Directorate — supporting worldwide FMS partnerships through transparent, accessible information systems.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Applications</div>
+          <ul class="footer-links">
+            <li><a href="#">Requisition</a></li><li><a href="#">Logistics</a></li><li><a href="#">Case</a></li><li><a href="#">SDR</a></li><li><a href="#">CLSSA</a></li><li><a href="dashboard.html">PROS V</a></li><li><a href="wwrs-tools.html">WWRS</a></li><li><a href="#">Metrics</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Resources</div>
+          <ul class="footer-links">
+            <li><a href="about.html">About AFSAC</a></li><li><a href="flo.html">Foreign Liaison Office</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="#">User Guides</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <div style="flex:1">
+          <button class="footer-legal-toggle">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span class="toggle-text">View Legal Framework &amp; Privacy</span>
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="footer-legal-panel" id="legal-panel">
+            <h4>U.S. Government System Notice</h4>
+            <p>You are accessing a U.S. Government (USG) Information System provided for USG-authorized use only. The USG routinely monitors communications, may inspect and seize data, and communications are not private.</p>
+            <h4>Authority</h4>
+            <p>10 U.S.C. 134; DoDD 5101.1; DoDD 5105.65 (DSCA); DoDD 5132.03; DoD Instruction 8550.01.</p>
+            <h4>Privacy Act</h4>
+            <p>Data is protected under the Privacy Act of 1974 (SORN K890.15). Section 508 compliant per 29 U.S.C. 794d.</p>
+          </div>
+          <div class="footer-copyright">&copy; Air Force Security Assistance and Cooperation Directorate &mdash; 2026</div>
+          <div class="footer-508">Section 508 Compliant &nbsp;&bull;&nbsp; Privacy Act Protected &nbsp;&bull;&nbsp; USG Authorized Use Only</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+  const wwrsInventory = [
+    { nsn: '1005-01-123-4567', partNumber: 'PN-AX32', cageCode: '7G5Q1', itemName: 'Hydraulic Pump Assembly', weaponSystem: 'F-16', source: 'USAF', quantity: 14, status: 'Available', leadDays: 26 },
+    { nsn: '1560-00-987-3210', partNumber: 'LT-C130-88', cageCode: '4N2P9', itemName: 'Wing Panel Kit', weaponSystem: 'C-130', source: 'USAF', quantity: 3, status: 'Limited', leadDays: 38 },
+    { nsn: '1680-01-444-2211', partNumber: 'HH60-CTRL-7', cageCode: '9ZK11', itemName: 'Flight Control Module', weaponSystem: 'H-60', source: 'USN', quantity: 9, status: 'Available', leadDays: 24 },
+    { nsn: '1420-01-765-9910', partNumber: 'PAT-RAD-55', cageCode: '1L0C3', itemName: 'Radar Servo Unit', weaponSystem: 'PATRIOT', source: 'US Army', quantity: 5, status: 'Available', leadDays: 41 },
+    { nsn: '1650-01-312-0045', partNumber: 'F15-ACT-20', cageCode: '6KQ23', itemName: 'Actuator Assembly', weaponSystem: 'F-15', source: 'USAF', quantity: 11, status: 'Available', leadDays: 21 },
+    { nsn: '2510-01-807-6632', partNumber: 'M1A1-TRK-9', cageCode: '8T6D0', itemName: 'Track Repair Segment', weaponSystem: 'M1A1', source: 'US Army', quantity: 19, status: 'Available', leadDays: 29 },
+    { nsn: '3040-01-552-7790', partNumber: 'PN-AX77', cageCode: '7G5Q1', itemName: 'Drive Shaft Coupling', weaponSystem: 'F-16', source: 'USAF', quantity: 4, status: 'Pending Review', leadDays: 33 },
+    { nsn: '5998-01-921-0044', partNumber: 'C130-COM-14', cageCode: '2QW88', itemName: 'Communications Circuit Card', weaponSystem: 'C-130', source: 'USAF', quantity: 7, status: 'Available', leadDays: 27 },
+    { nsn: '1615-01-115-7742', partNumber: 'HS60-ROT-11', cageCode: '3MX17', itemName: 'Rotor Hub Coupler', weaponSystem: 'H-60', source: 'USN', quantity: 6, status: 'Available', leadDays: 22 },
+    { nsn: '1680-01-912-5560', partNumber: 'F16-DISP-3', cageCode: '7G5Q1', itemName: 'Cockpit Display Processor', weaponSystem: 'F-16', source: 'USAF', quantity: 8, status: 'Limited', leadDays: 31 },
+    { nsn: '2915-00-882-1014', partNumber: 'F15-FLWL-09', cageCode: '6KQ23', itemName: 'Fuel Flow Regulator', weaponSystem: 'F-15', source: 'USAF', quantity: 12, status: 'Available', leadDays: 20 },
+    { nsn: '4710-01-733-8901', partNumber: 'M1A1-HSE-44', cageCode: '8T6D0', itemName: 'Hydraulic Hose Set', weaponSystem: 'M1A1', source: 'US Army', quantity: 25, status: 'Available', leadDays: 18 },
+    { nsn: '1430-01-601-7723', partNumber: 'PAT-TGT-90', cageCode: '1L0C3', itemName: 'Target Track Card', weaponSystem: 'PATRIOT', source: 'US Army', quantity: 3, status: 'Pending Review', leadDays: 46 },
+    { nsn: '1560-01-339-5108', partNumber: 'C130-FRM-56', cageCode: '2QW88', itemName: 'Airframe Bracket Set', weaponSystem: 'C-130', source: 'USAF', quantity: 16, status: 'Available', leadDays: 23 },
+    { nsn: '6150-01-908-0032', partNumber: 'H60-HRNS-18', cageCode: '9ZK11', itemName: 'Power Harness Assembly', weaponSystem: 'H-60', source: 'USN', quantity: 10, status: 'Available', leadDays: 25 },
+    { nsn: '5995-01-771-1205', partNumber: 'F16-CBL-78', cageCode: '7G5Q1', itemName: 'Data Bus Cable', weaponSystem: 'F-16', source: 'USAF', quantity: 30, status: 'Available', leadDays: 14 },
+    { nsn: '5330-00-292-4755', partNumber: 'F15-SEAL-61', cageCode: '6KQ23', itemName: 'Pressure Seal Kit', weaponSystem: 'F-15', source: 'USAF', quantity: 15, status: 'Limited', leadDays: 28 },
+    { nsn: '4320-01-506-3304', partNumber: 'C130-PMP-27', cageCode: '4N2P9', itemName: 'Auxiliary Fuel Pump', weaponSystem: 'C-130', source: 'USAF', quantity: 5, status: 'Pending Review', leadDays: 35 },
+    { nsn: '2530-01-644-8171', partNumber: 'M1A1-BRK-12', cageCode: '8T6D0', itemName: 'Brake Actuation Link', weaponSystem: 'M1A1', source: 'US Army', quantity: 9, status: 'Available', leadDays: 19 },
+    { nsn: '7035-01-733-1770', partNumber: 'PAT-CPU-06', cageCode: '1L0C3', itemName: 'Processor Chassis Unit', weaponSystem: 'PATRIOT', source: 'US Army', quantity: 2, status: 'Limited', leadDays: 52 },
+    { nsn: '2835-01-455-9988', partNumber: 'F16-TRB-83', cageCode: '7G5Q1', itemName: 'Turbine Sensor Module', weaponSystem: 'F-16', source: 'USAF', quantity: 4, status: 'Available', leadDays: 32 },
+    { nsn: '5895-01-917-6744', partNumber: 'H60-RAD-64', cageCode: '9ZK11', itemName: 'Radar Interface Unit', weaponSystem: 'H-60', source: 'USN', quantity: 7, status: 'Available', leadDays: 26 }
+  ];
+
+  const wwrsBroadcasts = [
+    { category: 'event', title: '2026 AFSAC Non-Standard Supply PMR featuring WWRS and PROS', detail: 'Planned for 22-26 June 2026 in Dayton, Ohio. Contact PMO for registration details.' },
+    { category: 'seller', title: 'WWRS PMO request: sellers update inventory and POCs', detail: 'Update listings using the correct upload format and verify all points of contact with and without system access.' },
+    { category: 'support', title: 'Need an asset not listed in inventory?', detail: 'Contact the WWRS PMO to request a worldwide broadcast to sellers for part location support.' },
+    { category: 'event', title: 'WWRS quarterly buyer orientation webinar scheduled', detail: 'Virtual orientation will review inventory search best practices, request routing, and expected allocation timelines.' },
+    { category: 'seller', title: 'Seller upload window extended through end of month', detail: 'PMO extended the inventory refresh window to allow reconciliation of pending quantities and condition codes.' },
+    { category: 'support', title: 'Planned maintenance on legacy WWRS portal', detail: 'Legacy site maintenance is scheduled for Saturday 0200-0500 ET. The WWRS website and tools pages remain available for reference and planning.' },
+    { category: 'seller', title: 'Action required: verify CAGE and NSN mapping', detail: 'Several recent uploads contained mismatched CAGE-to-NSN mappings. Please validate source data before submission.' },
+    { category: 'event', title: 'PMO office hours for redistribution planning', detail: 'Weekly office hours now include dedicated sessions for demand matching and high-priority requisition coordination.' },
+    { category: 'support', title: 'Broadcast response SLA reminder', detail: 'Sellers are asked to acknowledge PMO broadcast requests within two business days for faster requirement closure.' },
+    { category: 'event', title: 'FMS logistics integration tabletop exercise announced', detail: 'WWRS, SDR, and Logistics stakeholders will run a joint exercise on cross-system handoff and status accountability.' }
+  ];
+
+  let filteredInventory = [...wwrsInventory];
+  let filteredBroadcasts = [...wwrsBroadcasts];
+
+  function downloadCsv(rows, headers, filename) {
+    const lines = [headers.join(',')];
+    rows.forEach((row) => {
+      const line = headers.map((key) => {
+        const raw = row[key] == null ? '' : String(row[key]);
+        const escaped = raw.replace(/"/g, '""');
+        return '"' + escaped + '"';
+      }).join(',');
+      lines.push(line);
+    });
+
+    const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  function renderInventoryRows(rows) {
+    const body = document.getElementById('inv-results-body');
+    const summary = document.getElementById('inv-summary');
+    if (!body || !summary) return;
+
+    summary.textContent = 'Showing ' + rows.length + ' results';
+    body.innerHTML = rows.map((r) => {
+      return '<tr>' +
+        '<td>' + r.nsn + '</td>' +
+        '<td>' + r.partNumber + '</td>' +
+        '<td>' + r.cageCode + '</td>' +
+        '<td>' + r.itemName + '</td>' +
+        '<td>' + r.weaponSystem + '</td>' +
+        '<td>' + r.source + '</td>' +
+        '<td>' + r.quantity + '</td>' +
+        '<td>' + r.status + '</td>' +
+      '</tr>';
+    }).join('');
+
+    if (!rows.length) {
+      body.innerHTML = '<tr><td colspan="8">No records match your criteria.</td></tr>';
+    }
+  }
+
+  function applyInventoryFilters() {
+    const nsn = (document.getElementById('inv-nsn')?.value || '').trim().toLowerCase();
+    const part = (document.getElementById('inv-part')?.value || '').trim().toLowerCase();
+    const cage = (document.getElementById('inv-cage')?.value || '').trim().toLowerCase();
+    const item = (document.getElementById('inv-item')?.value || '').trim().toLowerCase();
+    const weapon = document.getElementById('inv-weapon')?.value || '';
+    const searchBy = document.getElementById('inv-search-by')?.value || '';
+
+    filteredInventory = wwrsInventory.filter((r) => {
+      const nsnValue = r.nsn.toLowerCase();
+      const partPass = !part || r.partNumber.toLowerCase().includes(part);
+      const cagePass = !cage || r.cageCode.toLowerCase().includes(cage);
+      const itemPass = !item || r.itemName.toLowerCase().includes(item);
+      const weaponPass = !weapon || r.weaponSystem === weapon;
+
+      let searchByPass = true;
+      if (nsn) {
+        if (searchBy === 'fsc') {
+          searchByPass = nsnValue.startsWith(nsn);
+        } else if (searchBy === 'source') {
+          searchByPass = r.source.toLowerCase().includes(nsn);
+        } else if (searchBy === 'weapon') {
+          searchByPass = r.weaponSystem.toLowerCase().includes(nsn);
+        } else {
+          searchByPass = nsnValue.includes(nsn);
+        }
+      }
+
+      return partPass && cagePass && itemPass && weaponPass && searchByPass;
+    });
+
+    renderInventoryRows(filteredInventory);
+    renderDashboardMetrics(filteredInventory);
+  }
+
+  function resetInventoryFilters() {
+    const form = document.getElementById('wwrs-inventory-form');
+    if (form) form.reset();
+    updateInventorySearchHint();
+    filteredInventory = [...wwrsInventory];
+    renderInventoryRows(filteredInventory);
+    renderDashboardMetrics(filteredInventory);
+  }
+
+  function updateInventorySearchHint() {
+    const searchBy = document.getElementById('inv-search-by')?.value || '';
+    const primaryLabel = document.getElementById('inv-primary-label');
+    const primaryInput = document.getElementById('inv-nsn');
+    const hint = document.getElementById('inv-search-hint');
+    if (!primaryLabel || !primaryInput || !hint) return;
+
+    if (searchBy === 'fsc') {
+      primaryLabel.textContent = 'FSC Code';
+      primaryInput.placeholder = 'e.g., 16 or 1005';
+      hint.textContent = 'FSC mode checks the beginning of NSN values for broad class matching.';
+      return;
+    }
+
+    if (searchBy === 'source') {
+      primaryLabel.textContent = 'Source of Supply';
+      primaryInput.placeholder = 'e.g., USAF or US Army';
+      hint.textContent = 'Source mode searches source text in inventory records.';
+      return;
+    }
+
+    if (searchBy === 'weapon') {
+      primaryLabel.textContent = 'Weapon System (text search)';
+      primaryInput.placeholder = 'e.g., F-16 or PATRIOT';
+      hint.textContent = 'Weapon mode searches weapon system names as text.';
+      return;
+    }
+
+    primaryLabel.textContent = 'Search Term (NSN/FSC/NIIN)';
+    primaryInput.placeholder = 'e.g., 1005-01-123-4567';
+    hint.textContent = 'Any Field mode applies this term to NSN values while other fields remain active.';
+  }
+
+  function renderBroadcasts(rows) {
+    const summary = document.getElementById('bc-summary');
+    const root = document.getElementById('bc-results');
+    if (!summary || !root) return;
+
+    summary.textContent = 'Showing ' + rows.length + ' notices';
+    root.innerHTML = rows.map((n) => {
+      return '<p><strong>' + n.title + '</strong></p><p>' + n.detail + '</p>';
+    }).join('<hr style="border:0;border-top:1px solid #d9e0ea;margin:.2rem 0">');
+
+    if (!rows.length) {
+      root.innerHTML = '<p>No notices match your filters.</p>';
+    }
+  }
+
+  function applyBroadcastFilters() {
+    const keyword = (document.getElementById('bc-keyword')?.value || '').trim().toLowerCase();
+    const category = document.getElementById('bc-category')?.value || '';
+
+    filteredBroadcasts = wwrsBroadcasts.filter((n) => {
+      const catPass = !category || n.category === category;
+      const keyPass = !keyword || (n.title + ' ' + n.detail).toLowerCase().includes(keyword);
+      return catPass && keyPass;
+    });
+
+    renderBroadcasts(filteredBroadcasts);
+  }
+
+  function resetBroadcastFilters() {
+    const form = document.getElementById('wwrs-broadcast-form');
+    if (form) form.reset();
+    filteredBroadcasts = [...wwrsBroadcasts];
+    renderBroadcasts(filteredBroadcasts);
+  }
+
+  function renderDashboardMetrics(rows) {
+    const body = document.getElementById('dash-results-body');
+    if (!body) return;
+
+    const grouped = {};
+    rows.forEach((r) => {
+      if (!grouped[r.weaponSystem]) {
+        grouped[r.weaponSystem] = { weaponSystem: r.weaponSystem, lineItems: 0, totalQuantity: 0, leadDaySum: 0 };
+      }
+      grouped[r.weaponSystem].lineItems += 1;
+      grouped[r.weaponSystem].totalQuantity += r.quantity;
+      grouped[r.weaponSystem].leadDaySum += r.leadDays;
+    });
+
+    const metricRows = Object.values(grouped).map((g) => {
+      return {
+        weaponSystem: g.weaponSystem,
+        lineItems: g.lineItems,
+        totalQuantity: g.totalQuantity,
+        avgLeadDays: (g.leadDaySum / g.lineItems).toFixed(1)
+      };
+    }).sort((a, b) => b.totalQuantity - a.totalQuantity);
+
+    body.innerHTML = metricRows.map((m) => {
+      return '<tr>' +
+        '<td>' + m.weaponSystem + '</td>' +
+        '<td>' + m.lineItems + '</td>' +
+        '<td>' + m.totalQuantity + '</td>' +
+        '<td>' + m.avgLeadDays + '</td>' +
+      '</tr>';
+    }).join('');
+
+    if (!metricRows.length) {
+      body.innerHTML = '<tr><td colspan="4">No metrics available for current filter set.</td></tr>';
+    }
+  }
+
+  function activateTool(toolName) {
+    const labelMap = {
+      inventory: 'Inventory Search',
+      broadcasts: 'Broadcasts and PMO Notices',
+      dashboard: 'Program Dashboard',
+      guidance: 'Seller and Buyer Guidance'
+    };
+
+    document.querySelectorAll('[data-tool-panel]').forEach((panel) => {
+      panel.classList.toggle('is-active', panel.getAttribute('data-tool-panel') === toolName);
+    });
+
+    document.querySelectorAll('[data-open-tool]').forEach((trigger) => {
+      const isActive = trigger.getAttribute('data-open-tool') === toolName;
+      trigger.classList.toggle('active', isActive);
+      if (trigger.classList.contains('prosv-tab')) {
+        trigger.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      } else {
+        trigger.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      }
+    });
+
+  }
+
+  document.querySelectorAll('[data-open-tool]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const toolName = btn.getAttribute('data-open-tool');
+      activateTool(toolName || 'inventory');
+    });
+  });
+
+  const inventoryForm = document.getElementById('wwrs-inventory-form');
+  if (inventoryForm) {
+    inventoryForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      applyInventoryFilters();
+    });
+  }
+  document.getElementById('inv-clear-btn')?.addEventListener('click', resetInventoryFilters);
+  document.getElementById('inv-search-by')?.addEventListener('change', updateInventorySearchHint);
+  document.getElementById('inv-download-filtered-btn')?.addEventListener('click', () => {
+    downloadCsv(filteredInventory, ['nsn', 'partNumber', 'cageCode', 'itemName', 'weaponSystem', 'source', 'quantity', 'status', 'leadDays'], 'wwrs_filtered_inventory.csv');
+  });
+  document.getElementById('inv-download-all-btn')?.addEventListener('click', () => {
+    downloadCsv(wwrsInventory, ['nsn', 'partNumber', 'cageCode', 'itemName', 'weaponSystem', 'source', 'quantity', 'status', 'leadDays'], 'wwrs_entire_inventory.csv');
+  });
+
+  const broadcastForm = document.getElementById('wwrs-broadcast-form');
+  if (broadcastForm) {
+    broadcastForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      applyBroadcastFilters();
+    });
+  }
+  document.getElementById('bc-clear-btn')?.addEventListener('click', resetBroadcastFilters);
+
+  document.getElementById('dash-refresh-btn')?.addEventListener('click', () => {
+    renderDashboardMetrics(filteredInventory);
+  });
+  document.getElementById('dash-download-btn')?.addEventListener('click', () => {
+    const rows = [];
+    const grouped = {};
+    filteredInventory.forEach((r) => {
+      if (!grouped[r.weaponSystem]) {
+        grouped[r.weaponSystem] = { weaponSystem: r.weaponSystem, lineItems: 0, totalQuantity: 0, leadDaySum: 0 };
+      }
+      grouped[r.weaponSystem].lineItems += 1;
+      grouped[r.weaponSystem].totalQuantity += r.quantity;
+      grouped[r.weaponSystem].leadDaySum += r.leadDays;
+    });
+    Object.values(grouped).forEach((g) => {
+      rows.push({
+        weaponSystem: g.weaponSystem,
+        lineItems: g.lineItems,
+        totalQuantity: g.totalQuantity,
+        avgLeadDays: (g.leadDaySum / g.lineItems).toFixed(1)
+      });
+    });
+    downloadCsv(rows, ['weaponSystem', 'lineItems', 'totalQuantity', 'avgLeadDays'], 'wwrs_program_metrics.csv');
+  });
+
+  document.getElementById('guide-copy-pmo-btn')?.addEventListener('click', async () => {
+    const status = document.getElementById('guide-status');
+    const text = 'afsac.wwrspmo@us.af.mil';
+    try {
+      await navigator.clipboard.writeText(text);
+      if (status) status.textContent = 'PMO copied: ' + text;
+    } catch (_err) {
+      if (status) status.textContent = 'PMO contact: ' + text;
+    }
+  });
+
+  document.getElementById('guide-download-btn')?.addEventListener('click', () => {
+    const rows = [
+      { audience: 'Seller', action: 'Update inventory list using WWRS upload format' },
+      { audience: 'Seller', action: 'Validate points of contact and system access' },
+      { audience: 'Buyer', action: 'Search inventory by NSN, item, or weapon system' },
+      { audience: 'Buyer', action: 'Coordinate requirements and lead-time priorities' },
+      { audience: 'PMO', action: 'Support broadcasts and redistribution coordination' }
+    ];
+    downloadCsv(rows, ['audience', 'action'], 'wwrs_guidance_checklist.csv');
+  });
+
+  (function initWwrsKeyToggle() {
+    const toggle = document.getElementById('wwrs-key-toggle');
+    const panel = document.getElementById('wwrs-key-panel');
+    const caret = document.getElementById('wwrs-key-caret');
+    if (!toggle || !panel || !caret) return;
+    toggle.addEventListener('click', () => {
+      const open = panel.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      caret.textContent = open ? '-' : '+';
+    });
+  })();
+
+  renderInventoryRows(filteredInventory);
+  renderBroadcasts(filteredBroadcasts);
+  renderDashboardMetrics(filteredInventory);
+  updateInventorySearchHint();
+  activateTool('inventory');
+
+  const user = sessionStorage.getItem('afsacUser');
+  if (user) {
+    const mainNav = document.querySelector('.main-nav');
+    const searchForm = document.querySelector('.search-form');
+    if (mainNav) mainNav.style.display = 'none';
+    if (searchForm) searchForm.style.display = 'none';
+
+    const display = document.getElementById('header-user-display');
+    const signout = document.getElementById('signout-btn');
+    if (display) display.textContent = user;
+    if (signout) {
+      signout.style.display = '';
+      signout.addEventListener('click', (e) => {
+        e.preventDefault();
+        sessionStorage.removeItem('afsacUser');
+        window.location.href = 'login.html';
+      });
+    }
+  } else {
+    window.location.href = 'login.html';
+  }
+</script>
+</body>
+</html>

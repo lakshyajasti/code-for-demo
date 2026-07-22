@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results — AFSAC Online</title>
+  <meta name="description" content="Search results for AFSAC Online">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .search-results-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .search-results-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .search-results-header input {
+      flex: 1;
+      min-width: 250px;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius:0;
+      font-size: 0.95rem;
+      color: black;
+    }
+    .search-results-header input::placeholder {
+      color: #666;
+    }
+    .search-results-header button {
+      padding: 0.75rem 1.5rem;
+      background: var(--af-blue);
+      color: white;
+      border: none;
+      border-radius:0;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+    .search-results-header button:hover {
+      background: #1a4480;
+    }
+    .search-results-count {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-result-item {
+      border: 1px solid var(--border);
+      border-radius:0;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .search-result-item:hover {
+      box-shadow: var(--shadow-sm);
+      border-color: var(--af-blue);
+    }
+    .search-result-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--af-blue);
+      margin: 0 0 0.5rem 0;
+    }
+    .search-result-title a {
+      color: var(--af-blue);
+      text-decoration: none;
+    }
+    .search-result-title a:hover {
+      text-decoration: underline;
+    }
+    .search-result-page {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    .search-result-excerpt {
+      color: var(--text-body);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .search-result-excerpt .highlight {
+      background: #fff3cd;
+      padding: 0 0.2rem;
+      font-weight: 500;
+    }
+    .no-results {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: var(--text-muted);
+    }
+    .no-results h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .no-results p {
+      margin-bottom: 0.5rem;
+    }
+    .search-suggestions {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: var(--bg-page);
+      border-radius:0;
+    }
+    .search-suggestions h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .search-suggestions ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .search-suggestions li a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    .search-suggestions li a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body class="search-results-page site-page">
+
+<!-- Gov Banner -->
+<div class="gov-banner">
+  <div class="container">
+    <div class="gov-banner-flag">
+      <svg width="18" height="13" viewBox="0 0 18 13" fill="none" style="flex-shrink:0"><rect width="18" height="13" fill="#B22234"/><rect y="1" width="18" height="1" fill="white"/><rect y="3" width="18" height="1" fill="white"/><rect y="5" width="18" height="1" fill="white"/><rect y="7" width="18" height="1" fill="white"/><rect y="9" width="18" height="1" fill="white"/><rect y="11" width="18" height="1" fill="white"/><rect width="7" height="7" fill="#3C3B6E"/></svg>
+      An official website of the United States Government &mdash; Air Force Security Assistance &amp; Cooperation Directorate
+    </div>
+    <div class="gov-banner-right">
+      <span class="gov-banner-notice">Authorized Users Only</span>
+      <button class="gov-banner-dismiss">Dismiss</button>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">
+        <div class="logo-emblem"></div>
+        <div class="logo-text">
+          <span class="logo-title">AFSAC Online</span>
+          <span class="logo-subtitle">Air Force Security Assistance &amp; Cooperation</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="main-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="toolbox.html">Applications</a></li>
+          <li class="nav-dropdown"><a href="flo.html">Resources <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a><div class="nav-dropdown-menu"><a href="flo.html">FLO Information</a><a href="#">LOR</a><a href="#">Report2Web</a><a href="#">SCIP Portal</a><a href="#">DSAMS</a></div></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <form class="search-form" role="search" onsubmit="return false">
+          <svg class="search-icon" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" class="search-input" placeholder="Search tools, guides&hellip;" aria-label="Search AFSAC tools">
+        </form>
+        <a href="login.html" class="header-login-btn">Sign In</a>
+      </div>
+      <button class="hamburger" aria-label="Open menu">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a><a href="about.html">About Us</a><a href="toolbox.html">Applications</a><a href="flo.html">Resources</a><a href="contact.html">Contact</a><a href="login.html" style="color:var(--gold);font-weight:700">Sign In</a>
+  </nav>
+</header>
+
+<!-- Main Content -->
+<div class="page-wrapper">
+  <div class="search-results-container">
+    <div class="search-results-header">
+      <input type="search" id="search-box" class="search-input" placeholder="Search again&hellip;" aria-label="New search">
+      <button onclick="performSearch()">Search</button>
+    </div>
+
+    <div id="results-container">
+      <!-- Results will be populated here -->
+    </div>
+
+    <div id="search-suggestions" class="search-suggestions" style="display:none;">
+      <h3>Popular searches:</h3>
+      <ul>
+        <li><a href="#" onclick="searchFor('requisition'); return false;">Requisition</a></li>
+        <li><a href="#" onclick="searchFor('logistics'); return false;">Logistics</a></li>
+        <li><a href="#" onclick="searchFor('case management'); return false;">Case Management</a></li>
+        <li><a href="#" onclick="searchFor('FLO'); return false;">Foreign Liaison Office</a></li>
+        <li><a href="toolbox.html">Browse All Applications</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="footer-brand-logo">
+            <div class="logo-emblem" style="width:48px;height:48px;font-size:.95rem"></div>
+            <span class="footer-brand-title">AFSAC Online</span>
+          </a>
+          <p class="footer-brand-desc">Air Force Security Assistance and Cooperation Directorate — supporting worldwide FMS partnerships through transparent, accessible information systems.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Applications</div>
+          <ul class="footer-links">
+            <li><a href="https://afsac.wpafb.af.mil/req_input.jsp">Requisition</a></li><li><a href="https://afsac.wpafb.af.mil/logistics.jsp">Logistics</a></li><li><a href="https://afsac.wpafb.af.mil/financial.jsp">Case</a></li><li><a href="https://afsac.wpafb.af.mil/sdr.jsp">SDR</a></li><li><a href="https://afsac.wpafb.af.mil/clssa.jsp">CLSSA</a></li><li><a href="https://afsac.wpafb.af.mil/pros.jsp">PROS</a></li><li><a href="https://afsac4.wpafb.af.mil/WWRS">WWRS</a></li><li><a href="afsac-metrics">Metrics</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Resources</div>
+          <ul class="footer-links">
+            <li><a href="about.html">About AFSAC</a></li><li><a href="flo.html">Foreign Liaison Office</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="AFSAC_Brochure.pdf">AFSAC Brochure</a></li><li><a href="#">User Guides</a></li><li><a href="login.html">Sign In</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <div style="flex:1">
+          <button class="footer-legal-toggle">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span class="toggle-text">View Legal Framework &amp; Privacy</span>
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="footer-legal-panel" id="legal-panel">
+            <h4>U.S. Government System Notice</h4>
+            <p>You are accessing a U.S. Government (USG) Information System provided for USG-authorized use only. The USG routinely monitors communications, may inspect and seize data, and communications are not private. Security measures protect USG interests — not your personal benefit or privacy.</p>
+            <h4>Authority</h4>
+            <p>10 U.S.C. 134; DoDD 5101.1; DoDD 5105.65 (DSCA); DoDD 5132.03; DoD Instruction 8550.01.</p>
+            <h4>Privacy Act</h4>
+            <p>Data is protected under the Privacy Act of 1974 (SORN K890.15). Section 508 compliant per 29 U.S.C. 794d.</p>
+          </div>
+          <div class="footer-copyright">&copy; Air Force Security Assistance and Cooperation Directorate &mdash; 2026</div>
+          <div class="footer-508">Section 508 Compliant &nbsp;&bull;&nbsp; Privacy Act Protected &nbsp;&bull;&nbsp; USG Authorized Use Only</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+// Search content index
+const searchIndex = [
+  {
+    title: 'Requisition',
+    page: 'toolbox.html#requisition',
+    pageName: 'Applications',
+    excerpt: 'Submit and manage requisitions for parts, supplies, and equipment through the AFSAC Online portal.'
+  },
+  {
+    title: 'Logistics',
+    page: 'toolbox.html#logistics',
+    pageName: 'Applications',
+    excerpt: 'Track shipments, manage inventory, and coordinate logistics support for your FMS programs.'
+  },
+  {
+    title: 'Case',
+    page: 'toolbox.html#case',
+    pageName: 'Applications',
+    excerpt: 'Monitor Case data, status updates, and case management for your Foreign Military Sales programs.'
+  },
+  {
+    title: 'SDR',
+    page: 'toolbox.html#sdr',
+    pageName: 'Applications',
+    excerpt: 'Submit and track Service Discrepancy Reports for equipment issues and quality concerns.'
+  },
+  {
+    title: 'CLSSA',
+    page: 'toolbox.html#clssa',
+    pageName: 'Applications',
+    excerpt: 'Contractor Logistics Support Agreement management and support.'
+  },
+  {
+    title: 'PROS',
+    page: 'toolbox.html#pros',
+    pageName: 'Applications',
+    excerpt: 'Production and Readiness Operations Support for program execution.'
+  },
+  {
+    title: 'WWRS',
+    page: 'toolbox.html#wwrs',
+    pageName: 'Applications',
+    excerpt: 'Worldwide Requirement and Supply information system for parts and equipment availability.'
+  },
+  {
+    title: 'Metrics',
+    page: 'toolbox.html#metrics',
+    pageName: 'Applications',
+    excerpt: 'View performance metrics, dashboards, and automated reporting for your FMS programs.'
+  },
+  {
+    title: 'About AFSAC',
+    page: 'about.html',
+    pageName: 'About',
+    excerpt: 'Learn about the Air Force Security Assistance and Cooperation Directorate, our mission, and values.'
+  },
+  {
+    title: 'Our Mission',
+    page: 'about.html',
+    pageName: 'About',
+    excerpt: 'To provide professional security assistance and cooperation support that strengthens alliances and advances U.S. national security objectives.'
+  },
+  {
+    title: 'Case Management',
+    page: 'about.html',
+    pageName: 'About',
+    excerpt: 'End-to-end FMS case development, execution, financial tracking, and closeout for partner nation programs.'
+  },
+  {
+    title: 'Logistics Support',
+    page: 'about.html',
+    pageName: 'About',
+    excerpt: 'Requisition processing, catalog management, supply chain visibility, and discrepancy resolution.'
+  },
+  {
+    title: 'Partnership Development',
+    page: 'about.html',
+    pageName: 'About',
+    excerpt: 'Strengthening bilateral and multilateral relationships through collaborative security cooperation programs.'
+  },
+  {
+    title: 'Foreign Liaison Office',
+    page: 'flo.html',
+    pageName: 'FLO',
+    excerpt: 'Resources and tools for Foreign Liaison Officers to support FMS coordination and training activities.'
+  },
+  {
+    title: 'FLO Training Documents',
+    page: 'flo.html',
+    pageName: 'FLO',
+    excerpt: 'Access FMS training documentation and educational materials.'
+  },
+  {
+    title: 'FLO Training Videos',
+    page: 'flo.html',
+    pageName: 'FLO',
+    excerpt: 'Watch training videos and instructional content for FMS programs.'
+  },
+  {
+    title: 'Air Force Liaison Badge',
+    page: 'flo.html',
+    pageName: 'FLO',
+    excerpt: 'Information about Air Force Liaison Officer badge and credentials.'
+  },
+  {
+    title: 'Controlled Exception Metrics',
+    page: 'flo.html',
+    pageName: 'FLO',
+    excerpt: 'Track and review controlled exception metrics and program performance indicators.'
+  },
+  {
+    title: 'Billing Metrics',
+    page: 'flo.html',
+    pageName: 'FLO',
+    excerpt: 'Access billing information and financial metrics for your FMS programs.'
+  },
+  {
+    title: 'Contact Us',
+    page: 'contact.html',
+    pageName: 'Contact',
+    excerpt: 'Submit inquiries, request portal access, or get help with your FMS program.'
+  }
+];
+
+function performSearch() {
+  const query = document.getElementById('search-box').value.trim().toLowerCase();
+  if (query) {
+    searchFor(query);
+  }
+}
+
+function searchFor(query) {
+  document.getElementById('search-box').value = query;
+  const q = query.toLowerCase();
+  const results = searchIndex.filter(item => 
+    item.title.toLowerCase().includes(q) || 
+    item.excerpt.toLowerCase().includes(q)
+  );
+
+  const container = document.getElementById('results-container');
+  const suggestionsDiv = document.getElementById('search-suggestions');
+
+  if (results.length === 0) {
+    container.innerHTML = `
+      <div class="no-results">
+        <h2>No results found</h2>
+        <p>We couldn't find anything matching "<strong>${query}</strong>".</p>
+        <p>Try searching for application names, keywords, or browse from the home page.</p>
+      </div>
+    `;
+    suggestionsDiv.style.display = 'block';
+  } else {
+    const resultsHTML = results.map(item => `
+      <div class="search-result-item">
+        <div class="search-result-page">${item.pageName}</div>
+        <h3 class="search-result-title"><a href="${item.page}">${item.title}</a></h3>
+        <p class="search-result-excerpt">${item.excerpt}</p>
+      </div>
+    `).join('');
+
+    container.innerHTML = `
+      <div class="search-results-count">Found ${results.length} result${results.length !== 1 ? 's' : ''}</div>
+      ${resultsHTML}
+    `;
+    suggestionsDiv.style.display = 'none';
+  }
+}
+
+// Initialize search on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const query = params.get('q');
+  if (query) {
+    searchFor(query);
+  } else {
+    document.getElementById('results-container').innerHTML = `
+      <div class="no-results">
+        <h2>Start searching</h2>
+        <p>Enter a search term above to find applications, resources, and information.</p>
+      </div>
+    `;
+    document.getElementById('search-suggestions').style.display = 'block';
+  }
+
+  // Allow Enter key to search
+  document.getElementById('search-box').addEventListener('keydown', e => {
+    if (e.key === 'Enter') performSearch();
+  });
+});
+</script>
+</body>
+</html>
+
+
+

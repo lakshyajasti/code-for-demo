@@ -1,0 +1,2099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROS V — AFSAC Online</title>
+  <meta name="description" content="PROS V — Parts and Repair Ordering System reporting and tools for AFSAC FMS customers.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── PROS V Sub-navigation ───────────────────────────── */
+    .prosv-subnav {
+      background: var(--navy-700);
+      border-bottom: 2px solid var(--gold);
+    }
+    .prosv-subnav .container { display: flex; align-items: center; }
+    .prosv-subnav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      padding: .65rem 1.1rem;
+      color: rgba(255,255,255,.65);
+      font-size: .84rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: color .15s, border-color .15s;
+    }
+    .prosv-subnav-link:hover { color: white; }
+    .prosv-subnav-link.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .prosv-subnav-link svg { opacity: .6; }
+
+    /* ── PROS V Hero ─────────────────────────────────────── */
+    .prosv-hero {
+      background: var(--bg-sidebar);
+      border-bottom: 1px solid var(--border);
+      padding: 1.75rem 0;
+    }
+    .prosv-hero-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .prosv-hero-text h1 {
+      font-size: 2rem;
+      color: var(--navy);
+      margin-bottom: .5rem;
+      line-height: 1.15;
+    }
+    .prosv-hero-text p {
+      max-width: 600px;
+      color: var(--text-body);
+      line-height: 1.65;
+      font-size: .9375rem;
+      margin: 0;
+    }
+    .prosv-breadcrumb {
+      font-size: .78rem;
+      color: var(--text-muted);
+      margin-bottom: .5rem;
+    }
+    .prosv-breadcrumb a { color: var(--link); text-decoration: none; }
+    .prosv-breadcrumb a:hover { text-decoration: underline; }
+    .prosv-breadcrumb-sep { margin: 0 .3rem; }
+
+    /* ── Horizontal tab bar ───────────────────────────────── */
+    .prosv-tabs {
+      display: flex;
+      gap: .5rem;
+      margin-bottom: 1.75rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .prosv-tab {
+      padding: .5rem 1.25rem;
+      font-size: .875rem;
+      font-weight: 600;
+      font-family: var(--font);
+      color: var(--text-body);
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: white;
+      border-radius:0;
+      white-space: nowrap;
+      transition: background .15s, color .15s, border-color .15s, box-shadow .15s;
+    }
+    .prosv-tab:hover { background: var(--bg-sidebar); border-color: #aab0b8; }
+    .prosv-tab.active {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold-dark);
+      font-weight: 700;
+      box-shadow: 0 1px 4px rgba(253,181,21,.35);
+    }
+    .prosv-tab-group-label {
+      padding: 0 .25rem 0 0;
+      font-size: .72rem;
+      font-weight: 700;
+      font-family: var(--font);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+    .prosv-tab-divider {
+      width: 1px;
+      background: var(--border);
+      margin: 0 .25rem;
+      height: 1.5rem;
+      align-self: center;
+    }
+
+    /* Resources panel */
+    .prosv-resources-panel { display: flex; flex-direction: column; gap: 1rem; }
+    .prosv-res-card { background: white; border-top: 4px solid var(--gold); border: 1px solid var(--border); border-radius:0; overflow: hidden; }
+    .prosv-res-card-title {
+      background: var(--navy-600);
+      color: white;
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      padding: .5rem .875rem;
+    }
+    .prosv-res-link {
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      padding: .5rem .875rem;
+      border-bottom: 1px solid var(--border);
+      font-size: .84rem;
+      color: var(--link);
+      text-decoration: none;
+      transition: background .12s;
+    }
+    .prosv-res-link:last-child { border-bottom: none; }
+    .prosv-res-link:hover { background: var(--bg-sidebar); }
+    .prosv-res-link svg { flex-shrink: 0; opacity: .6; }
+    .prosv-res-placeholder {
+      padding: .875rem;
+      font-size: .84rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ── Report sections ─────────────────────────────────── */
+    .prosv-main { display: flex; flex-direction: column; gap: 1.75rem; }
+    .report-section-head {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .75rem 1rem;
+      margin-bottom: .75rem;
+      background: var(--navy);
+      border-left: 4px solid var(--gold);
+    }
+    .report-section-num { background: var(--gold);
+      color: var(--navy);
+      width: 28px;
+      height: 28px;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: .875rem;
+      flex-shrink: 0;
+    }
+    .report-section-head h2 { font-size: 1.05rem; color: white; margin: 0; text-transform: uppercase; font-weight: 800; letter-spacing: .03em; }
+
+    /* Parameter form */
+    .report-params {
+      background: var(--bg-sidebar);
+      border: 1px solid var(--border);
+      border-radius:0;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .report-params-title {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .param-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      align-items: center;
+      gap: .625rem;
+      margin-bottom: .625rem;
+    }
+    .param-label {
+      font-size: .84rem;
+      font-weight: 600;
+      color: var(--text-body);
+      text-align: right;
+    }
+    .param-radios { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+    .param-radios label { display: flex; align-items: center; gap: .3rem; font-size: .84rem; cursor: pointer; }
+    .param-select, .param-input {
+      padding: .35rem .6rem;
+      border: 1px solid var(--border);
+      border-radius:0;
+      font-size: .84rem;
+      background: white;
+      color: var(--text-body);
+      width: 100%;
+      max-width: 320px;
+    }
+    .param-select:focus, .param-input:focus {
+      outline: none;
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 2px rgba(36,145,255,.25);
+    }
+    .param-date { max-width: 180px; }
+    .param-actions { display: flex; gap: .5rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+    .btn-report-exit {
+      background: var(--navy);
+      color: white;
+      border: none;
+      padding: .4rem 1.25rem;
+      border-radius:0;
+      font-size: .875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .btn-report-exit:hover { background: var(--gold); color: var(--navy); }
+
+    /* Sample report label */
+    .sample-report-label {
+      font-size: .84rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: .5rem;
+    }
+
+    /* Summary report table */
+    .report-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius:0; }
+    .report-table-header {
+      background: var(--navy);
+      color: white;
+      text-align: center;
+      padding: .5rem 1rem;
+      font-size: .875rem;
+      font-weight: 700;
+    }
+    .report-table-sub {
+      background: var(--navy-600);
+      color: rgba(255,255,255,.75);
+      text-align: center;
+      padding: .3rem 1rem;
+      font-size: .78rem;
+    }
+    .report-table-meta {
+      background: var(--bg-sidebar);
+      padding: .3rem 1rem;
+      font-size: .78rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    table.summary-tbl {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .8rem;
+    }
+    .summary-tbl th {
+      background: var(--navy-600);
+      color: white;
+      padding: .375rem .625rem;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,.12);
+      white-space: nowrap;
+    }
+    .summary-tbl th:first-child { text-align: left; min-width: 200px; }
+    .summary-tbl td {
+      padding: .3rem .625rem;
+      border: 1px solid var(--border);
+      text-align: right;
+      white-space: nowrap;
+    }
+    .summary-tbl td:first-child { text-align: left; }
+    .summary-tbl tr:nth-child(even) td { background: var(--bg-sidebar); }
+    .summary-tbl .tbl-group td { background: #dce4f0 !important; font-weight: 700; }
+    .summary-tbl .tbl-sub td:first-child { padding-left: 1.75rem; font-weight: 400; }
+    .summary-tbl .tbl-sub2 td:first-child { padding-left: 3rem; color: var(--text-muted); }
+    .summary-tbl .tbl-spacer td { padding: .15rem; background: #f8f9fa !important; }
+
+    /* Requisition status table */
+    .req-tabs {
+      display: flex;
+      border-bottom: 2px solid var(--gold);
+    }
+    .req-tab {
+      padding: .4rem 1.25rem;
+      font-size: .84rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      border-bottom: none;
+      background: var(--bg-sidebar);
+      color: var(--text-muted);
+      margin-right: 3px;
+      border-radius:0 0 0;
+      transition: background .12s;
+    }
+    .req-tab.active { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+    .req-tab:not(.active):hover { background: var(--border); }
+    .req-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-top: none; border-radius:0; }
+    .req-header-bar {
+      background: var(--bg-sidebar);
+      padding: .3rem .75rem;
+      font-size: .75rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    table.req-tbl {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .75rem;
+    }
+    .req-tbl th {
+      background: var(--navy);
+      color: white;
+      padding: .3rem .5rem;
+      border: 1px solid rgba(255,255,255,.1);
+      white-space: nowrap;
+      font-size: .72rem;
+    }
+    .req-tbl td {
+      padding: .275rem .5rem;
+      border: 1px solid var(--border);
+      white-space: nowrap;
+      font-size: .75rem;
+    }
+    .req-tbl tr:nth-child(even) td { background: var(--bg-sidebar); }
+
+    /* ── All Order Search ────────────────────────────── */
+    .aos-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .aos-header h2 { font-size: 1.05rem; color: white; margin: 0; }
+    .aos-version { font-size: .75rem; color: var(--text-muted); }
+    .aos-type-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .aos-type-tab {
+      padding: .35rem .875rem;
+      font-size: .84rem;
+      cursor: pointer;
+      color: var(--navy);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: color .12s, border-color .12s;
+      white-space: nowrap;
+    }
+    .aos-type-tab:hover { color: var(--gold); }
+    .aos-type-tab.active { color: var(--gold); font-weight: 700; border-bottom-color: var(--gold); }
+    .aos-search-bar {
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      flex-wrap: wrap;
+      background: var(--bg-sidebar);
+      border: 1px solid var(--border);
+      border-radius:0;
+      padding: .625rem .875rem;
+      margin-bottom: .75rem;
+    }
+    .aos-search-field {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .84rem;
+    }
+    .aos-search-field label { font-weight: 600; color: var(--text-body); white-space: nowrap; }
+    .aos-search-input {
+      padding: .3rem .55rem;
+      border: 1px solid var(--border);
+      border-radius:0;
+      font-size: .84rem;
+      width: 140px;
+      background: white;
+      color: var(--text-body);
+    }
+    .aos-search-input:focus { outline: none; border-color: var(--border-focus); box-shadow: 0 0 0 2px rgba(36,145,255,.2); }
+    .aos-search-actions { display: flex; gap: .375rem; margin-left: auto; align-items: center; }
+    .btn-aos-search { background: var(--navy);
+      color: white;
+      border: none;
+      padding: .35rem 1rem;
+      border-radius:0;
+      font-size: .875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .btn-aos-search:hover { background: var(--gold); color: var(--navy); }
+    .btn-aos-clear {
+      background: var(--navy-600);
+      color: white;
+      border: none;
+      padding: .35rem 1rem;
+      border-radius:0;
+      font-size: .875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .btn-aos-clear:hover { background: var(--navy); }
+    .btn-aos-excel {
+      background: var(--navy);
+      color: var(--gold);
+      border: none;
+      width: 44px;
+      height: 28px;
+      border-radius:0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: .8rem;
+      font-weight: 800;
+      transition: background .15s;
+    }
+    .btn-aos-excel:hover { background: var(--gold); color: var(--navy); }
+    .aos-radio-filters {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: .375rem .5rem;
+      margin-bottom: 1rem;
+      font-size: .84rem;
+      color: var(--text-body);
+    }
+    .aos-radio-filters label { display: flex; align-items: center; gap: .35rem; cursor: pointer; color: var(--text-body); }
+    .aos-pagination {
+      display: flex;
+      align-items: center;
+      gap: .2rem;
+      margin-bottom: .75rem;
+      font-size: .84rem;
+    }
+    .aos-page-btn {
+      padding: .25rem .6rem;
+      border: 1px solid var(--border);
+      background: white;
+      border-radius:0;
+      font-size: .84rem;
+      cursor: pointer;
+      color: var(--navy);
+      transition: background .12s;
+    }
+    .aos-page-btn:hover { background: var(--bg-sidebar); }
+    .aos-page-btn.active { background: var(--gold); color: var(--navy); border-color: var(--gold); font-weight: 700; }
+    .aos-page-btn.disabled { color: var(--text-muted); cursor: default; }
+    .aos-page-btn.disabled:hover { background: white; }
+    .report-actions-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: .75rem;
+      gap: .5rem;
+    }
+    .btn-download-csv {
+      background: var(--gold);
+      color: var(--navy);
+      border: 1px solid var(--gold-dark);
+      padding: .35rem .8rem;
+      border-radius: 0;
+      font-size: .8rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+    .btn-download-csv:hover { background: #ffcb52; }
+    table.aos-tbl {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .84rem;
+    }
+    .aos-tbl th {
+      background: white;
+      color: var(--navy);
+      font-weight: 700;
+      font-size: .8rem;
+      padding: .35rem .625rem;
+      border-bottom: 2px solid var(--border);
+      text-align: left;
+      white-space: nowrap;
+    }
+    .aos-tbl td {
+      padding: .3rem .625rem;
+      border-bottom: 1px solid var(--border);
+      font-size: .84rem;
+      white-space: nowrap;
+      color: var(--text-body);
+    }
+    .aos-tbl tr:hover td { background: #f0f4ff; }
+    .aos-empty-row td { color: var(--text-muted); font-style: italic; text-align: center; padding: 1.5rem; }
+
+    /* SAMIS */
+    .samis-block {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1rem 1.25rem;
+      background: #e8edf5;
+      border: 1px solid #b8c9e6;
+      border-radius:0;
+      border-left: 4px solid var(--gold);
+    }
+    .samis-label {
+      background: var(--navy);
+      color: var(--gold);
+      font-weight: 800;
+      font-size: .84rem;
+      padding: .25rem .625rem;
+      border-radius:0;
+      flex-shrink: 0;
+      letter-spacing: .03em;
+    }
+    .samis-text { font-size: .875rem; color: var(--text-body); line-height: 1.6; margin: 0; }
+    .samis-text strong { color: var(--navy); }
+    .status-key-card {
+      margin-top: 1rem;
+      border: 1px solid var(--border);
+      background: white;
+    }
+    .status-key-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      border: none;
+      background: var(--navy-600);
+      color: var(--gold);
+      padding: .5rem .875rem;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      cursor: pointer;
+    }
+    .status-key-header:hover { background: var(--navy); }
+    .status-key-panel {
+      display: none;
+      padding: .65rem .75rem;
+      background: #f8f9fb;
+      border-top: 1px solid var(--border);
+    }
+    .status-key-panel.open { display: block; }
+    .status-key-note {
+      font-size: .75rem;
+      color: var(--text-muted);
+      margin-bottom: .5rem;
+      line-height: 1.5;
+    }
+    .status-key-empty {
+      font-size: .76rem;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.4;
+      padding: .2rem 0;
+    }
+    .status-key-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: .3rem;
+    }
+    .status-key-section {
+      border: 1px solid #d7dce5;
+      background: white;
+      margin-bottom: .45rem;
+    }
+    .status-key-section-title {
+      background: #eef2f8;
+      color: var(--navy);
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      padding: .3rem .45rem;
+      border-bottom: 1px solid #d7dce5;
+    }
+    .status-key-section-body {
+      padding: .35rem .45rem;
+    }
+    .status-key-item {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: .45rem;
+      align-items: start;
+      font-size: .76rem;
+      color: var(--text-body);
+      line-height: 1.35;
+    }
+    .status-key-code {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #b7c0cc;
+      background: white;
+      color: var(--navy);
+      font-weight: 700;
+      padding: .1rem .25rem;
+      min-width: 30px;
+    }
+    .status-code {
+      border-bottom: 1px dotted #6b7280;
+      cursor: help;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .prosv-layout {
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr);
+      grid-template-areas: "sidebar content";
+      gap: 1.5rem;
+      align-items: start;
+    }
+    .prosv-content {
+      grid-area: content;
+      min-width: 0;
+    }
+    .prosv-sidebar {
+      grid-area: sidebar;
+      position: sticky;
+      top: 0;
+      align-self: start;
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    @media (max-width: 768px) {
+      .prosv-hero-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 1040px) {
+      .prosv-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "content"
+          "sidebar";
+      }
+      .prosv-content,
+      .prosv-sidebar {
+        grid-area: auto;
+      }
+      .prosv-sidebar {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body class="site-page">
+
+<!-- Gov Banner -->
+<div class="gov-banner">
+  <div class="container">
+    <div class="gov-banner-flag">
+      <svg width="18" height="13" viewBox="0 0 18 13" fill="none" style="flex-shrink:0"><rect width="18" height="13" fill="#B22234"/><rect y="1" width="18" height="1" fill="white"/><rect y="3" width="18" height="1" fill="white"/><rect y="5" width="18" height="1" fill="white"/><rect y="7" width="18" height="1" fill="white"/><rect y="9" width="18" height="1" fill="white"/><rect y="11" width="18" height="1" fill="white"/><rect width="7" height="7" fill="#3C3B6E"/></svg>
+      An official website of the United States Government &mdash; Air Force Security Assistance &amp; Cooperation Directorate
+    </div>
+    <div class="gov-banner-right">
+      <span class="gov-banner-notice">Authorized Users Only</span>
+      <button class="gov-banner-dismiss">Dismiss</button>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">
+        <div class="logo-emblem"></div>
+        <div class="logo-text">
+          <span class="logo-title">AFSAC Online</span>
+          <span class="logo-subtitle">Air Force Security Assistance &amp; Cooperation</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="main-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="toolbox.html">Applications</a></li>
+          <li class="nav-dropdown"><a href="flo.html">Resources <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a><div class="nav-dropdown-menu"><a href="flo.html">FLO Information</a><a href="#">LOR</a><a href="#">Report2Web</a><a href="#">SCIP Portal</a><a href="#">DSAMS</a></div></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <form class="search-form" role="search" onsubmit="return false">
+          <svg class="search-icon" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" class="search-input" placeholder="Search tools, guides&hellip;" aria-label="Search">
+        </form>
+        <span id="header-user-display" style="font-size:.84rem;color:var(--gold);font-weight:600"></span>
+        <a href="login.html" class="header-login-btn" id="signout-btn" style="display:none">Sign Out</a>
+      </div>
+      <button class="hamburger" aria-label="Open menu">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a><a href="about.html">About Us</a><a href="toolbox.html">Applications</a><a href="flo.html">Resources</a><a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- PROS V Sub-navigation -->
+<div class="prosv-subnav">
+  <div class="container">
+    <a href="dashboard.html" class="prosv-subnav-link active">PROS V</a>
+    <a href="#" class="prosv-subnav-link">
+      Contractor Workbench
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </a>
+    <a href="#" class="prosv-subnav-link">
+      PROS V Resources
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- PROS V Hero -->
+<section class="prosv-hero">
+  <div class="container">
+    <div class="prosv-hero-inner">
+      <div class="prosv-hero-text">
+        <div class="prosv-breadcrumb">
+          <a href="apps.html">AFSAC Online</a>
+          <span class="prosv-breadcrumb-sep">/</span>
+          <a href="toolbox.html">PROS</a>
+          <span class="prosv-breadcrumb-sep">/</span>
+          <span>PROS V</span>
+        </div>
+        <h1>PROS V</h1>
+        <p>Parts and Repair Ordering System (PROS) provides procurement and maintenance support for a wide range of nonstandard and difficult-to-support standard items and is also a contracting vehicle for specialized technical services through task orders.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main PROS V Content -->
+<div class="page-wrapper">
+
+  <!-- Horizontal tab bar -->
+  <div class="prosv-tabs" role="tablist">
+    <span class="prosv-tab-group-label">Reporting</span>
+    <button class="prosv-tab" data-section="all-order-search" role="tab">All Order Search</button>
+    <button class="prosv-tab" data-section="detailed-req-status" role="tab">Detailed Requisition Status</button>
+    <button class="prosv-tab" data-section="country-summary" role="tab">Country Summary</button>
+    <button class="prosv-tab" data-section="opi-summary" role="tab">OPI &amp; Service Summary</button>
+  </div>
+
+  <!-- Content + Communication side card -->
+  <div class="prosv-layout">
+  <div class="prosv-content"><!-- Tab panels -->
+
+      <!-- ── 1. Country Summary Report ───────────────────── -->
+      <div class="card" id="country-summary" style="display:none" role="tabpanel">
+        <div class="report-section-head">
+          <h2>Country Summary Report</h2>
+        </div>
+        <p style="font-size:.875rem;color:var(--text-body);margin-bottom:1.25rem;line-height:1.65">
+          This report provides a summary-level view of requisitions and financial data by country. Select desired parameters, then submit.
+        </p>
+
+        <!-- Parameter form -->
+        <div class="report-params">
+          <div class="report-params-title">Select Report Parameters</div>
+          <form onsubmit="return false">
+            <div class="param-row">
+              <label class="param-label">Service</label>
+              <div class="param-radios">
+                <label><input type="radio" name="cs-service" value="af"> Air Force</label>
+                <label><input type="radio" name="cs-service" value="army"> Army</label>
+                <label><input type="radio" name="cs-service" value="navy" checked> Navy</label>
+                <label><input type="radio" name="cs-service" value="all"> All</label>
+              </div>
+            </div>
+            <div class="param-row">
+              <label class="param-label" for="cs-country">Country</label>
+              <select id="cs-country" class="param-select">
+                <option>All Countries</option>
+                <option>Australia</option>
+                <option>Bahrain</option>
+                <option>Canada</option>
+                <option>Egypt</option>
+                <option>Germany</option>
+                <option>Israel</option>
+                <option>Japan</option>
+                <option>Jordan</option>
+                <option>Kuwait</option>
+                <option>Netherlands</option>
+                <option>Norway</option>
+                <option>Poland</option>
+                <option>Portugal</option>
+                <option>Qatar</option>
+                <option>Saudi Arabia</option>
+                <option>South Korea</option>
+                <option>Taiwan</option>
+                <option>United Arab Emirates</option>
+              </select>
+            </div>
+            <div class="param-row">
+              <label class="param-label" for="cs-case">Case</label>
+              <input type="text" id="cs-case" class="param-input" placeholder="Optional">
+            </div>
+            <div class="param-row">
+              <label class="param-label" for="cs-line">Line</label>
+              <input type="text" id="cs-line" class="param-input" placeholder="Optional">
+            </div>
+            <div class="param-row">
+              <label class="param-label" for="cs-markfor">Mark For</label>
+              <input type="text" id="cs-markfor" class="param-input" placeholder="Optional">
+            </div>
+            <div class="param-row">
+              <label class="param-label" for="cs-startdate">Start Date</label>
+              <input type="date" id="cs-startdate" class="param-input param-date" value="2024-01-01">
+            </div>
+            <div class="param-row">
+              <label class="param-label" for="cs-enddate">End Date</label>
+              <input type="date" id="cs-enddate" class="param-input param-date" value="2026-12-31">
+            </div>
+            <div class="param-row">
+              <label class="param-label">Data Format</label>
+              <div class="param-radios">
+                <label><input type="radio" name="cs-format" value="excel" checked> Excel Spreadsheet</label>
+                <label><input type="radio" name="cs-format" value="ppt"> PowerPoint Slide</label>
+              </div>
+            </div>
+            <div class="param-actions">
+              <button type="submit" class="btn btn-primary" style="padding:.4rem 1.25rem;font-size:.875rem">Submit</button>
+              <button type="button" class="btn-report-exit">Exit</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Sample report output -->
+        <p class="sample-report-label">Sample report:</p>
+        <div class="report-actions-row">
+          <button type="button" class="btn-download-csv" id="country-summary-download">Download CSV</button>
+        </div>
+        <div class="report-table-wrap">
+          <div class="report-table-header">PROS V Summary Report &mdash; Air Force</div>
+          <div class="report-table-sub">As of 02 MAR 2017</div>
+          <div class="report-table-meta">
+            <span id="cs-meta-country">Country: ALL</span>
+            <span id="cs-meta-case">Case:</span>
+            <span id="cs-meta-line">Line:</span>
+            <span id="cs-meta-markfor">Mark For:</span>
+            <span id="cs-meta-from">From: 01-Dec-2016</span>
+            <span id="cs-meta-to">To: 02-Mar-2017</span>
+          </div>
+          <table class="summary-tbl">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Supply</th>
+                <th>Repair</th>
+                <th>Task Orders</th>
+                <th>P &amp; A</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody id="country-summary-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── 2. Detailed Requisition Status Report ───────── -->
+      <div class="card" id="detailed-req-status" style="display:none" role="tabpanel">
+        <div class="report-section-head">
+          <h2>Detailed Requisition Status Report</h2>
+        </div>
+        <p style="font-size:.875rem;color:var(--text-body);margin-bottom:.5rem;line-height:1.65">
+          This report provides detailed status on a country's requisitions, to include: Document Control Numbers (DCNs), National Stock Numbers (NSNs), current status, and applicable dates.
+        </p>
+        <p style="font-size:.875rem;color:var(--text-muted);margin-bottom:1.25rem">
+          Select appropriate parameters (Service and Country), then submit.
+        </p>
+
+        <!-- Parameter form -->
+        <div class="report-params">
+          <div class="report-params-title">Select Report Parameters</div>
+          <form onsubmit="return false">
+            <div class="param-row">
+              <label class="param-label">Service</label>
+              <div class="param-radios">
+                <label><input type="radio" name="drs-service" value="af"> Air Force</label>
+                <label><input type="radio" name="drs-service" value="navy" checked> Navy</label>
+                <label><input type="radio" name="drs-service" value="army"> Army</label>
+                <label><input type="radio" name="drs-service" value="all"> All</label>
+              </div>
+            </div>
+            <div class="param-row">
+              <label class="param-label" for="drs-country">Country</label>
+              <select id="drs-country" class="param-select">
+                <option>All Countries</option>
+                <option>Australia</option>
+                <option>Bahrain</option>
+                <option>Canada</option>
+                <option>Egypt</option>
+                <option>Germany</option>
+                <option>Israel</option>
+                <option>Japan</option>
+                <option>Jordan</option>
+                <option>Kuwait</option>
+                <option>Netherlands</option>
+                <option>Norway</option>
+                <option>Poland</option>
+                <option>Portugal</option>
+                <option>Qatar</option>
+                <option>Saudi Arabia</option>
+                <option>South Korea</option>
+                <option>Taiwan</option>
+                <option>United Arab Emirates</option>
+              </select>
+            </div>
+            <div class="param-actions">
+              <button type="submit" class="btn btn-primary" style="padding:.4rem 1.25rem;font-size:.875rem">Submit</button>
+              <button type="button" class="btn-report-exit">Exit</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Tabbed sample report -->
+        <p class="sample-report-label">Sample Report: &nbsp;<span style="font-weight:400;color:var(--text-muted)">Tabs at the bottom will allow you to review open, completed (invoiced), and shipped requisitions.</span></p>
+        <div class="report-actions-row">
+          <button type="button" class="btn-download-csv" id="drs-download">Download CSV</button>
+        </div>
+        <div class="req-tabs">
+          <div class="req-tab active">Open</div>
+          <div class="req-tab">Completed</div>
+          <div class="req-tab">Shipped</div>
+        </div>
+        <div class="req-table-wrap">
+          <div class="req-header-bar">
+            <span><strong>PROS V</strong></span>
+            <span>As of 25 FEB 2025</span>
+          </div>
+          <table class="req-tbl">
+            <thead>
+              <tr>
+                <th>CC</th><th>Country</th><th>Case</th><th>G</th><th>DID</th><th>DCN</th><th>NSN/Part Number</th>
+                <th>Part Name</th>
+                <th>C<br>O<br>S</th><th>L<br>O<br>S</th>
+                <th>BD Date</th><th>BV Dt</th><th>BV Age</th>
+                <th>Current Status</th><th>Current Status Date</th>
+                <th>Last Status</th><th>Last Status Date</th><th>ESD</th>
+              </tr>
+            </thead>
+            <tbody id="drs-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── All Order Search ──────────────────────────────── -->
+      <div class="card" id="all-order-search" role="tabpanel">
+        <div class="aos-header">
+          <div class="report-section-head" style="margin-bottom:0">
+            <h2>All Order Search</h2>
+          </div>
+          <span class="aos-version">Version 1.31 last updated 06/12/2025</span>
+        </div>
+
+        <!-- Type filter tabs -->
+        <div class="aos-type-tabs">
+          <a href="#" class="aos-type-tab active">All</a>
+          <a href="#" class="aos-type-tab">Supply</a>
+          <a href="#" class="aos-type-tab">Maintenance</a>
+          <a href="#" class="aos-type-tab">Task Order</a>
+          <a href="#" class="aos-type-tab">Price &amp; Availability</a>
+        </div>
+
+        <!-- Search bar -->
+        <form class="aos-search-bar" onsubmit="return false">
+          <div class="aos-search-field">
+            <label for="aos-dcn">DCN:</label>
+            <input type="text" id="aos-dcn" class="aos-search-input" autocomplete="off">
+          </div>
+          <div class="aos-search-field">
+            <label for="aos-current-status">Current Status:</label>
+            <input type="text" id="aos-current-status" class="aos-search-input" autocomplete="off">
+          </div>
+          <div class="aos-search-field">
+            <label for="aos-last-status">Last Status:</label>
+            <input type="text" id="aos-last-status" class="aos-search-input" autocomplete="off">
+          </div>
+          <div class="aos-search-actions">
+            <button type="submit" class="btn-aos-search">Search</button>
+            <button type="button" class="btn-aos-clear">Clear Filter</button>
+            <button type="button" class="btn-aos-excel" title="Download CSV" id="aos-download">CSV</button>
+          </div>
+        </form>
+
+        <!-- Radio filters -->
+        <div class="aos-radio-filters">
+          <label><input type="radio" name="aos-filter" value="cgq"> Customer generated questions</label>
+          <label><input type="radio" name="aos-filter" value="cgr"> Customer generated responses</label>
+          <label><input type="radio" name="aos-filter" value="aged"> Aged requisitions</label>
+          <label><input type="radio" name="aos-filter" value="cancel" checked> Cancellation requests</label>
+          <label><input type="radio" name="aos-filter" value="open-mod"> Requisitions with open modifiers</label>
+          <label><input type="radio" name="aos-filter" value="shipments"> Requisitions with shipments</label>
+        </div>
+
+        <!-- Pagination -->
+        <div class="aos-pagination">
+          <button class="aos-page-btn disabled">First</button>
+          <button class="aos-page-btn disabled">Previous</button>
+          <button class="aos-page-btn active">1</button>
+          <button class="aos-page-btn">2</button>
+          <button class="aos-page-btn">3</button>
+          <button class="aos-page-btn">4</button>
+          <button class="aos-page-btn">5</button>
+          <button class="aos-page-btn" style="border:none;background:none;cursor:default;color:var(--text-muted)">...</button>
+          <button class="aos-page-btn">Next</button>
+          <button class="aos-page-btn">Last</button>
+        </div>
+
+        <!-- Results table -->
+        <div style="overflow-x:auto;border:1px solid var(--border);border-radius:0">
+          <table class="aos-tbl">
+            <thead>
+              <tr>
+                <th>Doc Id</th>
+                <th>Document Number</th>
+                <th>NSN/Part Number</th>
+                <th>Part Name</th>
+                <th>Current Status</th>
+                <th>Last Status</th>
+                <th>Cancellation Type</th>
+                <th>Cancelled Date</th>
+              </tr>
+            </thead>
+            <tbody id="aos-tbody">
+              <tr class="aos-empty-row"><td colspan="8">Enter search parameters above and click <strong>Search</strong> to view results.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── OPI & Service Summary ────────────────────────────── -->
+      <div class="card" id="opi-summary" style="display:none" role="tabpanel">
+        <div class="report-section-head">
+          <h2>OPI &amp; Service Summary</h2>
+        </div>
+        <p style="font-size:.875rem;color:var(--text-body);margin-bottom:1.25rem;line-height:1.65">
+          Summary by Office of Primary Interest (OPI), service, and country showing requisition workload and status mix.
+        </p>
+
+        <div class="report-params">
+          <div class="report-params-title">Select Report Parameters</div>
+          <form id="opi-form" onsubmit="return false">
+            <div class="param-row">
+              <label class="param-label" for="opi-service">Service</label>
+              <select id="opi-service" class="param-select">
+                <option value="All">All</option>
+                <option value="Air Force">Air Force</option>
+                <option value="Army">Army</option>
+                <option value="Navy" selected>Navy</option>
+              </select>
+            </div>
+            <div class="param-row">
+              <label class="param-label" for="opi-country">Country</label>
+              <select id="opi-country" class="param-select">
+                <option value="All Countries">All Countries</option>
+                <option>Australia</option>
+                <option>Bahrain</option>
+                <option>Canada</option>
+                <option>Egypt</option>
+                <option>Germany</option>
+                <option>Israel</option>
+                <option>Japan</option>
+                <option>Jordan</option>
+                <option>Kuwait</option>
+                <option>Netherlands</option>
+                <option>Norway</option>
+                <option>Poland</option>
+                <option>Portugal</option>
+                <option>Qatar</option>
+                <option>Saudi Arabia</option>
+                <option>South Korea</option>
+                <option>Taiwan</option>
+                <option>United Arab Emirates</option>
+              </select>
+            </div>
+            <div class="param-actions">
+              <button type="submit" class="btn btn-primary" style="padding:.4rem 1.25rem;font-size:.875rem" id="opi-submit">Submit</button>
+              <button type="button" class="btn-download-csv" id="opi-download">Download CSV</button>
+              <button type="button" class="btn-report-exit">Exit</button>
+            </div>
+          </form>
+        </div>
+
+        <div style="overflow-x:auto;border:1px solid var(--border);border-radius:0">
+          <table class="aos-tbl">
+            <thead>
+              <tr>
+                <th>OPI</th>
+                <th>Service</th>
+                <th>Country</th>
+                <th>Total Requisitions</th>
+                <th>Open</th>
+                <th>Completed</th>
+                <th>Shipped</th>
+                <th>Cancellation Requests</th>
+                <th>Avg BV Age</th>
+              </tr>
+            </thead>
+            <tbody id="opi-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+  </div><!-- end tab panels -->
+
+  <!-- Communication side card -->
+  <aside class="prosv-sidebar">
+    <div class="card" style="padding:0;overflow:hidden;border:0;box-shadow:none;">
+      <div style="background:var(--navy);color:var(--gold);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:.5rem .875rem">Communication Tool</div>
+      <a href="#" style="display:block;padding:.6rem .875rem;font-size:.875rem;color:var(--navy);font-weight:600;text-decoration:none;border-bottom:1px solid var(--border);transition:background .12s" onmouseover="this.style.background='var(--bg-sidebar)'" onmouseout="this.style.background=''">Respond to Questions</a>
+      <a href="#" style="display:block;padding:.6rem .875rem;font-size:.875rem;color:var(--navy);font-weight:600;text-decoration:none;transition:background .12s" onmouseover="this.style.background='var(--bg-sidebar)'" onmouseout="this.style.background=''">Ask a Question</a>
+    </div>
+    <div class="status-key-card">
+      <button class="status-key-header" id="status-key-toggle" type="button" aria-expanded="false" aria-controls="status-key-panel">
+        <span id="status-key-title">Status Key</span>
+        <span id="status-key-caret">+</span>
+      </button>
+      <div class="status-key-panel" id="status-key-panel">
+        <p class="status-key-note" id="status-key-note">Quick definitions for common PROS V status codes. Keep collapsed for a cleaner page.</p>
+        <div class="status-key-grid" id="status-key-grid"></div>
+      </div>
+    </div>
+  </aside>
+
+  </div><!-- end grid -->
+
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="footer-brand-logo">
+            <div class="logo-emblem" style="width:48px;height:48px;font-size:.95rem"></div>
+            <span class="footer-brand-title">AFSAC Online</span>
+          </a>
+          <p class="footer-brand-desc">Air Force Security Assistance and Cooperation Directorate — supporting worldwide FMS partnerships through transparent, accessible information systems.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Applications</div>
+          <ul class="footer-links">
+            <li><a href="https://afsac.wpafb.af.mil/req_input.jsp">Requisition</a></li><li><a href="https://afsac.wpafb.af.mil/logistics.jsp">Logistics</a></li><li><a href="https://afsac.wpafb.af.mil/financial.jsp">Case</a></li><li><a href="https://afsac.wpafb.af.mil/sdr.jsp">SDR</a></li><li><a href="https://afsac.wpafb.af.mil/clssa.jsp">CLSSA</a></li><li><a href="https://afsac.wpafb.af.mil/pros.jsp">PROS</a></li><li><a href="https://afsac4.wpafb.af.mil/WWRS">WWRS</a></li><li><a href="afsac-metrics">Metrics</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Resources</div>
+          <ul class="footer-links">
+            <li><a href="about.html">About AFSAC</a></li><li><a href="flo.html">Foreign Liaison Office</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="AFSAC_Brochure.pdf">AFSAC Brochure</a></li><li><a href="#">User Guides</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <div style="flex:1">
+          <button class="footer-legal-toggle">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span class="toggle-text">View Legal Framework &amp; Privacy</span>
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="footer-legal-panel" id="legal-panel">
+            <h4>U.S. Government System Notice</h4>
+            <p>You are accessing a U.S. Government (USG) Information System provided for USG-authorized use only. The USG routinely monitors communications, may inspect and seize data, and communications are not private.</p>
+            <h4>Authority</h4>
+            <p>10 U.S.C. 134; DoDD 5101.1; DoDD 5105.65 (DSCA); DoDD 5132.03; DoD Instruction 8550.01.</p>
+            <h4>Privacy Act</h4>
+            <p>Data is protected under the Privacy Act of 1974 (SORN K890.15). Section 508 compliant per 29 U.S.C. 794d.</p>
+          </div>
+          <div class="footer-copyright">&copy; Air Force Security Assistance and Cooperation Directorate &mdash; 2026</div>
+          <div class="footer-508">Section 508 Compliant &nbsp;&bull;&nbsp; Privacy Act Protected &nbsp;&bull;&nbsp; USG Authorized Use Only</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+  (function () {
+    // Hide public navigation when authenticated
+    const user = sessionStorage.getItem('afsacUser');
+    if (user) {
+      const mainNav = document.querySelector('.main-nav');
+      const searchForm = document.querySelector('.search-form');
+      if (mainNav) mainNav.style.display = 'none';
+      if (searchForm) searchForm.style.display = 'none';
+
+      const display = document.getElementById('header-user-display');
+      const signout = document.getElementById('signout-btn');
+      if (display) display.textContent = user;
+      if (signout) {
+        signout.style.display = '';
+        signout.addEventListener('click', (e) => {
+          e.preventDefault();
+          sessionStorage.removeItem('afsacUser');
+          window.location.href = 'login.html';
+        });
+      }
+    }
+
+    // PROS V handbook-aligned dummy dataset
+    const orders = [
+      { docId: 'DOC-1001', dcn: 'DBNBN00000001', country: 'Bahrain', service: 'Air Force', caseCode: 'Q-1-A12', group: '01', did: 'C0R', nsnPart: '1650003041521', cos: 'U', los: '', bdDate: '2025-01-10', bvDate: '', bvAge: 149, currentStatus: 'IV', currentStatusDate: '2025-06-21', lastStatus: 'RB', lastStatusDate: '2025-05-29', esd: '', category: 'Supply', phase: 'open', opi: 'WFSA-LG', cancelType: '', cancelledDate: '', isNmcs: true, priority: 'Urgent', valueCommitted: 12500, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1002', dcn: 'DBNBN00000002', country: 'Bahrain', service: 'Air Force', caseCode: 'Q-1-A12', group: '01', did: 'A05', nsnPart: '16K0145-6-6', cos: 'R', los: '', bdDate: '2025-02-18', bvDate: '2025-03-02', bvAge: 37, currentStatus: 'BV', currentStatusDate: '2025-04-12', lastStatus: 'BZ', lastStatusDate: '2025-02-20', esd: '2025-09-15', category: 'Repair', phase: 'open', opi: 'WFSA-LG', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 38200, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1003', dcn: 'DBNBN00000003', country: 'Bahrain', service: 'Air Force', caseCode: 'M-4-D03', group: '02', did: 'A05', nsnPart: 'VW904190760C', cos: 'R', los: '', bdDate: '2025-03-08', bvDate: '', bvAge: 0, currentStatus: 'BZ', currentStatusDate: '2025-03-09', lastStatus: 'BZ', lastStatusDate: '2025-03-09', esd: '', category: 'Repair', phase: 'open', opi: 'WFSA-RP', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Urgent', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1004', dcn: 'DBNJP00000011', country: 'Japan', service: 'Air Force', caseCode: 'Q-2-B21', group: '01', did: 'A01', nsnPart: '7690015684664', cos: 'R', los: '', bdDate: '2024-11-01', bvDate: '2024-11-26', bvAge: 25, currentStatus: 'BV', currentStatusDate: '2025-01-04', lastStatus: 'BV', lastStatusDate: '2025-01-04', esd: '2025-07-01', category: 'Repair', phase: 'completed', opi: 'WFSA-LG', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 74200, vendorCosts: 71500, fillFees: 1600, programFees: 1100, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1005', dcn: 'DBNJP00000012', country: 'Japan', service: 'Navy', caseCode: 'O-7-C02', group: '03', did: 'A05', nsnPart: '3EM23068AEAA', cos: 'R', los: '', bdDate: '2024-12-13', bvDate: '2025-01-09', bvAge: 27, currentStatus: 'RK', currentStatusDate: '2025-04-11', lastStatus: 'AS3', lastStatusDate: '2025-04-11', esd: '2025-04-09', category: 'Supply', phase: 'shipped', opi: 'WFSA-SC', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 18400, vendorCosts: 17220, fillFees: 690, programFees: 490, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1006', dcn: 'DBNJP00000013', country: 'Japan', service: 'Air Force', caseCode: 'Q-2-B21', group: '01', did: 'C0R', nsnPart: '6610015013600', cos: 'U', los: '', bdDate: '2025-01-18', bvDate: '', bvAge: 186, currentStatus: 'X4', currentStatusDate: '2025-06-20', lastStatus: 'R4', lastStatusDate: '2025-06-12', esd: '', category: 'Supply', phase: 'open', opi: 'WFSA-SC', cancelType: '', cancelledDate: '', isNmcs: true, priority: 'NMCS', valueCommitted: 9100, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1007', dcn: 'DBNQT00000031', country: 'Qatar', service: 'Air Force', caseCode: 'M-9-E44', group: '05', did: 'A09', nsnPart: '01182709', cos: 'R', los: '', bdDate: '2024-08-27', bvDate: '2024-09-21', bvAge: 25, currentStatus: 'BV', currentStatusDate: '2024-09-21', lastStatus: 'BV', lastStatusDate: '2024-09-21', esd: '2025-10-10', category: 'Task Order', phase: 'completed', opi: 'WFSA-RP', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 205000, vendorCosts: 198500, fillFees: 4100, programFees: 2400, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1008', dcn: 'DBNQT00000032', country: 'Qatar', service: 'Army', caseCode: 'E-2-F11', group: '07', did: 'A05', nsnPart: 'LS35076-2-01', cos: 'R', los: '', bdDate: '2025-04-10', bvDate: '', bvAge: 0, currentStatus: 'XQ', currentStatusDate: '2025-05-01', lastStatus: 'BZ', lastStatusDate: '2025-04-11', esd: '', category: 'Price & Availability', phase: 'open', opi: 'WFSA-CM', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1009', dcn: 'DBNQT00000033', country: 'Qatar', service: 'Army', caseCode: 'E-2-F11', group: '07', did: 'A05', nsnPart: 'LS35076-3-01', cos: 'R', los: '', bdDate: '2025-04-13', bvDate: '', bvAge: 0, currentStatus: 'RQ', currentStatusDate: '2025-05-02', lastStatus: 'XQ', lastStatusDate: '2025-05-01', esd: '', category: 'Price & Availability', phase: 'open', opi: 'WFSA-CM', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1010', dcn: 'DBNUAE00000021', country: 'United Arab Emirates', service: 'Air Force', caseCode: 'Q-5-H88', group: '02', did: 'A05', nsnPart: '330669-2', cos: 'R', los: '', bdDate: '2024-10-20', bvDate: '2024-11-18', bvAge: 29, currentStatus: 'BV', currentStatusDate: '2024-11-18', lastStatus: 'BV', lastStatusDate: '2024-11-18', esd: '2026-03-04', category: 'Repair', phase: 'open', opi: 'WFSA-RP', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 9900, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1011', dcn: 'DBNUAE00000022', country: 'United Arab Emirates', service: 'Air Force', caseCode: 'Q-5-H88', group: '02', did: 'A05', nsnPart: '16F1169-823', cos: 'N', los: '', bdDate: '2025-02-05', bvDate: '2025-02-21', bvAge: 16, currentStatus: 'BV', currentStatusDate: '2025-02-21', lastStatus: 'BV', lastStatusDate: '2025-02-21', esd: '2026-06-16', category: 'Supply', phase: 'open', opi: 'WFSA-LG', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 4400, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1012', dcn: 'DBNKR00000091', country: 'South Korea', service: 'Air Force', caseCode: 'M-2-Z14', group: '04', did: 'A05', nsnPart: '16K0145-8-8', cos: 'N', los: '', bdDate: '2024-07-12', bvDate: '2024-08-15', bvAge: 34, currentStatus: 'CA', currentStatusDate: '2024-08-28', lastStatus: 'BZ', lastStatusDate: '2024-07-13', esd: '', category: 'Repair', phase: 'completed', opi: 'WFSA-RP', cancelType: 'Contractor Initiated', cancelledDate: '2024-08-28', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 2100, researchFee: 350, cancelFee: 2100 },
+      { docId: 'DOC-1013', dcn: 'DBNKR00000092', country: 'South Korea', service: 'Navy', caseCode: 'M-2-Z14', group: '04', did: 'A05', nsnPart: '16K0145-7-7', cos: 'N', los: '', bdDate: '2024-07-12', bvDate: '2024-08-16', bvAge: 35, currentStatus: 'CG', currentStatusDate: '2024-09-07', lastStatus: 'BV', lastStatusDate: '2024-08-16', esd: '', category: 'Supply', phase: 'completed', opi: 'WFSA-SC', cancelType: 'Contractor Initiated', cancelledDate: '2024-09-07', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 3300, researchFee: 500, cancelFee: 3300 },
+      { docId: 'DOC-1014', dcn: 'DBNCA00000051', country: 'Canada', service: 'Air Force', caseCode: 'Q-8-A77', group: '01', did: 'A05', nsnPart: 'M16701', cos: 'N', los: '', bdDate: '2025-01-04', bvDate: '2025-01-23', bvAge: 19, currentStatus: 'BV', currentStatusDate: '2025-01-23', lastStatus: 'RQ', lastStatusDate: '2025-01-17', esd: '2025-07-03', category: 'Supply', phase: 'shipped', opi: 'WFSA-LG', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 11200, vendorCosts: 10400, fillFees: 470, programFees: 330, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1015', dcn: 'DBNCA00000052', country: 'Canada', service: 'Air Force', caseCode: 'Q-8-A77', group: '01', did: 'C0R', nsnPart: '2840011802941', cos: 'U', los: '', bdDate: '2025-03-03', bvDate: '', bvAge: 110, currentStatus: 'IV', currentStatusDate: '2025-06-30', lastStatus: 'IV', lastStatusDate: '2025-06-30', esd: '', category: 'Supply', phase: 'open', opi: 'WFSA-CM', cancelType: '', cancelledDate: '', isNmcs: true, priority: 'NMCS', valueCommitted: 22400, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1016', dcn: 'DBNDE00000061', country: 'Germany', service: 'Air Force', caseCode: 'M-1-K13', group: '02', did: 'A09', nsnPart: '370536-5', cos: 'R', los: '', bdDate: '2024-09-14', bvDate: '2024-10-10', bvAge: 26, currentStatus: 'BV', currentStatusDate: '2024-10-10', lastStatus: 'BV', lastStatusDate: '2024-10-10', esd: '2025-12-31', category: 'Task Order', phase: 'completed', opi: 'WFSA-RP', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 98000, vendorCosts: 94100, fillFees: 2500, programFees: 1400, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1017', dcn: 'DBNDE00000062', country: 'Germany', service: 'Air Force', caseCode: 'M-1-K13', group: '02', did: 'A01', nsnPart: '4010006702191LG', cos: 'R', los: '', bdDate: '2024-06-29', bvDate: '2024-07-20', bvAge: 21, currentStatus: 'CU', currentStatusDate: '2024-08-04', lastStatus: 'BZ', lastStatusDate: '2024-06-30', esd: '', category: 'Repair', phase: 'completed', opi: 'WFSA-RP', cancelType: 'Country Initiated', cancelledDate: '2024-08-04', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 4700, researchFee: 420, cancelFee: 4700 },
+      { docId: 'DOC-1018', dcn: 'DBNPL00000041', country: 'Poland', service: 'Air Force', caseCode: 'E-6-T09', group: '06', did: 'A05', nsnPart: '6625014502721', cos: 'U', los: '', bdDate: '2025-04-28', bvDate: '', bvAge: 86, currentStatus: 'BZ', currentStatusDate: '2025-04-29', lastStatus: 'BZ', lastStatusDate: '2025-04-29', esd: '', category: 'Price & Availability', phase: 'open', opi: 'WFSA-CM', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Urgent', valueCommitted: 3000, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1019', dcn: 'DBNPL00000042', country: 'Poland', service: 'Army', caseCode: 'E-6-T09', group: '06', did: 'A05', nsnPart: '8430M4', cos: 'U', los: '', bdDate: '2025-03-22', bvDate: '2025-04-04', bvAge: 13, currentStatus: 'RK', currentStatusDate: '2025-05-05', lastStatus: 'AS3', lastStatusDate: '2025-05-05', esd: '2025-05-04', category: 'Supply', phase: 'shipped', opi: 'WFSA-CM', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 8600, vendorCosts: 7950, fillFees: 390, programFees: 260, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1020', dcn: 'DBNSA00000071', country: 'Saudi Arabia', service: 'Air Force', caseCode: 'Q-3-P22', group: '03', did: 'A05', nsnPart: '1630013313437', cos: 'R', los: '', bdDate: '2025-02-12', bvDate: '2025-03-01', bvAge: 17, currentStatus: 'BV', currentStatusDate: '2025-03-01', lastStatus: 'BV', lastStatusDate: '2025-03-01', esd: '2025-08-21', category: 'Repair', phase: 'open', opi: 'WFSA-LG', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Urgent', valueCommitted: 15100, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1021', dcn: 'DBNSA00000072', country: 'Saudi Arabia', service: 'Air Force', caseCode: 'Q-3-P22', group: '03', did: 'A05', nsnPart: '16K0145-8', cos: 'R', los: '', bdDate: '2025-05-01', bvDate: '', bvAge: 0, currentStatus: 'XQ', currentStatusDate: '2025-05-22', lastStatus: 'BZ', lastStatusDate: '2025-05-02', esd: '', category: 'Repair', phase: 'open', opi: 'WFSA-LG', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 4500, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1022', dcn: 'DBNSA00000073', country: 'Saudi Arabia', service: 'Navy', caseCode: 'Q-3-P22', group: '03', did: 'A05', nsnPart: '16K0145-8-8', cos: 'R', los: '', bdDate: '2025-05-04', bvDate: '', bvAge: 0, currentStatus: 'RQ', currentStatusDate: '2025-05-24', lastStatus: 'XQ', lastStatusDate: '2025-05-22', esd: '', category: 'Repair', phase: 'open', opi: 'WFSA-SC', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 4600, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1023', dcn: 'DBNAU00000081', country: 'Australia', service: 'Air Force', caseCode: 'Q-9-Z31', group: '05', did: 'A01', nsnPart: '330669-2', cos: 'R', los: '', bdDate: '2024-08-21', bvDate: '2024-09-10', bvAge: 20, currentStatus: 'CY', currentStatusDate: '2024-10-03', lastStatus: 'BZ', lastStatusDate: '2024-08-22', esd: '', category: 'Supply', phase: 'completed', opi: 'WFSA-LG', cancelType: 'Contractor Initiated', cancelledDate: '2024-10-03', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 3800, researchFee: 450, cancelFee: 3800 },
+      { docId: 'DOC-1024', dcn: 'DBNAU00000082', country: 'Australia', service: 'Air Force', caseCode: 'Q-9-Z31', group: '05', did: 'A09', nsnPart: 'TTI-AVIONICS-002', cos: 'R', los: '', bdDate: '2025-01-30', bvDate: '2025-02-25', bvAge: 26, currentStatus: 'IV', currentStatusDate: '2025-06-07', lastStatus: 'IV', lastStatusDate: '2025-06-07', esd: '', category: 'Task Order', phase: 'open', opi: 'WFSA-RP', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 67500, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1025', dcn: 'DBNJA00000044', country: 'Japan', service: 'Navy', caseCode: 'O-4-M16', group: '02', did: 'A05', nsnPart: '5945010236754', cos: 'R', los: '', bdDate: '2025-02-02', bvDate: '2025-02-26', bvAge: 24, currentStatus: 'BV', currentStatusDate: '2025-03-19', lastStatus: 'BZ', lastStatusDate: '2025-02-04', esd: '2025-09-25', category: 'Supply', phase: 'open', opi: 'WFSA-SC', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 8800, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1026', dcn: 'DBNJA00000045', country: 'Japan', service: 'Navy', caseCode: 'O-4-M16', group: '02', did: 'A09', nsnPart: 'NAV-ANT-22-004', cos: 'R', los: '', bdDate: '2025-03-01', bvDate: '', bvAge: 0, currentStatus: 'XQ', currentStatusDate: '2025-03-28', lastStatus: 'BZ', lastStatusDate: '2025-03-03', esd: '', category: 'Price & Availability', phase: 'open', opi: 'WFSA-SC', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1027', dcn: 'DBNJA00000046', country: 'Japan', service: 'Navy', caseCode: 'O-4-M16', group: '02', did: 'A09', nsnPart: 'NAV-ANT-22-005', cos: 'R', los: '', bdDate: '2025-03-04', bvDate: '', bvAge: 0, currentStatus: 'RQ', currentStatusDate: '2025-04-01', lastStatus: 'XQ', lastStatusDate: '2025-03-28', esd: '', category: 'Price & Availability', phase: 'open', opi: 'WFSA-SC', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1028', dcn: 'DBNNO00000027', country: 'Norway', service: 'Air Force', caseCode: 'N-2-R11', group: '03', did: 'C0R', nsnPart: '6625016767001', cos: 'U', los: '', bdDate: '2025-01-12', bvDate: '', bvAge: 132, currentStatus: 'IV', currentStatusDate: '2025-06-25', lastStatus: 'IV', lastStatusDate: '2025-06-25', esd: '', category: 'Supply', phase: 'open', opi: 'WFSA-LG', cancelType: '', cancelledDate: '', isNmcs: true, priority: 'NMCS', valueCommitted: 27500, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1029', dcn: 'DBNNO00000028', country: 'Norway', service: 'Army', caseCode: 'N-2-R11', group: '03', did: 'A05', nsnPart: '2510016822912', cos: 'U', los: '', bdDate: '2025-03-14', bvDate: '2025-04-02', bvAge: 19, currentStatus: 'RK', currentStatusDate: '2025-05-30', lastStatus: 'AS3', lastStatusDate: '2025-05-30', esd: '2025-05-29', category: 'Supply', phase: 'shipped', opi: 'WFSA-CM', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 12900, vendorCosts: 11850, fillFees: 620, programFees: 430, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1030', dcn: 'DBNKW00000017', country: 'Kuwait', service: 'Army', caseCode: 'K-3-B08', group: '01', did: 'A05', nsnPart: '5340016604410', cos: 'R', los: '', bdDate: '2024-09-06', bvDate: '2024-10-01', bvAge: 25, currentStatus: 'BV', currentStatusDate: '2024-11-18', lastStatus: 'BV', lastStatusDate: '2024-11-18', esd: '2025-10-20', category: 'Repair', phase: 'completed', opi: 'WFSA-CM', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 26400, vendorCosts: 24890, fillFees: 980, programFees: 530, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1031', dcn: 'DBNKW00000018', country: 'Kuwait', service: 'Army', caseCode: 'K-3-B08', group: '01', did: 'A05', nsnPart: '5930016681522', cos: 'R', los: '', bdDate: '2025-04-22', bvDate: '', bvAge: 0, currentStatus: 'BZ', currentStatusDate: '2025-04-23', lastStatus: 'BZ', lastStatusDate: '2025-04-23', esd: '', category: 'Repair', phase: 'open', opi: 'WFSA-CM', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Urgent', valueCommitted: 5500, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1032', dcn: 'DBNIS00000005', country: 'Israel', service: 'Air Force', caseCode: 'I-1-L44', group: '04', did: 'A09', nsnPart: '4510-IS-44A', cos: 'R', los: '', bdDate: '2025-02-19', bvDate: '', bvAge: 0, currentStatus: 'XQ', currentStatusDate: '2025-03-10', lastStatus: 'BZ', lastStatusDate: '2025-02-20', esd: '', category: 'Price & Availability', phase: 'open', opi: 'WFSA-RP', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1033', dcn: 'DBNIS00000006', country: 'Israel', service: 'Air Force', caseCode: 'I-1-L44', group: '04', did: 'A09', nsnPart: '4510-IS-44B', cos: 'R', los: '', bdDate: '2025-02-21', bvDate: '', bvAge: 0, currentStatus: 'RQ', currentStatusDate: '2025-03-14', lastStatus: 'XQ', lastStatusDate: '2025-03-10', esd: '', category: 'Price & Availability', phase: 'open', opi: 'WFSA-RP', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1034', dcn: 'DBNPT00000039', country: 'Portugal', service: 'Navy', caseCode: 'P-7-N03', group: '08', did: 'A05', nsnPart: '8145017072210', cos: 'U', los: '', bdDate: '2025-01-07', bvDate: '', bvAge: 141, currentStatus: 'IV', currentStatusDate: '2025-06-19', lastStatus: 'RB', lastStatusDate: '2025-05-23', esd: '', category: 'Supply', phase: 'open', opi: 'WFSA-SC', cancelType: '', cancelledDate: '', isNmcs: true, priority: 'NMCS', valueCommitted: 19700, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1035', dcn: 'DBNPT00000040', country: 'Portugal', service: 'Navy', caseCode: 'P-7-N03', group: '08', did: 'A05', nsnPart: '8145017072211', cos: 'U', los: '', bdDate: '2024-08-18', bvDate: '2024-09-09', bvAge: 22, currentStatus: 'CY', currentStatusDate: '2024-10-01', lastStatus: 'BZ', lastStatusDate: '2024-08-20', esd: '', category: 'Supply', phase: 'completed', opi: 'WFSA-SC', cancelType: 'Contractor Initiated', cancelledDate: '2024-10-01', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 2900, researchFee: 380, cancelFee: 2900 },
+      { docId: 'DOC-1036', dcn: 'DBNTW00000014', country: 'Taiwan', service: 'Air Force', caseCode: 'T-4-V70', group: '09', did: 'A01', nsnPart: '7025017130001', cos: 'R', los: '', bdDate: '2025-03-09', bvDate: '2025-03-29', bvAge: 20, currentStatus: 'BV', currentStatusDate: '2025-04-20', lastStatus: 'BV', lastStatusDate: '2025-04-20', esd: '2025-12-19', category: 'Task Order', phase: 'completed', opi: 'WFSA-RP', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 104000, vendorCosts: 99800, fillFees: 2800, programFees: 1400, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1037', dcn: 'DBNTW00000015', country: 'Taiwan', service: 'Navy', caseCode: 'T-4-V70', group: '09', did: 'A01', nsnPart: '7025017130002', cos: 'R', los: '', bdDate: '2025-04-01', bvDate: '', bvAge: 0, currentStatus: 'BZ', currentStatusDate: '2025-04-02', lastStatus: 'BZ', lastStatusDate: '2025-04-02', esd: '', category: 'Repair', phase: 'open', opi: 'WFSA-SC', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Urgent', valueCommitted: 7600, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1038', dcn: 'DBNJO00000009', country: 'Jordan', service: 'Army', caseCode: 'J-8-S50', group: '05', did: 'A05', nsnPart: '1670016908913', cos: 'U', los: '', bdDate: '2025-02-16', bvDate: '', bvAge: 0, currentStatus: 'X4', currentStatusDate: '2025-05-09', lastStatus: 'R4', lastStatusDate: '2025-05-05', esd: '', category: 'Supply', phase: 'open', opi: 'WFSA-CM', cancelType: '', cancelledDate: '', isNmcs: true, priority: 'NMCS', valueCommitted: 13400, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1039', dcn: 'DBNEG00000023', country: 'Egypt', service: 'Air Force', caseCode: 'E-1-X77', group: '02', did: 'A09', nsnPart: '2840017129914', cos: 'R', los: '', bdDate: '2025-01-22', bvDate: '', bvAge: 0, currentStatus: 'BZ', currentStatusDate: '2025-01-23', lastStatus: 'BZ', lastStatusDate: '2025-01-23', esd: '', category: 'Repair', phase: 'open', opi: 'WFSA-LG', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Urgent', valueCommitted: 10200, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1040', dcn: 'DBNEG00000024', country: 'Egypt', service: 'Air Force', caseCode: 'E-1-X77', group: '02', did: 'A09', nsnPart: '2840017129915', cos: 'R', los: '', bdDate: '2024-07-10', bvDate: '2024-08-01', bvAge: 22, currentStatus: 'CA', currentStatusDate: '2024-08-29', lastStatus: 'BZ', lastStatusDate: '2024-07-12', esd: '', category: 'Repair', phase: 'completed', opi: 'WFSA-LG', cancelType: 'Country Initiated', cancelledDate: '2024-08-29', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 3600, researchFee: 310, cancelFee: 3600 },
+      { docId: 'DOC-1041', dcn: 'DBNNL00000051', country: 'Netherlands', service: 'Air Force', caseCode: 'N-7-C90', group: '02', did: 'C0R', nsnPart: '4920017115520', cos: 'U', los: '', bdDate: '2025-01-16', bvDate: '', bvAge: 120, currentStatus: 'IV', currentStatusDate: '2025-06-22', lastStatus: 'RB', lastStatusDate: '2025-05-28', esd: '', category: 'Supply', phase: 'open', opi: 'WFSA-LG', cancelType: '', cancelledDate: '', isNmcs: true, priority: 'NMCS', valueCommitted: 24300, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1042', dcn: 'DBNNL00000052', country: 'Netherlands', service: 'Navy', caseCode: 'N-7-C90', group: '02', did: 'A05', nsnPart: '5935017097762', cos: 'R', los: '', bdDate: '2025-02-27', bvDate: '2025-03-17', bvAge: 18, currentStatus: 'BV', currentStatusDate: '2025-04-10', lastStatus: 'BZ', lastStatusDate: '2025-02-28', esd: '2025-10-14', category: 'Repair', phase: 'open', opi: 'WFSA-SC', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 9300, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1043', dcn: 'DBNBN00000004', country: 'Bahrain', service: 'Navy', caseCode: 'M-4-D03', group: '02', did: 'A05', nsnPart: '5895016559102', cos: 'R', los: '', bdDate: '2025-03-12', bvDate: '', bvAge: 0, currentStatus: 'BZ', currentStatusDate: '2025-03-13', lastStatus: 'BZ', lastStatusDate: '2025-03-13', esd: '', category: 'Repair', phase: 'open', opi: 'WFSA-SC', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Urgent', valueCommitted: 6900, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1044', dcn: 'DBNBN00000005', country: 'Bahrain', service: 'Army', caseCode: 'Q-1-A12', group: '03', did: 'A09', nsnPart: 'ARM-HYD-553', cos: 'R', los: '', bdDate: '2025-04-18', bvDate: '', bvAge: 0, currentStatus: 'XQ', currentStatusDate: '2025-05-04', lastStatus: 'BZ', lastStatusDate: '2025-04-19', esd: '', category: 'Price & Availability', phase: 'open', opi: 'WFSA-CM', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1045', dcn: 'DBNBN00000006', country: 'Bahrain', service: 'Army', caseCode: 'Q-1-A12', group: '03', did: 'A09', nsnPart: 'ARM-HYD-554', cos: 'R', los: '', bdDate: '2025-04-20', bvDate: '', bvAge: 0, currentStatus: 'RQ', currentStatusDate: '2025-05-09', lastStatus: 'XQ', lastStatusDate: '2025-05-04', esd: '', category: 'Price & Availability', phase: 'open', opi: 'WFSA-CM', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1046', dcn: 'DBNCA00000053', country: 'Canada', service: 'Navy', caseCode: 'Q-8-A77', group: '02', did: 'A05', nsnPart: '5995016642200', cos: 'U', los: '', bdDate: '2025-03-11', bvDate: '2025-03-31', bvAge: 20, currentStatus: 'RK', currentStatusDate: '2025-05-21', lastStatus: 'AS3', lastStatusDate: '2025-05-21', esd: '2025-05-20', category: 'Supply', phase: 'shipped', opi: 'WFSA-SC', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 14600, vendorCosts: 13350, fillFees: 760, programFees: 490, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1047', dcn: 'DBNCA00000054', country: 'Canada', service: 'Army', caseCode: 'Q-8-A77', group: '02', did: 'A05', nsnPart: '2910016990012', cos: 'R', los: '', bdDate: '2024-09-19', bvDate: '2024-10-08', bvAge: 19, currentStatus: 'BV', currentStatusDate: '2024-11-09', lastStatus: 'BV', lastStatusDate: '2024-11-09', esd: '2025-09-29', category: 'Repair', phase: 'completed', opi: 'WFSA-CM', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 23900, vendorCosts: 22300, fillFees: 1010, programFees: 590, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1048', dcn: 'DBNDE00000063', country: 'Germany', service: 'Navy', caseCode: 'M-1-K13', group: '04', did: 'A01', nsnPart: '2825017105084', cos: 'R', los: '', bdDate: '2024-08-13', bvDate: '2024-09-01', bvAge: 19, currentStatus: 'CG', currentStatusDate: '2024-09-22', lastStatus: 'BV', lastStatusDate: '2024-09-01', esd: '', category: 'Supply', phase: 'completed', opi: 'WFSA-SC', cancelType: 'Contractor Initiated', cancelledDate: '2024-09-22', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 4200, researchFee: 460, cancelFee: 4200 },
+      { docId: 'DOC-1049', dcn: 'DBNDE00000064', country: 'Germany', service: 'Air Force', caseCode: 'M-1-K13', group: '04', did: 'A09', nsnPart: 'AIR-CTRL-9912', cos: 'R', los: '', bdDate: '2025-02-09', bvDate: '', bvAge: 0, currentStatus: 'BZ', currentStatusDate: '2025-02-10', lastStatus: 'BZ', lastStatusDate: '2025-02-10', esd: '', category: 'Repair', phase: 'open', opi: 'WFSA-RP', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Urgent', valueCommitted: 11800, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1050', dcn: 'DBNKR00000093', country: 'South Korea', service: 'Army', caseCode: 'M-2-Z14', group: '05', did: 'A05', nsnPart: '5920017091130', cos: 'U', los: '', bdDate: '2025-01-26', bvDate: '', bvAge: 152, currentStatus: 'IV', currentStatusDate: '2025-06-27', lastStatus: 'RB', lastStatusDate: '2025-05-31', esd: '', category: 'Supply', phase: 'open', opi: 'WFSA-CM', cancelType: '', cancelledDate: '', isNmcs: true, priority: 'NMCS', valueCommitted: 16700, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1051', dcn: 'DBNKR00000094', country: 'South Korea', service: 'Navy', caseCode: 'M-2-Z14', group: '05', did: 'A05', nsnPart: '5930017085524', cos: 'R', los: '', bdDate: '2025-02-14', bvDate: '', bvAge: 0, currentStatus: 'X4', currentStatusDate: '2025-05-06', lastStatus: 'R4', lastStatusDate: '2025-04-30', esd: '', category: 'Repair', phase: 'open', opi: 'WFSA-SC', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 7200, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1052', dcn: 'DBNQT00000034', country: 'Qatar', service: 'Navy', caseCode: 'E-2-F11', group: '08', did: 'A05', nsnPart: 'NAV-FLTR-8832', cos: 'R', los: '', bdDate: '2025-03-02', bvDate: '2025-03-19', bvAge: 17, currentStatus: 'BV', currentStatusDate: '2025-04-08', lastStatus: 'BV', lastStatusDate: '2025-04-08', esd: '2025-10-01', category: 'Repair', phase: 'open', opi: 'WFSA-SC', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 6900, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1053', dcn: 'DBNQT00000035', country: 'Qatar', service: 'Army', caseCode: 'E-2-F11', group: '08', did: 'A05', nsnPart: 'TASK-QTR-201', cos: 'R', los: '', bdDate: '2024-10-06', bvDate: '2024-10-29', bvAge: 23, currentStatus: 'BV', currentStatusDate: '2024-11-21', lastStatus: 'BV', lastStatusDate: '2024-11-21', esd: '2026-01-30', category: 'Task Order', phase: 'completed', opi: 'WFSA-CM', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 87500, vendorCosts: 82900, fillFees: 2900, programFees: 1700, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1054', dcn: 'DBNJO00000010', country: 'Jordan', service: 'Air Force', caseCode: 'J-8-S50', group: '06', did: 'A01', nsnPart: '3010016781115', cos: 'U', los: '', bdDate: '2025-03-25', bvDate: '', bvAge: 0, currentStatus: 'BZ', currentStatusDate: '2025-03-26', lastStatus: 'BZ', lastStatusDate: '2025-03-26', esd: '', category: 'Supply', phase: 'open', opi: 'WFSA-LG', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Urgent', valueCommitted: 8400, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1055', dcn: 'DBNJO00000011', country: 'Jordan', service: 'Army', caseCode: 'J-8-S50', group: '06', did: 'A05', nsnPart: '3010016781116', cos: 'U', los: '', bdDate: '2024-08-25', bvDate: '2024-09-14', bvAge: 20, currentStatus: 'CU', currentStatusDate: '2024-10-02', lastStatus: 'BZ', lastStatusDate: '2024-08-27', esd: '', category: 'Repair', phase: 'completed', opi: 'WFSA-CM', cancelType: 'Country Initiated', cancelledDate: '2024-10-02', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 3400, researchFee: 300, cancelFee: 3400 },
+      { docId: 'DOC-1056', dcn: 'DBNSA00000074', country: 'Saudi Arabia', service: 'Army', caseCode: 'Q-3-P22', group: '04', did: 'C0R', nsnPart: '1650017075520', cos: 'U', los: '', bdDate: '2025-02-03', bvDate: '', bvAge: 165, currentStatus: 'IV', currentStatusDate: '2025-06-26', lastStatus: 'IV', lastStatusDate: '2025-06-26', esd: '', category: 'Supply', phase: 'open', opi: 'WFSA-CM', cancelType: '', cancelledDate: '', isNmcs: true, priority: 'NMCS', valueCommitted: 21900, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1057', dcn: 'DBNSA00000075', country: 'Saudi Arabia', service: 'Navy', caseCode: 'Q-3-P22', group: '04', did: 'A09', nsnPart: 'TO-SAUD-4401', cos: 'R', los: '', bdDate: '2024-09-28', bvDate: '2024-10-20', bvAge: 22, currentStatus: 'BV', currentStatusDate: '2024-11-16', lastStatus: 'BV', lastStatusDate: '2024-11-16', esd: '2026-02-15', category: 'Task Order', phase: 'completed', opi: 'WFSA-SC', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 93200, vendorCosts: 88600, fillFees: 3000, programFees: 1600, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1058', dcn: 'DBNAU00000083', country: 'Australia', service: 'Navy', caseCode: 'Q-9-Z31', group: '06', did: 'A05', nsnPart: '5999017021188', cos: 'R', los: '', bdDate: '2025-03-13', bvDate: '', bvAge: 0, currentStatus: 'BZ', currentStatusDate: '2025-03-14', lastStatus: 'BZ', lastStatusDate: '2025-03-14', esd: '', category: 'Repair', phase: 'open', opi: 'WFSA-SC', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Urgent', valueCommitted: 7600, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1059', dcn: 'DBNAU00000084', country: 'Australia', service: 'Army', caseCode: 'Q-9-Z31', group: '06', did: 'A01', nsnPart: '4920017023364', cos: 'U', los: '', bdDate: '2024-07-18', bvDate: '2024-08-06', bvAge: 19, currentStatus: 'RK', currentStatusDate: '2024-09-25', lastStatus: 'AS3', lastStatusDate: '2024-09-25', esd: '2024-09-24', category: 'Supply', phase: 'shipped', opi: 'WFSA-CM', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 15800, vendorCosts: 14500, fillFees: 770, programFees: 530, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1060', dcn: 'DBNTW00000016', country: 'Taiwan', service: 'Army', caseCode: 'T-4-V70', group: '10', did: 'A05', nsnPart: '3120017034198', cos: 'R', los: '', bdDate: '2025-02-06', bvDate: '', bvAge: 0, currentStatus: 'XQ', currentStatusDate: '2025-03-05', lastStatus: 'BZ', lastStatusDate: '2025-02-08', esd: '', category: 'Price & Availability', phase: 'open', opi: 'WFSA-CM', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1061', dcn: 'DBNTW00000017', country: 'Taiwan', service: 'Army', caseCode: 'T-4-V70', group: '10', did: 'A05', nsnPart: '3120017034199', cos: 'R', los: '', bdDate: '2025-02-09', bvDate: '', bvAge: 0, currentStatus: 'RQ', currentStatusDate: '2025-03-11', lastStatus: 'XQ', lastStatusDate: '2025-03-05', esd: '', category: 'Price & Availability', phase: 'open', opi: 'WFSA-CM', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1062', dcn: 'DBNPT00000041', country: 'Portugal', service: 'Air Force', caseCode: 'P-7-N03', group: '09', did: 'A09', nsnPart: 'AVIONICS-PT-09', cos: 'R', los: '', bdDate: '2025-04-16', bvDate: '', bvAge: 0, currentStatus: 'BZ', currentStatusDate: '2025-04-17', lastStatus: 'BZ', lastStatusDate: '2025-04-17', esd: '', category: 'Repair', phase: 'open', opi: 'WFSA-RP', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Urgent', valueCommitted: 5800, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 },
+      { docId: 'DOC-1063', dcn: 'DBNNO00000029', country: 'Norway', service: 'Navy', caseCode: 'N-2-R11', group: '04', did: 'A05', nsnPart: '6625016767003', cos: 'U', los: '', bdDate: '2024-08-02', bvDate: '2024-08-21', bvAge: 19, currentStatus: 'CY', currentStatusDate: '2024-09-12', lastStatus: 'BZ', lastStatusDate: '2024-08-04', esd: '', category: 'Supply', phase: 'completed', opi: 'WFSA-SC', cancelType: 'Contractor Initiated', cancelledDate: '2024-09-12', isNmcs: false, priority: 'Routine', valueCommitted: 0, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 3100, researchFee: 390, cancelFee: 3100 },
+      { docId: 'DOC-1064', dcn: 'DBNIS00000007', country: 'Israel', service: 'Navy', caseCode: 'I-1-L44', group: '05', did: 'A05', nsnPart: '5930017112390', cos: 'R', los: '', bdDate: '2025-03-06', bvDate: '2025-03-27', bvAge: 21, currentStatus: 'BV', currentStatusDate: '2025-04-18', lastStatus: 'BV', lastStatusDate: '2025-04-18', esd: '2025-11-30', category: 'Repair', phase: 'open', opi: 'WFSA-SC', cancelType: '', cancelledDate: '', isNmcs: false, priority: 'Routine', valueCommitted: 7400, valueBilled: 0, vendorCosts: 0, fillFees: 0, programFees: 0, cancelValue: 0, researchFee: 0, cancelFee: 0 }
+    ];
+
+    const formatDate = (iso) => {
+      if (!iso) return '';
+      const d = new Date(iso + 'T00:00:00');
+      return d.toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' }).replace(/ /g, '-').toUpperCase();
+    };
+    const countryCodeMap = {
+      Australia: 'AU',
+      Bahrain: 'BA',
+      Canada: 'CA',
+      Egypt: 'EG',
+      Germany: 'GE',
+      Israel: 'IS',
+      Japan: 'JA',
+      Jordan: 'JO',
+      Kuwait: 'KU',
+      Netherlands: 'NE',
+      Norway: 'NO',
+      Poland: 'PO',
+      Portugal: 'PT',
+      Qatar: 'QA',
+      'Saudi Arabia': 'SA',
+      'South Korea': 'SK',
+      Taiwan: 'TW',
+      'United Arab Emirates': 'AE'
+    };
+    const getCountryCode = (country) => countryCodeMap[country] || country.slice(0, 2).toUpperCase();
+    const getMarkForValue = (row) => row.markFor || (getCountryCode(row.country) + '-' + row.group);
+    const formatCurrency = (value) => '$' + Number(value || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const fmtNum = (value) => Number(value || 0).toLocaleString('en-US');
+    const categoryKeys = ['Supply', 'Repair', 'Task Order', 'Price & Availability'];
+    const statusDefinitions = {
+      BZ: 'Research and solicitation phase has begun.',
+      BV: 'Contract awarded and estimated ship/delivery date established.',
+      IV: 'Task Order contract award with estimated completion date.',
+      XQ: 'Customer asked the contractor a question.',
+      RQ: 'Contractor response to customer question.',
+      X4: 'Delay pending USG decision or guidance.',
+      R4: 'USG decision or guidance received.',
+      RK: 'Shipment reported through DTS channels (paired with AS3).',
+      AS3: 'Shipment action/status posted for movement to customer.',
+      RB: 'Administrative/billing progression status.',
+      CG: 'Cancellation status (contractor/customer cancellation workflow).',
+      CU: 'Cancellation status indicating unsuccessful or terminated effort.',
+      CY: 'Cancellation status associated with vendor/supply supportability issues.',
+      CA: 'Cancellation of standard or LOA sole source item; research fee may apply.'
+    };
+    const sectionTitles = {
+      'all-order-search': 'Status Key',
+      'detailed-req-status': 'Status Key',
+      'country-summary': 'Report Key',
+      'opi-summary': 'Report Key'
+    };
+    const partNameLookup = {
+      '1650003041521': 'Hydraulic Booster Assembly',
+      '16K0145-6-6': 'Servo Valve Repair Kit',
+      VW904190760C: 'Voltage Regulator Module',
+      '7690015684664': 'Technical Manual Set',
+      '3EM23068AEAA': 'Electrical Control Assembly',
+      '6610015013600': 'Flight Instrument Control',
+      '01182709': 'Task Order Service Control',
+      'LS35076-2-01': 'Landing Strut Assembly',
+      'LS35076-3-01': 'Landing Strut Assembly Variant',
+      '330669-2': 'Fuel Control Unit',
+      '16F1169-823': 'Aircraft Harness Assembly',
+      '16K0145-8-8': 'Servo Valve Repair Kit Variant',
+      '16K0145-7-7': 'Servo Valve Repair Kit Variant',
+      M16701: 'Mission Support Kit',
+      '2840011802941': 'Turbine Component Module',
+      '370536-5': 'Drive Shaft Segment',
+      '4010006702191LG': 'Chain and Sprocket Assembly',
+      '6625014502721': 'Test Set Electronics Module',
+      '8430M4': 'Protective Footwear Set',
+      '1630013313437': 'Landing Gear Brake Assembly',
+      '16K0145-8': 'Servo Valve Repair Kit',
+      'TTI-AVIONICS-002': 'Avionics Integration Package',
+      '5945010236754': 'Relay Assembly',
+      'NAV-ANT-22-004': 'Naval Antenna Package',
+      'NAV-ANT-22-005': 'Naval Antenna Package Variant',
+      '6625016767001': 'Radar Display Processor',
+      '2510016822912': 'Vehicle Suspension Assembly',
+      '5340016604410': 'Mounting Bracket Kit',
+      '5930016681522': 'Switch Assembly',
+      '4510-IS-44A': 'Sanitation System Component',
+      '4510-IS-44B': 'Sanitation System Component Variant',
+      '8145017072210': 'Shipping and Storage Container',
+      '8145017072211': 'Shipping and Storage Container Variant',
+      '7025017130001': 'Data Processing Unit',
+      '7025017130002': 'Data Processing Unit Variant',
+      '1670016908913': 'Parachute Deployment Assembly',
+      '2840017129914': 'Engine Turbine Support Component',
+      '2840017129915': 'Engine Turbine Support Component Variant',
+      '4920017115520': 'Maintenance Test Fixture',
+      '5935017097762': 'Electrical Connector Assembly',
+      '5895016559102': 'Communications Control Unit',
+      'ARM-HYD-553': 'Hydraulic Actuator Package',
+      'ARM-HYD-554': 'Hydraulic Actuator Package Variant',
+      '5995016642200': 'Cable Harness Assembly',
+      '2910016990012': 'Fuel System Pump',
+      '2825017105084': 'Turbine Rotor Support',
+      'AIR-CTRL-9912': 'Air System Control Module',
+      '5920017091130': 'Circuit Protection Device',
+      '5930017085524': 'Switchgear Component',
+      'NAV-FLTR-8832': 'Naval Filter Assembly',
+      'TASK-QTR-201': 'Task Order Engineering Package',
+      '3010016781115': 'Power Transmission Component',
+      '3010016781116': 'Power Transmission Component Variant',
+      '1650017075520': 'Hydraulic Control Pack',
+      'TO-SAUD-4401': 'Task Order Service Bundle',
+      '5999017021188': 'Electronic Component Kit',
+      '4920017023364': 'Maintenance Interface Unit',
+      '3120017034198': 'Bearing Assembly',
+      '3120017034199': 'Bearing Assembly Variant',
+      'AVIONICS-PT-09': 'Avionics Upgrade Service Package',
+      '6625016767003': 'Radar Display Processor Variant',
+      '5930017112390': 'Switch Control Assembly'
+    };
+
+    const tabSectionIds = ['all-order-search', 'country-summary', 'detailed-req-status', 'opi-summary'];
+    const tabs = document.querySelectorAll('.prosv-tab[data-section]');
+    let activeSection = 'all-order-search';
+
+    function activateTab(id) {
+      tabSectionIds.forEach((sid) => {
+        const el = document.getElementById(sid);
+        if (el) el.style.display = 'none';
+      });
+      const panel = document.getElementById(id);
+      if (panel) panel.style.display = '';
+      tabs.forEach((t) => t.classList.toggle('active', t.dataset.section === id));
+      activeSection = id;
+      refreshKeyForActiveSection();
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => activateTab(tab.dataset.section));
+    });
+
+    let currentAosRows = [];
+    let currentDrsRows = [];
+    let currentOpiRows = [];
+    let currentSummaryRows = [];
+    let aosPage = 1;
+    const aosPageSize = 8;
+    let aosType = 'All';
+
+    function downloadCsv(fileName, columns, rows) {
+      const escapeCell = (value) => {
+        const str = String(value == null ? '' : value);
+        if (/[",\n]/.test(str)) return '"' + str.replace(/"/g, '""') + '"';
+        return str;
+      };
+      const header = columns.map((c) => escapeCell(c.label)).join(',');
+      const lines = rows.map((row) => columns.map((c) => escapeCell(row[c.key])).join(','));
+      const csv = [header, ...lines].join('\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function renderStatusCode(code) {
+      const meaning = statusDefinitions[code] || 'No definition available.';
+      return '<span class="status-code" title="' + meaning.replace(/"/g, '&quot;') + '">' + code + '</span>';
+    }
+
+    function escapeAttr(text) {
+      return String(text || '').replace(/"/g, '&quot;');
+    }
+
+    function inferPartName(partCode) {
+      if (!partCode) return 'Part name not available';
+      if (partNameLookup[partCode]) return partNameLookup[partCode];
+
+      const code = String(partCode).toUpperCase();
+      if (code.includes('AVIONICS')) return 'Avionics component';
+      if (code.includes('HYD')) return 'Hydraulic component';
+      if (code.includes('ANT')) return 'Antenna component';
+      if (code.includes('TASK') || code.startsWith('TO-')) return 'Task order service item';
+      if (/^\d{13,}$/.test(code)) return 'NSN-coded supply component';
+      if (/^\d{4}/.test(code)) return 'NSN/part-coded component';
+      return 'Part name not available';
+    }
+
+    function getAosRows() {
+      const dcn = (document.getElementById('aos-dcn')?.value || '').trim().toLowerCase();
+      const currentStatus = (document.getElementById('aos-current-status')?.value || '').trim().toLowerCase();
+      const lastStatus = (document.getElementById('aos-last-status')?.value || '').trim().toLowerCase();
+      const selectedFilter = document.querySelector('input[name="aos-filter"]:checked')?.value;
+
+      let rows = orders.slice();
+      if (aosType !== 'All') {
+        const map = {
+          Supply: 'Supply',
+          Maintenance: 'Repair',
+          'Task Order': 'Task Order',
+          'Price & Availability': 'Price & Availability'
+        };
+        rows = rows.filter((r) => r.category === map[aosType]);
+      }
+
+      if (dcn) rows = rows.filter((r) => r.dcn.toLowerCase().includes(dcn));
+      if (currentStatus) rows = rows.filter((r) => r.currentStatus.toLowerCase().includes(currentStatus));
+      if (lastStatus) rows = rows.filter((r) => r.lastStatus.toLowerCase().includes(lastStatus));
+
+      if (selectedFilter === 'cgq') rows = rows.filter((r) => r.currentStatus === 'XQ');
+      if (selectedFilter === 'cgr') rows = rows.filter((r) => r.currentStatus === 'RQ');
+      if (selectedFilter === 'aged') rows = rows.filter((r) => r.bvAge >= 120);
+      if (selectedFilter === 'cancel') rows = rows.filter((r) => r.cancelType);
+      if (selectedFilter === 'open-mod') rows = rows.filter((r) => ['BZ', 'X4', 'R4'].includes(r.currentStatus));
+      if (selectedFilter === 'shipments') rows = rows.filter((r) => r.phase === 'shipped' || r.currentStatus === 'RK');
+
+      return rows.sort((a, b) => a.dcn.localeCompare(b.dcn));
+    }
+
+    function renderAos() {
+      const tbody = document.getElementById('aos-tbody');
+      const pager = document.querySelector('.aos-pagination');
+      if (!tbody || !pager) return;
+
+      currentAosRows = getAosRows();
+      const totalPages = Math.max(1, Math.ceil(currentAosRows.length / aosPageSize));
+      if (aosPage > totalPages) aosPage = totalPages;
+      const start = (aosPage - 1) * aosPageSize;
+      const pageRows = currentAosRows.slice(start, start + aosPageSize);
+
+      if (!pageRows.length) {
+        tbody.innerHTML = '<tr class="aos-empty-row"><td colspan="8">No matching records for selected filters.</td></tr>';
+      } else {
+        tbody.innerHTML = pageRows.map((r) => '<tr>' +
+          '<td>' + r.docId + '</td>' +
+          '<td>' + r.dcn + '</td>' +
+          '<td title="' + escapeAttr(inferPartName(r.nsnPart)) + '">' + r.nsnPart + '</td>' +
+          '<td>' + inferPartName(r.nsnPart) + '</td>' +
+          '<td>' + renderStatusCode(r.currentStatus) + '</td>' +
+          '<td>' + renderStatusCode(r.lastStatus) + '</td>' +
+          '<td>' + (r.cancelType || '-') + '</td>' +
+          '<td>' + (r.cancelledDate ? formatDate(r.cancelledDate) : '-') + '</td>' +
+          '</tr>').join('');
+      }
+
+      const pageButtons = [];
+      for (let i = 1; i <= totalPages; i += 1) {
+        pageButtons.push('<button class="aos-page-btn' + (i === aosPage ? ' active' : '') + '" data-page="' + i + '">' + i + '</button>');
+      }
+      pager.innerHTML =
+        '<button class="aos-page-btn' + (aosPage === 1 ? ' disabled' : '') + '" data-nav="first">First</button>' +
+        '<button class="aos-page-btn' + (aosPage === 1 ? ' disabled' : '') + '" data-nav="prev">Previous</button>' +
+        pageButtons.join('') +
+        '<button class="aos-page-btn' + (aosPage === totalPages ? ' disabled' : '') + '" data-nav="next">Next</button>' +
+        '<button class="aos-page-btn' + (aosPage === totalPages ? ' disabled' : '') + '" data-nav="last">Last</button>';
+
+      if (activeSection === 'all-order-search') refreshKeyForActiveSection();
+    }
+
+    function bindAosEvents() {
+      document.querySelectorAll('.aos-type-tab').forEach((tab) => {
+        tab.addEventListener('click', (e) => {
+          e.preventDefault();
+          document.querySelectorAll('.aos-type-tab').forEach((t) => t.classList.remove('active'));
+          tab.classList.add('active');
+          aosType = tab.textContent.trim();
+          aosPage = 1;
+          renderAos();
+        });
+      });
+
+      document.querySelector('.aos-search-bar')?.addEventListener('submit', () => {
+        aosPage = 1;
+        renderAos();
+      });
+      document.querySelector('.btn-aos-search')?.addEventListener('click', () => {
+        aosPage = 1;
+        renderAos();
+      });
+      document.querySelector('.btn-aos-clear')?.addEventListener('click', () => {
+        ['aos-dcn', 'aos-current-status', 'aos-last-status'].forEach((id) => {
+          const input = document.getElementById(id);
+          if (input) input.value = '';
+        });
+        const cancelRadio = document.querySelector('input[name="aos-filter"][value="cancel"]');
+        if (cancelRadio) cancelRadio.checked = true;
+        aosType = 'All';
+        document.querySelectorAll('.aos-type-tab').forEach((t) => t.classList.toggle('active', t.textContent.trim() === 'All'));
+        aosPage = 1;
+        renderAos();
+      });
+      document.querySelectorAll('input[name="aos-filter"]').forEach((radio) => {
+        radio.addEventListener('change', () => {
+          aosPage = 1;
+          renderAos();
+        });
+      });
+
+      document.querySelector('.aos-pagination')?.addEventListener('click', (e) => {
+        const btn = e.target.closest('button.aos-page-btn');
+        if (!btn || btn.classList.contains('disabled')) return;
+        const totalPages = Math.max(1, Math.ceil(currentAosRows.length / aosPageSize));
+        const nav = btn.getAttribute('data-nav');
+        const page = btn.getAttribute('data-page');
+        if (page) aosPage = Number(page);
+        if (nav === 'first') aosPage = 1;
+        if (nav === 'prev') aosPage = Math.max(1, aosPage - 1);
+        if (nav === 'next') aosPage = Math.min(totalPages, aosPage + 1);
+        if (nav === 'last') aosPage = totalPages;
+        renderAos();
+      });
+
+      document.getElementById('aos-download')?.addEventListener('click', () => {
+        downloadCsv('pros-v-all-order-search.csv', [
+          { key: 'docId', label: 'Doc Id' },
+          { key: 'dcn', label: 'Document Number' },
+          { key: 'nsnPart', label: 'NSN/Part Number' },
+          { key: 'partName', label: 'Part Name' },
+          { key: 'currentStatus', label: 'Current Status' },
+          { key: 'lastStatus', label: 'Last Status' },
+          { key: 'cancelType', label: 'Cancellation Type' },
+          { key: 'cancelledDate', label: 'Cancelled Date' }
+        ], currentAosRows.map((r) => ({
+          docId: r.docId,
+          dcn: r.dcn,
+          nsnPart: r.nsnPart,
+          partName: inferPartName(r.nsnPart),
+          currentStatus: r.currentStatus,
+          lastStatus: r.lastStatus,
+          cancelType: r.cancelType || '',
+          cancelledDate: r.cancelledDate ? formatDate(r.cancelledDate) : ''
+        })));
+      });
+    }
+
+    let drsPhase = 'open';
+    function getDrsRows() {
+      const selectedService = document.querySelector('input[name="drs-service"]:checked')?.value || 'af';
+      const serviceMap = { af: 'Air Force', navy: 'Navy', army: 'Army', all: 'All' };
+      const selectedCountry = document.getElementById('drs-country')?.value || 'All Countries';
+
+      return orders.filter((r) => {
+        const serviceMatches = serviceMap[selectedService] === 'All' || r.service === serviceMap[selectedService];
+        const countryMatches = selectedCountry === 'All Countries' || r.country === selectedCountry;
+        const phaseMatches = r.phase === drsPhase;
+        return serviceMatches && countryMatches && phaseMatches;
+      }).sort((a, b) => a.dcn.localeCompare(b.dcn));
+    }
+
+    function renderDrs() {
+      const tbody = document.getElementById('drs-tbody');
+      if (!tbody) return;
+      currentDrsRows = getDrsRows();
+      if (!currentDrsRows.length) {
+        tbody.innerHTML = '<tr><td colspan="18" style="text-align:center;color:var(--text-muted);font-style:italic;padding:1rem">No requisitions match current filters.</td></tr>';
+        if (activeSection === 'detailed-req-status') refreshKeyForActiveSection();
+        return;
+      }
+      tbody.innerHTML = currentDrsRows.map((r) => '<tr>' +
+        '<td>' + getCountryCode(r.country) + '</td>' +
+        '<td>' + r.country + '</td>' +
+        '<td>' + r.caseCode + '</td>' +
+        '<td>' + r.group + '</td>' +
+        '<td>' + r.did + '</td>' +
+        '<td>' + r.dcn + '</td>' +
+        '<td title="' + escapeAttr(inferPartName(r.nsnPart)) + '">' + r.nsnPart + '</td>' +
+        '<td>' + inferPartName(r.nsnPart) + '</td>' +
+        '<td>' + r.cos + '</td>' +
+        '<td>' + r.los + '</td>' +
+        '<td>' + formatDate(r.bdDate) + '</td>' +
+        '<td>' + formatDate(r.bvDate) + '</td>' +
+        '<td>' + (r.bvAge || '') + '</td>' +
+        '<td>' + renderStatusCode(r.currentStatus) + '</td>' +
+        '<td>' + formatDate(r.currentStatusDate) + '</td>' +
+        '<td>' + renderStatusCode(r.lastStatus) + '</td>' +
+        '<td>' + formatDate(r.lastStatusDate) + '</td>' +
+        '<td>' + formatDate(r.esd) + '</td>' +
+        '</tr>').join('');
+
+      if (activeSection === 'detailed-req-status') refreshKeyForActiveSection();
+    }
+
+    function initStatusKeyPanel() {
+      const toggle = document.getElementById('status-key-toggle');
+      const panel = document.getElementById('status-key-panel');
+      const caret = document.getElementById('status-key-caret');
+      if (!toggle || !panel || !caret) return;
+
+      toggle.addEventListener('click', () => {
+        const opening = !panel.classList.contains('open');
+        panel.classList.toggle('open', opening);
+        toggle.setAttribute('aria-expanded', opening ? 'true' : 'false');
+        caret.textContent = opening ? '-' : '+';
+      });
+    }
+
+    function renderKeySections(sections) {
+      const grid = document.getElementById('status-key-grid');
+      if (!grid) return;
+      if (!sections.length) {
+        grid.innerHTML = '<div class="status-key-empty">No key items are available for the current view.</div>';
+        return;
+      }
+      grid.innerHTML = sections.map((section) => {
+        const items = section.items.map((item) =>
+          '<div class="status-key-item"><span class="status-key-code">' + item.code + '</span><span>' + item.text + '</span></div>'
+        ).join('');
+        return '<div class="status-key-section">' +
+          '<div class="status-key-section-title">' + section.title + '</div>' +
+          '<div class="status-key-section-body">' + items + '</div>' +
+          '</div>';
+      }).join('');
+    }
+
+    function refreshKeyForActiveSection() {
+      const titleEl = document.getElementById('status-key-title');
+      const noteEl = document.getElementById('status-key-note');
+      if (!titleEl || !noteEl) return;
+
+      titleEl.textContent = sectionTitles[activeSection] || 'Status Key';
+      const preferredOrder = ['BZ', 'BV', 'IV', 'XQ', 'RQ', 'X4', 'R4', 'RK', 'AS3', 'RB', 'CA', 'CG', 'CU', 'CY'];
+
+      if (activeSection === 'all-order-search' || activeSection === 'detailed-req-status') {
+        const rows = activeSection === 'all-order-search' ? currentAosRows : currentDrsRows;
+        const currentCodes = Array.from(new Set(rows.map((o) => o.currentStatus).filter(Boolean)));
+        const lastCodes = Array.from(new Set(rows.map((o) => o.lastStatus).filter(Boolean)));
+        const orderedCurrent = preferredOrder.filter((code) => currentCodes.includes(code));
+        const orderedLast = preferredOrder.filter((code) => lastCodes.includes(code));
+
+        noteEl.textContent = 'Definitions update to match the status codes in the current report view.';
+        renderKeySections([
+          {
+            title: 'Current Status',
+            items: orderedCurrent.map((code) => ({ code, text: statusDefinitions[code] || 'No definition available.' }))
+          },
+          {
+            title: 'Last Status',
+            items: orderedLast.map((code) => ({ code, text: statusDefinitions[code] || 'No definition available.' }))
+          }
+        ].filter((section) => section.items.length));
+        return;
+      }
+
+      if (activeSection === 'country-summary') {
+        noteEl.textContent = 'These definitions match the summary metrics shown in Country Summary.';
+        renderKeySections([
+          {
+            title: 'Country Summary Metrics',
+            items: [
+              { code: 'REQ', text: 'Total requisitions created in selected filters/date range.' },
+              { code: 'NMCS', text: 'Not Mission Capable Supply requisitions requiring priority attention.' },
+              { code: 'COM', text: 'Value committed but not yet fully billed/closed.' },
+              { code: 'BIL', text: 'Value filled and billed to case/line.' },
+              { code: 'CAN', text: 'Cancelled requisitions and associated cancellation value/fees.' },
+              { code: 'P&A', text: 'Price and Availability actions for sourcing/quotation support.' }
+            ]
+          }
+        ]);
+        return;
+      }
+
+      if (activeSection === 'opi-summary') {
+        noteEl.textContent = 'These definitions match the OPI and Service Summary table columns.';
+        renderKeySections([
+          {
+            title: 'OPI & Service Summary Metrics',
+            items: [
+              { code: 'OPI', text: 'Office of Primary Interest responsible for requisition oversight.' },
+              { code: 'OPEN', text: 'Requisitions currently active and not yet completed or shipped.' },
+              { code: 'COMP', text: 'Requisitions completed, including invoiced/cancelled closeout paths.' },
+              { code: 'SHIP', text: 'Requisitions with shipment statuses (for example RK/AS3).' },
+              { code: 'CXL', text: 'Count of requisitions with cancellation workflow activity.' },
+              { code: 'BV AGE', text: 'Average days from requisition to BV status within grouped results.' }
+            ]
+          }
+        ]);
+      }
+    }
+
+    function bindDrsEvents() {
+      document.querySelector('#detailed-req-status .btn.btn-primary')?.addEventListener('click', renderDrs);
+
+      const reqTabs = Array.from(document.querySelectorAll('.req-tab'));
+      const phaseByLabel = { Open: 'open', Completed: 'completed', Shipped: 'shipped' };
+      const setDrsPhase = (phase) => {
+        reqTabs.forEach((t) => t.classList.remove('active'));
+        const activeTab = reqTabs.find((t) => phaseByLabel[t.textContent.trim()] === phase);
+        if (activeTab) activeTab.classList.add('active');
+        drsPhase = phase;
+      };
+
+      reqTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const phase = phaseByLabel[tab.textContent.trim()];
+          if (!phase) return;
+          setDrsPhase(phase);
+          renderDrs();
+        });
+      });
+
+      document.querySelector('#detailed-req-status .btn-report-exit')?.addEventListener('click', () => {
+        const allService = document.querySelector('input[name="drs-service"][value="all"]');
+        if (allService) allService.checked = true;
+        const countrySelect = document.getElementById('drs-country');
+        if (countrySelect) countrySelect.value = 'All Countries';
+        setDrsPhase('open');
+        renderDrs();
+      });
+
+      document.getElementById('drs-download')?.addEventListener('click', () => {
+        downloadCsv('pros-v-detailed-requisition-status.csv', [
+          { key: 'country', label: 'Country' },
+          { key: 'service', label: 'Service' },
+          { key: 'caseCode', label: 'Case' },
+          { key: 'group', label: 'Group' },
+          { key: 'did', label: 'DID' },
+          { key: 'dcn', label: 'DCN' },
+          { key: 'nsnPart', label: 'NSN/Part Number' },
+          { key: 'partName', label: 'Part Name' },
+          { key: 'currentStatus', label: 'Current Status' },
+          { key: 'currentStatusDate', label: 'Current Status Date' },
+          { key: 'lastStatus', label: 'Last Status' },
+          { key: 'lastStatusDate', label: 'Last Status Date' },
+          { key: 'esd', label: 'ESD' }
+        ], currentDrsRows.map((r) => ({
+          country: r.country,
+          service: r.service,
+          caseCode: r.caseCode,
+          group: r.group,
+          did: r.did,
+          dcn: r.dcn,
+          nsnPart: r.nsnPart,
+          partName: inferPartName(r.nsnPart),
+          currentStatus: r.currentStatus,
+          currentStatusDate: formatDate(r.currentStatusDate),
+          lastStatus: r.lastStatus,
+          lastStatusDate: formatDate(r.lastStatusDate),
+          esd: formatDate(r.esd)
+        })));
+      });
+    }
+
+    function buildSummaryRows(filtered) {
+      const metricByCategory = (predicate, getter) => {
+        const result = {};
+        categoryKeys.forEach((k) => { result[k] = 0; });
+        filtered.forEach((r) => {
+          if (!predicate(r)) return;
+          if (!(r.category in result)) return;
+          result[r.category] += getter(r);
+        });
+        return result;
+      };
+      const row = (label, className, metricObj) => {
+        const total = categoryKeys.reduce((sum, k) => sum + metricObj[k], 0);
+        return { label, className, values: [...categoryKeys.map((k) => metricObj[k]), total] };
+      };
+
+      const totalReq = metricByCategory(() => true, () => 1);
+      const nmcs = metricByCategory((r) => r.isNmcs, () => 1);
+      const urgent = metricByCategory((r) => r.priority === 'Urgent', () => 1);
+      const routine = metricByCategory((r) => r.priority === 'Routine', () => 1);
+      const openRows = metricByCategory((r) => r.phase === 'open', () => 1);
+      const shippedRows = metricByCategory((r) => r.phase === 'shipped', () => 1);
+      const completedRows = metricByCategory((r) => r.phase === 'completed', () => 1);
+      const totalValue = metricByCategory(() => true, (r) => r.valueCommitted + r.valueBilled + r.cancelValue);
+      const valueCommitted = metricByCategory(() => true, (r) => r.valueCommitted);
+      const valueBilled = metricByCategory(() => true, (r) => r.valueBilled);
+      const vendorCosts = metricByCategory(() => true, (r) => r.vendorCosts);
+      const fillFees = metricByCategory(() => true, (r) => r.fillFees);
+      const programFees = metricByCategory(() => true, (r) => r.programFees);
+      const valueCancelled = metricByCategory((r) => !!r.cancelType, (r) => r.cancelValue);
+      const totalCancelled = metricByCategory((r) => !!r.cancelType, () => 1);
+      const contractorCancelled = metricByCategory((r) => r.cancelType === 'Contractor Initiated', () => 1);
+      const countryCancelled = metricByCategory((r) => r.cancelType === 'Country Initiated', () => 1);
+      const researchFees = metricByCategory((r) => !!r.cancelType, (r) => r.researchFee);
+      const cancelFees = metricByCategory((r) => !!r.cancelType, (r) => r.cancelFee);
+
+      return [
+        row('Total Requisitions', 'tbl-group', totalReq),
+        row('NMCS', 'tbl-sub', nmcs),
+        row('Urgent', 'tbl-sub', urgent),
+        row('Routine', 'tbl-sub', routine),
+        { spacer: true },
+        row('Total Open/Unshipped', 'tbl-group', openRows),
+        row('Total Shipped', 'tbl-group', shippedRows),
+        row('Final Billed (Completed)', 'tbl-sub', completedRows),
+        { spacer: true },
+        row('Total Value', 'tbl-group money', totalValue),
+        row('Value Committed', 'tbl-sub money', valueCommitted),
+        row('Value Filled/Billed', 'tbl-sub money', valueBilled),
+        row('Vendor Costs', 'tbl-sub2 money', vendorCosts),
+        row('Fill Fees', 'tbl-sub2 money', fillFees),
+        row('Program Fees', 'tbl-sub2 money', programFees),
+        row('Value Cancelled', 'tbl-sub money', valueCancelled),
+        { spacer: true },
+        row('Total Cancelled', 'tbl-group', totalCancelled),
+        row('Contractor Initiated', 'tbl-sub', contractorCancelled),
+        row('Country Initiated', 'tbl-sub', countryCancelled),
+        { spacer: true },
+        row('Research Fees', 'tbl-group money', researchFees),
+        row('Cancel Fees', 'tbl-group money', cancelFees)
+      ];
+    }
+
+    function renderCountrySummary() {
+      const tbody = document.getElementById('country-summary-body');
+      if (!tbody) return;
+      const serviceCode = document.querySelector('input[name="cs-service"]:checked')?.value || 'af';
+      const serviceMap = { af: 'Air Force', army: 'Army', navy: 'Navy', all: 'All' };
+      const selectedService = serviceMap[serviceCode];
+      const selectedCountry = document.getElementById('cs-country')?.value || 'All Countries';
+      const selectedCase = (document.getElementById('cs-case')?.value || '').trim();
+      const selectedLine = (document.getElementById('cs-line')?.value || '').trim();
+      const markFor = (document.getElementById('cs-markfor')?.value || '').trim();
+      const startDate = document.getElementById('cs-startdate')?.value || '';
+      const endDate = document.getElementById('cs-enddate')?.value || '';
+
+      const filtered = orders.filter((r) => {
+        const serviceOk = selectedService === 'All' || r.service === selectedService;
+        const countryOk = selectedCountry === 'All Countries' || r.country === selectedCountry;
+        const caseOk = !selectedCase || r.caseCode.toLowerCase().includes(selectedCase.toLowerCase());
+        const lineOk = !selectedLine || r.group.toLowerCase().includes(selectedLine.toLowerCase());
+        const markForOk = !markFor || getMarkForValue(r).toLowerCase().includes(markFor.toLowerCase());
+        const startOk = !startDate || r.bdDate >= startDate;
+        const endOk = !endDate || r.bdDate <= endDate;
+        return serviceOk && countryOk && caseOk && lineOk && markForOk && startOk && endOk;
+      });
+
+      currentSummaryRows = buildSummaryRows(filtered);
+
+      document.getElementById('cs-meta-country').textContent = 'Country: ' + (selectedCountry === 'All Countries' ? 'ALL' : selectedCountry.toUpperCase());
+      document.getElementById('cs-meta-case').textContent = 'Case: ' + (selectedCase || '');
+      document.getElementById('cs-meta-line').textContent = 'Line: ' + (selectedLine || '');
+      document.getElementById('cs-meta-markfor').textContent = 'Mark For: ' + (markFor || '');
+      document.getElementById('cs-meta-from').textContent = 'From: ' + (startDate ? formatDate(startDate) : '');
+      document.getElementById('cs-meta-to').textContent = 'To: ' + (endDate ? formatDate(endDate) : '');
+
+      tbody.innerHTML = currentSummaryRows.map((row) => {
+        if (row.spacer) return '<tr class="tbl-spacer"><td colspan="6"></td></tr>';
+        const cells = row.values.map((v) => '<td>' + (row.className.includes('money') ? formatCurrency(v) : fmtNum(v)) + '</td>').join('');
+        return '<tr class="' + row.className + '"><td>' + row.label + '</td>' + cells + '</tr>';
+      }).join('');
+
+      if (activeSection === 'country-summary') refreshKeyForActiveSection();
+    }
+
+    function bindCountrySummaryEvents() {
+      document.querySelector('#country-summary .btn.btn-primary')?.addEventListener('click', renderCountrySummary);
+      document.querySelector('#country-summary .btn-report-exit')?.addEventListener('click', () => {
+        const allService = document.querySelector('input[name="cs-service"][value="all"]');
+        if (allService) allService.checked = true;
+        const country = document.getElementById('cs-country');
+        const caseField = document.getElementById('cs-case');
+        const lineField = document.getElementById('cs-line');
+        const markForField = document.getElementById('cs-markfor');
+        const startDate = document.getElementById('cs-startdate');
+        const endDate = document.getElementById('cs-enddate');
+        if (country) country.value = 'All Countries';
+        if (caseField) caseField.value = '';
+        if (lineField) lineField.value = '';
+        if (markForField) markForField.value = '';
+        if (startDate) startDate.value = '2024-01-01';
+        if (endDate) endDate.value = '2026-12-31';
+        renderCountrySummary();
+      });
+      document.getElementById('country-summary-download')?.addEventListener('click', () => {
+        const flatRows = [];
+        currentSummaryRows.forEach((row) => {
+          if (row.spacer) return;
+          flatRows.push({
+            metric: row.label,
+            supply: row.values[0],
+            repair: row.values[1],
+            taskOrder: row.values[2],
+            priceAvailability: row.values[3],
+            total: row.values[4],
+            valueType: row.className.includes('money') ? 'Currency' : 'Count'
+          });
+        });
+        downloadCsv('pros-v-country-summary.csv', [
+          { key: 'metric', label: 'Metric' },
+          { key: 'supply', label: 'Supply' },
+          { key: 'repair', label: 'Repair' },
+          { key: 'taskOrder', label: 'Task Orders' },
+          { key: 'priceAvailability', label: 'P&A' },
+          { key: 'total', label: 'Total' },
+          { key: 'valueType', label: 'Value Type' }
+        ], flatRows);
+      });
+    }
+
+    function renderOpiSummary() {
+      const tbody = document.getElementById('opi-tbody');
+      if (!tbody) return;
+      const selectedService = document.getElementById('opi-service')?.value || 'All';
+      const selectedCountry = document.getElementById('opi-country')?.value || 'All Countries';
+
+      const filtered = orders.filter((r) => {
+        const serviceMatches = selectedService === 'All' || r.service === selectedService;
+        const countryMatches = selectedCountry === 'All Countries' || r.country === selectedCountry;
+        return serviceMatches && countryMatches;
+      });
+
+      const map = new Map();
+      filtered.forEach((r) => {
+        const key = [r.opi, r.service, r.country].join('||');
+        if (!map.has(key)) {
+          map.set(key, { opi: r.opi, service: r.service, country: r.country, total: 0, open: 0, completed: 0, shipped: 0, cancels: 0, ageSum: 0, ageCount: 0 });
+        }
+        const g = map.get(key);
+        g.total += 1;
+        if (r.phase === 'open') g.open += 1;
+        if (r.phase === 'completed') g.completed += 1;
+        if (r.phase === 'shipped') g.shipped += 1;
+        if (r.cancelType) g.cancels += 1;
+        if (r.bvAge) { g.ageSum += r.bvAge; g.ageCount += 1; }
+      });
+
+      currentOpiRows = Array.from(map.values())
+        .map((r) => ({ ...r, avgBvAge: r.ageCount ? Math.round(r.ageSum / r.ageCount) : 0 }))
+        .sort((a, b) => b.total - a.total);
+
+      if (!currentOpiRows.length) {
+        tbody.innerHTML = '<tr class="aos-empty-row"><td colspan="9">No summary records for selected parameters.</td></tr>';
+        if (activeSection === 'opi-summary') refreshKeyForActiveSection();
+        return;
+      }
+
+      tbody.innerHTML = currentOpiRows.map((r) => '<tr>' +
+        '<td>' + r.opi + '</td>' +
+        '<td>' + r.service + '</td>' +
+        '<td>' + r.country + '</td>' +
+        '<td>' + r.total + '</td>' +
+        '<td>' + r.open + '</td>' +
+        '<td>' + r.completed + '</td>' +
+        '<td>' + r.shipped + '</td>' +
+        '<td>' + r.cancels + '</td>' +
+        '<td>' + r.avgBvAge + '</td>' +
+        '</tr>').join('');
+
+      if (activeSection === 'opi-summary') refreshKeyForActiveSection();
+    }
+
+    function bindOpiEvents() {
+      document.getElementById('opi-submit')?.addEventListener('click', renderOpiSummary);
+      document.querySelector('#opi-summary .btn-report-exit')?.addEventListener('click', () => {
+        const service = document.getElementById('opi-service');
+        const country = document.getElementById('opi-country');
+        if (service) service.value = 'All';
+        if (country) country.value = 'All Countries';
+        renderOpiSummary();
+      });
+      document.getElementById('opi-download')?.addEventListener('click', () => {
+        downloadCsv('pros-v-opi-service-summary.csv', [
+          { key: 'opi', label: 'OPI' },
+          { key: 'service', label: 'Service' },
+          { key: 'country', label: 'Country' },
+          { key: 'total', label: 'Total Requisitions' },
+          { key: 'open', label: 'Open' },
+          { key: 'completed', label: 'Completed' },
+          { key: 'shipped', label: 'Shipped' },
+          { key: 'cancels', label: 'Cancellation Requests' },
+          { key: 'avgBvAge', label: 'Avg BV Age' }
+        ], currentOpiRows);
+      });
+    }
+
+    // Exit buttons reset to All Order Search
+    document.querySelectorAll('.btn-report-exit').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (btn.closest('#detailed-req-status')) return;
+        if (btn.closest('#country-summary')) return;
+        if (btn.closest('#opi-summary')) return;
+        activateTab('all-order-search');
+      });
+    });
+
+    bindAosEvents();
+    bindDrsEvents();
+    bindCountrySummaryEvents();
+    bindOpiEvents();
+
+    initStatusKeyPanel();
+    renderAos();
+    renderDrs();
+    renderCountrySummary();
+    renderOpiSummary();
+    activateTab('all-order-search');
+  })();
+</script>
+</body>
+</html>
+
+
+
+
+

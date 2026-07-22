@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — AFSAC Online</title>
+  <meta name="description" content="Sign in to AFSAC Online using your CAC card or government credentials.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .back-to-home:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .back-to-home:hover svg {
+      stroke: var(--gold);
+    }
+    .cac-btn:hover {
+      background: #ffd700;
+      box-shadow: 0 2px 8px rgba(255, 214, 0, 0.3);
+    }
+    .cac-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body class="login-page-body site-page">
+
+<!-- Gov Banner (minimal on login) -->
+<div class="gov-banner">
+  <div class="container">
+    <div class="gov-banner-flag">
+      <svg width="18" height="13" viewBox="0 0 18 13" fill="none" style="flex-shrink:0"><rect width="18" height="13" fill="#B22234"/><rect y="1" width="18" height="1" fill="white"/><rect y="3" width="18" height="1" fill="white"/><rect y="5" width="18" height="1" fill="white"/><rect y="7" width="18" height="1" fill="white"/><rect y="9" width="18" height="1" fill="white"/><rect y="11" width="18" height="1" fill="white"/><rect width="7" height="7" fill="#3C3B6E"/></svg>
+      An official website of the United States Government &mdash; USG Authorized Use Only
+    </div>
+    <div class="gov-banner-right">
+      <span class="gov-banner-notice">Authorized Users Only</span>
+    </div>
+  </div>
+</div>
+
+<!-- Full-screen login layout -->
+<div class="login-page" style="position:relative">
+  <!-- Back to home - pinned top left -->
+  <div style="position:absolute;top:1.5rem;left:1.5rem;z-index:2">
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.7);text-decoration:none;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;transition:color var(--transition)">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Return to AFSAC Online Home
+    </a>
+  </div>
+
+  <div style="width:100%;max-width:460px;position:relative;z-index:1">
+
+    <!-- Logo / branding header -->
+    <div style="text-align:center;margin-bottom:1.75rem">
+      <div class="logo-emblem" style="width:130px;height:130px;font-size:1.4rem;margin:0 auto 1.25rem"></div>
+      <div style="font-size:1.1rem;font-weight:800;color:white;text-transform:uppercase;letter-spacing:.05em">AFSAC Online</div>
+      <div style="font-size:.7rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-top:.375rem;font-weight:600">Secure FMS Partner Portal</div>
+    </div>
+
+    <!-- Card -->
+    <div style="border:2px solid var(--border);box-shadow:0 4px 24px rgba(0,0,0,.18);background:white">
+
+      <!-- Tabs -->
+      <div style="display:flex;border-bottom:2px solid var(--border)">
+        <button class="auth-tab active" data-tab="signin" onclick="switchTab('signin')" style="flex:1;padding:.85rem 1rem;background:none;border:none;font-weight:800;font-size:.8rem;text-transform:uppercase;letter-spacing:.03em;color:var(--navy);border-bottom:3px solid var(--gold);margin-bottom:-2px;cursor:pointer;transition:all var(--transition)">Sign In</button>
+        <button class="auth-tab" data-tab="signup" onclick="switchTab('signup')" style="flex:1;padding:.85rem 1rem;background:none;border:none;font-weight:800;font-size:.8rem;text-transform:uppercase;letter-spacing:.03em;color:var(--text-muted);border-bottom:3px solid transparent;margin-bottom:-2px;cursor:pointer;transition:all var(--transition)">Create Account</button>
+      </div>
+
+      <!-- Card Content -->
+      <div style="padding:1.75rem">
+
+        <!-- Sign In Tab Content -->
+        <div id="signin-content" style="display:block">
+          <!-- CAC -->
+          <button class="cac-btn" onclick="handleCAC()" style="width:100%;padding:.875rem;background:var(--gold);color:var(--navy);border:none;border-radius:0;font-weight:800;font-size:.85rem;text-transform:uppercase;letter-spacing:.03em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:1.25rem;transition:all var(--transition)">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            Sign In with CAC / PIV Card
+          </button>
+
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;color:var(--text-muted);font-size:.8rem">
+            <div style="flex:1;height:1px;background:var(--border)"></div>
+            <span style="text-transform:uppercase;font-weight:700;letter-spacing:.05em;white-space:nowrap">or use credentials</span>
+            <div style="flex:1;height:1px;background:var(--border)"></div>
+          </div>
+
+          <form id="login-form" novalidate onsubmit="handleLogin(event)">
+            <div class="form-group" style="margin-bottom:1.25rem">
+              <label class="form-label" for="username">Username / Email</label>
+              <input type="text" id="username" class="form-control" placeholder="firstname.lastname@us.af.mil" autocomplete="username">
+            </div>
+            <div class="form-group" style="margin-bottom:1.25rem">
+              <label class="form-label" for="password">Password</label>
+              <div style="position:relative">
+                <input type="password" id="password" class="form-control" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" autocomplete="current-password" style="padding-right:2.75rem">
+                <button type="button" onclick="togglePw()" style="position:absolute;right:.75rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--text-muted);padding:.5rem;display:flex;align-items:center;transition:color var(--transition)" aria-label="Show/hide password">
+                  <svg id="pw-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div id="login-error" style="display:none;align-items:center;gap:.75rem;background:#fef3f2;border:1px solid #f5d577;border-radius:0;padding:.875rem 1rem;margin-bottom:1.25rem;font-size:.85rem;color:#7a5200;border-left:4px solid #f5d577">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span>Invalid credentials. Please try again or use your CAC card.</span>
+            </div>
+
+            <button type="submit" style="width:100%;padding:.875rem;background:var(--navy);color:white;border:none;border-radius:0;font-weight:800;font-size:.85rem;text-transform:uppercase;letter-spacing:.03em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:1.25rem;transition:all var(--transition)">
+              Sign In
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+
+            <div style="text-align:center;font-size:.75rem;display:flex;align-items:center;justify-content:center;gap:.5rem">
+              <a href="#" style="color:var(--gold);text-decoration:none;font-weight:700">Forgot password?</a>
+              &nbsp;&bull;&nbsp;
+              <a href="#" style="color:var(--gold);text-decoration:none;font-weight:700">Unlock account</a>
+            </div>
+          </form>
+        </div>
+
+        <!-- Create Account Tab Content -->
+        <div id="signup-content" style="display:none">
+          <p style="color:var(--text-muted);font-size:.85rem;margin-bottom:1.25rem;line-height:1.6">To create an account, submit a request through your program office or Foreign Liaison Officer. Account creation requires official authorization.</p>
+          <a href="contact.html" style="display:block;width:100%;padding:.875rem;background:var(--navy);color:white;border:none;border-radius:0;font-weight:800;font-size:.85rem;text-transform:uppercase;letter-spacing:.03em;cursor:pointer;text-align:center;text-decoration:none;transition:all var(--transition);box-sizing:border-box">Request Portal Access</a>
+        </div>
+
+        <!-- Footer note -->
+        <div style="text-align:center;font-size:.75rem;color:var(--text-muted);margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border)">
+          <p style="margin:0 0 .4rem 0">Don't have access? <a href="contact.html" style="color:var(--gold);font-weight:700;text-decoration:none">Request portal credentials</a></p>
+          <p style="margin:0">Technical help: <a href="mailto:afsac.online@us.af.mil" style="color:var(--gold);text-decoration:none">afsac.online@us.af.mil</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Minimal footer for login page -->
+<div style="background:var(--navy);padding:1.5rem 0;position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.1)">
+  <div class="container" style="text-align:center">
+    <button class="footer-legal-toggle" style="margin-bottom:1rem;color:var(--gold);background:none;border:none;cursor:pointer;font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.5rem">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span class="toggle-text">View Legal Framework &amp; Privacy</span>
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="footer-legal-panel" id="legal-panel" style="margin:1rem auto;text-align:left;display:none;color:rgba(255,255,255,.8);font-size:.8rem">
+      <h4 style="color:var(--gold);text-transform:uppercase;letter-spacing:.05em;font-size:.8rem;margin-bottom:.75rem">U.S. Government System Notice</h4>
+      <p style="margin:0 0 1rem 0;line-height:1.6">You are accessing a U.S. Government (USG) Information System (IS) provided for USG-authorized use only. The USG routinely monitors communications on this IS, may inspect and seize data at any time, and communications are not private.</p>
+      <h4 style="color:var(--gold);text-transform:uppercase;letter-spacing:.05em;font-size:.8rem;margin-bottom:.75rem">Authority</h4>
+      <p style="margin:0 0 1rem 0;line-height:1.6">10 U.S.C. 134; DoDD 5101.1; DoDD 5105.65 (DSCA); DoDD 5132.03; DoD Instruction 8550.01.</p>
+      <h4 style="color:var(--gold);text-transform:uppercase;letter-spacing:.05em;font-size:.8rem;margin-bottom:.75rem">Privacy Act</h4>
+      <p style="margin:0;line-height:1.6">Data is protected under the Privacy Act of 1974 (SORN K890.15). Section 508 compliant per 29 U.S.C. 794d.</p>
+    </div>
+    <div style="font-size:.75rem;color:rgba(255,255,255,.4)">
+      &copy; Air Force Security Assistance and Cooperation Directorate &mdash; 2026 &nbsp;&bull;&nbsp; Section 508 Compliant &nbsp;&bull;&nbsp; Privacy Act Protected &nbsp;&bull;&nbsp; USG Authorized Use Only
+    </div>
+  </div>
+</div>
+
+<script src="main.js"></script>
+<script>
+  const credentialDisplayNames = {
+    lajasti: 'Lakshya Jasti',
+    droosa: 'Dylan Roosa'
+  };
+
+  function handleCAC() {
+    const btn = document.querySelector('.cac-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="animation:spin 1s linear infinite"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" opacity=".25"/><path d="M21 12a9 9 0 00-9-9"/></svg> Connecting to CAC reader&hellip;';
+    setTimeout(() => {
+      sessionStorage.setItem('afsacUser', 'CAC User');
+      window.location.href = 'apps.html';
+    }, 2000);
+  }
+
+  function handleLogin(e) {
+    e.preventDefault();
+    const u = document.getElementById('username').value.trim();
+    const p = document.getElementById('password').value.trim();
+    const key = u.toLowerCase();
+    const displayName = credentialDisplayNames[key] || u;
+    const err = document.getElementById('login-error');
+    if (!u || !p) {
+      err.style.display = 'flex';
+      return;
+    }
+    err.style.display = 'none';
+    const btn = e.target.querySelector('[type=submit]');
+    btn.disabled = true;
+    btn.textContent = 'Signing in…';
+    setTimeout(() => {
+      sessionStorage.setItem('afsacUser', displayName);
+      window.location.href = 'apps.html';
+    }, 1500);
+  }
+
+  function togglePw() {
+    const pw = document.getElementById('password');
+    pw.type = pw.type === 'password' ? 'text' : 'password';
+  }
+
+  function switchTab(tab) {
+    // Hide all content
+    document.getElementById('signin-content').style.display = 'none';
+    document.getElementById('signup-content').style.display = 'none';
+    
+    // Remove active from all tabs
+    document.querySelectorAll('.auth-tab').forEach(t => {
+      t.style.color = 'var(--text-muted)';
+      t.style.borderBottomColor = 'transparent';
+    });
+    
+    // Show selected content and activate tab
+    if (tab === 'signin') {
+      document.getElementById('signin-content').style.display = 'block';
+      document.querySelector('[data-tab="signin"]').style.color = 'var(--navy)';
+      document.querySelector('[data-tab="signin"]').style.borderBottomColor = 'var(--gold)';
+    } else if (tab === 'signup') {
+      document.getElementById('signup-content').style.display = 'block';
+      document.querySelector('[data-tab="signup"]').style.color = 'var(--navy)';
+      document.querySelector('[data-tab="signup"]').style.borderBottomColor = 'var(--gold)';
+    }
+  }
+
+  document.querySelector('.footer-legal-toggle').addEventListener('click', function() {
+    const panel = document.getElementById('legal-panel');
+    panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
+<style>
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (max-width: 768px) {
+    .login-page > div { grid-template-columns: 1fr !important; }
+    .login-page > div > div:first-child { display: none; }
+  }
+</style>
+</body>
+</html>
+

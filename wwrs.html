@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WWRS Website — AFSAC Online</title>
+  <meta name="description" content="WWRS mission and operational information presented with tabbed navigation aligned to legacy WWRS website sections.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .wwrs-hero {
+      background:
+        linear-gradient(130deg, rgba(10,22,40,.78) 0%, rgba(18,50,88,.68) 62%, rgba(10,22,40,.72) 100%),
+        url('image-1784700926592.png') center 38% / cover no-repeat;
+      color: #ffffff;
+      padding: 2rem 0 2.25rem;
+      border-bottom: 3px solid var(--gold);
+    }
+    .wwrs-hero .container {
+      display: grid;
+      gap: 1.25rem;
+    }
+    .wwrs-kicker {
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .75rem;
+      font-weight: 700;
+      color: rgba(255,255,255,.75);
+    }
+    .wwrs-hero h1 {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(1.85rem, 3vw, 2.6rem);
+      line-height: 1.1;
+      max-width: 26ch;
+    }
+    .wwrs-hero p {
+      margin: 0;
+      max-width: 82ch;
+      color: rgba(255,255,255,.88);
+      font-size: .95rem;
+      line-height: 1.7;
+    }
+    .wwrs-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-top: .2rem;
+    }
+    .wwrs-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      padding: .66rem 1rem;
+      text-decoration: none;
+      font-size: .84rem;
+      font-weight: 700;
+      letter-spacing: .01em;
+      border: 1px solid transparent;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
+    }
+    .wwrs-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0,0,0,.18);
+      text-decoration: none;
+    }
+    .wwrs-btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold-dark);
+    }
+    .wwrs-btn-secondary {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,.45);
+    }
+    .wwrs-btn-secondary:hover {
+      background: rgba(255,255,255,.1);
+      color: #fff;
+    }
+
+    .wwrs-main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 1.6rem 1rem 2.2rem;
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(280px, .95fr);
+      gap: 1.2rem;
+    }
+    .wwrs-panel {
+      background: #fff;
+      border: 1px solid #d0d7e2;
+      border-radius: 0;
+      box-shadow: 0 1px 4px rgba(16,24,40,.08);
+      overflow: hidden;
+    }
+    .wwrs-panel-head {
+      background: var(--navy);
+      color: #fff;
+      padding: .8rem 1rem;
+      border-left: 4px solid var(--gold);
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+    }
+    .wwrs-panel-head h2 {
+      margin: 0;
+      font-size: .95rem;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      line-height: 1.25;
+    }
+    .wwrs-panel-body {
+      padding: 1rem;
+      display: grid;
+      gap: .95rem;
+    }
+    .wwrs-section {
+      border: 1px solid var(--border);
+      background: #f7f9fc;
+      padding: .9rem;
+      display: grid;
+      gap: .55rem;
+    }
+    .wwrs-section h3 {
+      margin: 0;
+      color: var(--navy);
+      font-size: .98rem;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      line-height: 1.25;
+    }
+    .wwrs-section p {
+      margin: 0;
+      color: var(--text-body);
+      font-size: .9rem;
+      line-height: 1.65;
+    }
+    .wwrs-list {
+      margin: 0;
+      padding-left: 1.1rem;
+      display: grid;
+      gap: .45rem;
+    }
+    .wwrs-list li {
+      color: var(--text-body);
+      font-size: .88rem;
+      line-height: 1.55;
+    }
+
+    .wwrs-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .6rem;
+    }
+    .wwrs-stat {
+      border: 1px solid var(--border);
+      background: #fff;
+      padding: .72rem .75rem;
+      display: grid;
+      gap: .35rem;
+    }
+    .wwrs-stat-label {
+      font-size: .72rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .wwrs-stat-value {
+      margin: 0;
+      font-size: .95rem;
+      line-height: 1.35;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .wwrs-rail {
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+    .wwrs-rail .wwrs-panel-body {
+      gap: .75rem;
+    }
+    .wwrs-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-weight: 700;
+      color: var(--success);
+      margin: 0;
+    }
+
+    .wwrs-workflow {
+      display: grid;
+      gap: .6rem;
+    }
+    .wwrs-step {
+      border: 1px dashed #9aa4b2;
+      background: #fff;
+      padding: .72rem;
+      display: grid;
+      gap: .35rem;
+    }
+    .wwrs-step h4 {
+      margin: 0;
+      font-size: .88rem;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+    .wwrs-step p {
+      margin: 0;
+      font-size: .84rem;
+      color: var(--text-body);
+      line-height: 1.55;
+    }
+
+    .wwrs-site-tabs {
+      background: var(--navy-700);
+      border-top: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .wwrs-site-tabs .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      padding: 0 1rem;
+    }
+    .wwrs-tab-btn {
+      appearance: none;
+      border: 1px solid transparent;
+      background: transparent;
+      color: rgba(255,255,255,.78);
+      font-size: .8125rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: .78rem .9rem;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+    }
+    .wwrs-tab-btn.is-active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+    .wwrs-tab-btn:hover {
+      color: #fff;
+      border-bottom-color: rgba(255,255,255,.3);
+      background: none;
+    }
+    .wwrs-tab-dropdown {
+      position: relative;
+      display: inline-flex;
+      align-items: stretch;
+    }
+    .wwrs-tab-btn-with-caret {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+    }
+    .wwrs-tab-btn-caret {
+      font-size: .65rem;
+      opacity: .9;
+      transform: translateY(-1px);
+    }
+    .wwrs-tab-dropdown.open .wwrs-tab-btn-caret {
+      color: #fff;
+    }
+    .wwrs-tab-menu {
+      position: absolute;
+      top: calc(100% + 1px);
+      left: 0;
+      min-width: 220px;
+      background: var(--navy);
+      border-top: 3px solid var(--gold);
+      border-left: 1px solid rgba(255,255,255,.1);
+      border-right: 1px solid rgba(255,255,255,.1);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      box-shadow: 0 8px 24px rgba(0,0,0,.35);
+      padding: 0;
+      z-index: 40;
+      display: none;
+    }
+    .wwrs-tab-dropdown:hover .wwrs-tab-menu {
+      display: block;
+    }
+    .wwrs-tab-dropdown.open .wwrs-tab-menu {
+      display: block;
+    }
+    .wwrs-tab-menu-item {
+      width: 100%;
+      text-align: left;
+      appearance: none;
+      border: 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: transparent;
+      color: rgba(255,255,255,.78);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: .75rem 1rem;
+      cursor: pointer;
+    }
+    .wwrs-tab-menu-item:hover {
+      color: var(--gold);
+      background: rgba(255,255,255,.05);
+    }
+    .wwrs-tab-menu-item.is-active {
+      color: var(--gold);
+      background: rgba(255,255,255,.05);
+    }
+    .wwrs-tab-menu-item:last-child {
+      border-bottom: 0;
+    }
+    .wwrs-tab-panel[hidden] {
+      display: none;
+    }
+    .wwrs-data-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 640px;
+    }
+    .wwrs-data-table th,
+    .wwrs-data-table td {
+      border: 1px solid #d3dbe8;
+      padding: .45rem .55rem;
+      font-size: .82rem;
+      text-align: left;
+      color: var(--text-body);
+      vertical-align: top;
+    }
+    .wwrs-data-table th {
+      background: #edf3fb;
+      color: var(--navy);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .wwrs-link-list {
+      margin: 0;
+      padding-left: 1.1rem;
+      display: grid;
+      gap: .35rem;
+      font-size: .88rem;
+    }
+    .wwrs-link-list a {
+      color: var(--blue);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 980px) {
+      .wwrs-main {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="site-page">
+
+<div class="gov-banner">
+  <div class="container">
+    <div class="gov-banner-flag">
+      <svg width="18" height="13" viewBox="0 0 18 13" fill="none" style="flex-shrink:0"><rect width="18" height="13" fill="#B22234"/><rect y="1" width="18" height="1" fill="white"/><rect y="3" width="18" height="1" fill="white"/><rect y="5" width="18" height="1" fill="white"/><rect y="7" width="18" height="1" fill="white"/><rect y="9" width="18" height="1" fill="white"/><rect y="11" width="18" height="1" fill="white"/><rect width="7" height="7" fill="#3C3B6E"/></svg>
+      An official website of the United States Government &mdash; Air Force Security Assistance &amp; Cooperation Directorate
+    </div>
+    <div class="gov-banner-right">
+      <span class="gov-banner-notice">Authorized Users Only</span>
+      <button class="gov-banner-dismiss">Dismiss</button>
+    </div>
+  </div>
+</div>
+
+<nav class="wwrs-site-tabs" aria-label="WWRS website sections">
+  <div class="container" role="tablist" aria-label="WWRS website sections">
+    <button class="wwrs-tab-btn is-active" type="button" data-wwrs-tab="home" aria-selected="true">Home</button>
+    <button class="wwrs-tab-btn" type="button" data-wwrs-tab="about" aria-selected="false">About Us</button>
+    <button class="wwrs-tab-btn" type="button" data-wwrs-tab="buyer" aria-selected="false">Buyer Information</button>
+    <button class="wwrs-tab-btn" type="button" data-wwrs-tab="seller" aria-selected="false">Seller Information</button>
+    <button class="wwrs-tab-btn" type="button" data-wwrs-tab="pmo" aria-selected="false">PMO</button>
+    <div class="wwrs-tab-dropdown" id="wwrs-resources-group">
+      <button class="wwrs-tab-btn wwrs-tab-btn-with-caret" type="button" id="wwrs-resources-toggle" data-wwrs-tab="resources" aria-selected="false" aria-haspopup="true" aria-expanded="false" aria-controls="wwrs-resources-menu">
+        <span>Resources</span>
+        <span class="wwrs-tab-btn-caret" aria-hidden="true">&#9662;</span>
+      </button>
+      <div class="wwrs-tab-menu" id="wwrs-resources-menu" role="menu" aria-label="Resources submenu">
+        <button class="wwrs-tab-menu-item" type="button" data-wwrs-tab="help" role="menuitem" aria-selected="false">Help &amp; Training</button>
+        <button class="wwrs-tab-menu-item" type="button" data-wwrs-tab="broadcasts" role="menuitem" aria-selected="false">Broadcasts</button>
+      </div>
+    </div>
+    <button class="wwrs-tab-btn" type="button" data-wwrs-tab="contact" aria-selected="false">Contact Us</button>
+  </div>
+</nav>
+
+<section class="wwrs-hero">
+  <div class="container">
+    <p class="wwrs-kicker">WWRS</p>
+    <h1>Worldwide Redistribution System (WWRS)</h1>
+    <p>Worldwide Warehouse Redistribution Services (WWRS) is a Tri-service program that facilitates the transfer of materiel acquired under the US Arms Export Control Act either by an FMS Case or DCS Purchase. WWRS accepts materiel back on behalf of the US Government in order to fill other FMS requisitions.</p>
+    <div class="wwrs-hero-actions">
+      <a href="https://afsac4.wpafb.af.mil/WWRS/" target="_blank" rel="noopener noreferrer" class="wwrs-btn wwrs-btn-primary">Access Old Website</a>
+      <a href="wwrs-tools.html" class="wwrs-btn wwrs-btn-secondary">Open WWRS Tools</a>
+    </div>
+  </div>
+</section>
+
+<main class="wwrs-main" id="wwrs-overview" style="grid-template-columns:1fr;max-width:1180px;">
+  <section class="wwrs-panel" aria-labelledby="wwrs-overview-title">
+    <div class="wwrs-panel-head">
+      <h2 id="wwrs-overview-title">WWRS Information</h2>
+    </div>
+    <div class="wwrs-panel-body">
+      <section class="wwrs-tab-panel" data-wwrs-panel="home">
+        <article class="wwrs-section">
+          <h3>Worldwide Warehouse Redistribution Services</h3>
+          <p>Worldwide Warehouse Redistribution Services (WWRS) is a Tri-service program that facilitates the transfer of materiel acquired under the US Arms Export Control Act either by an FMS Case or DCS Purchase. WWRS accepts materiel back on behalf of the US Government in order to fill other FMS requisitions. Materiel transfers using the WWRS process as outlined in Section 21 (m) consist of two separate two-party transfers. The first two-party transfer is between the seller and the USG, and the second two-party transfer is between the USG and the purchaser. The WWRS Program Management office is managed at Wright Patterson AFB, Ohio.</p>
+          <div class="wwrs-hero-actions" style="margin-top:.7rem">
+            <a href="https://afsac4.wpafb.af.mil/WWRS/Home/SellerInformation" target="_blank" rel="noopener noreferrer" class="wwrs-btn wwrs-btn-primary">Become a Seller!</a>
+            <a href="https://afsac4.wpafb.af.mil/WWRS/Home/BuyerInformation" target="_blank" rel="noopener noreferrer" class="wwrs-btn wwrs-btn-secondary" style="color:var(--navy);border-color:#b4c0d4;background:#fff;">Become a Buyer!</a>
+          </div>
+        </article>
+
+        <article class="wwrs-section">
+          <h3>Search Our Inventory</h3>
+          <p>Inventory search fields include NSN (FSC-NIIN-MMC), Part Number, CAGE Code, Item Name, Weapon System, and Search By (FSC Code, Source of Supply, Weapon System). Use Search, Clear, and Download Entire Inventory functions in the WWRS tool workspace.</p>
+          <a href="wwrs-tools.html" class="wwrs-btn wwrs-btn-primary" style="margin-top:.45rem">Open Inventory Search Tool</a>
+        </article>
+
+        <article class="wwrs-section">
+          <h3>News</h3>
+          <ul class="wwrs-list">
+            <li><strong>2026 AFSAC Non-Standard Supply PMR, featuring WWRS and PROS, planned for 22-26 June 2026 at Wright State University Neuroscience Engineering Collaboration Building in Dayton, Ohio.</strong> Please contact the WWRS PMO at afsac.wwrspmo@us.af.mil or PROS PMO at aflcmc.wfalc.pros_pmo@us.af.mil for additional details and registration information. Registration deadline is 01 June 2026.</li>
+            <li><strong>The WWRS PMO is requesting all WWRS Sellers update the following:</strong> current inventory listing using the correct inventory upload format, and points of contact with and without system access. Updated information and questions may be sent to afsac.wwrspmo@us.af.mil.</li>
+            <li><strong>Cannot find your asset in inventory?</strong> Contact the WWRS PMO at afsac.wwrspmo@us.af.mil to submit a worldwide broadcast to sellers for part location support.</li>
+          </ul>
+        </article>
+
+        <article class="wwrs-section">
+          <h3>WWRS Goals</h3>
+          <ul class="wwrs-list">
+            <li>Reduce FMS customers' excess inventories.</li>
+            <li>Provide access to materiel at reduced cost.</li>
+            <li>Reduce lead times through redistribution of on-the-shelf assets instead of new procurement.</li>
+            <li>Enable purchase of needed FMS assets by materiel sellers with the proceeds or withdraw proceeds to their national treasury.</li>
+          </ul>
+        </article>
+
+        <article class="wwrs-section">
+          <h3>WWRS Benefits</h3>
+          <ul class="wwrs-list">
+            <li>Improve FMS customer support by reducing lead times and materiel costs associated with new procurement and stock fund surcharges.</li>
+            <li>Funds provided to sellers may be reinvested in the FMS program.</li>
+            <li>Reduce seller excess materiel storage costs.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="wwrs-tab-panel" data-wwrs-panel="about" hidden>
+        <article class="wwrs-section">
+          <h3>Welcome to WWRS</h3>
+          <p>WWRS redistributes serviceable, fully functioning spare parts and support equipment, previously purchased under the Arms Export Control Act, as a source for filling Foreign Military Sales (FMS) requisitions. USG requisitions may be filled upon receipt of a funded MIPR.</p>
+          <p>WWRS improves FMS customer support by reducing lead times and materiel costs associated with new procurement and stock fund surcharges, as well as the seller's FMS excess materiel storage costs. Funds provided to sellers may be reinvested in the FMS program. AFLCMC encourages the FMS community to exercise WWRS as an alternate support mechanism.</p>
+        </article>
+        <article class="wwrs-section">
+          <h3>Program Overview</h3>
+          <p>The success of the WWRS program is mutually dependent on meeting the sellers' and purchasers' requirements and the PMO's ability to facilitate global redistribution transactions.</p>
+          <p>WWRS aligns incoming FMS requisitions with worldwide excess serviceable materiel inventories to improve FMS requisition support. Materiel remains in the possession of the seller until the WWRS Program Management Office (PMO) requests the materiel. WWRS materiel is inspected, sanitized, documented, and repackaged at a USG contracted In-transit Inspection Point prior to its transfer to the purchaser. The USG takes title to the materiel prior to transfer, thereby maintaining anonymity of the FMS parties. Materiel failing visual inspection is returned to the selling country at the seller's expense. The seller has first option to replace the defective materiel with serviceable materiel prior to the selection of an alternate seller. All materiel shipments that pass inspection are subject to normal FMS Supply Discrepancy Report (SDR) criteria.</p>
+        </article>
+        <article class="wwrs-section">
+          <h3>Virtual Warehouse and AFSAC Online</h3>
+          <p>The WWRS is a virtual materiel warehouse, which lists excess, serviceable materiel on the WWRS web page by NSN, noun, ERRC, shelf life, annual demand, quantity, price, and end item(s). The DoD catalog price and source of supply are provided for comparative purposes. Interested purchasers may browse or download the entire inventory using the Download records button on the WWRS Home Page. WWRS applications, which include specific item searches, is provided via AFSAC Online (although an AFSAC Online password is not required).</p>
+          <p>The seller with the lowest priced NSN listed is selected to fill the requisition. When an insufficient quantity of the lowest priced NSN to fill the requisition exists, the next higher priced materiel is selected. This selection process is repeated until the requisition is filled or all WWRS inventory is depleted. Any unfilled portion of a requisition is canceled.</p>
+          <p>WWRS is hosted, in part, on AFSAC Online. While briefings and certain information is available to the public, most applications that support WWRS require an AFSAC Online userid and password. AFSAC Online supports more than just WWRS; it supports all Air Force FMS.</p>
+        </article>
+      </section>
+
+      <section class="wwrs-tab-panel" data-wwrs-panel="buyer" hidden>
+        <article class="wwrs-section">
+          <h3>Buyer Information</h3>
+          <p>All requisitions are filled in the order of receipt. WWRS requisitions with RIC 'FWW' are treated as "fill or kill" requisitions. If the desired WWRS materiel is depleted, the requisition is canceled. All other requisitions received with RIC 'FNH' will be passed on to another DoD source of supply, if WWRS cannot fill or partially fill the order. Status and bill lines are provided to CaseTRAC.</p>
+        </article>
+        <article class="wwrs-section">
+          <h3>Two Methods of Purchasing WWRS Materiel</h3>
+          <ul class="wwrs-list">
+            <li>Materiel may be ordered by submitting a nonrecurring requisition with the Routing Identifier Code (RIC) of 'FWW' to CaseTRAC against the appropriate blanket order FMS requisition case. Requisitions that contain a NMCS indicator or advice codes BV, 6P, 6V, or 6W are rejected with an F6 rejection code.</li>
+            <li>USAF FMS requisitions submitted to CaseTRAC with the RIC of 'FNH' are automatically eligible for fill action by WWRS when the requested NSN is not currently on the purchaser's CLSSA case, retention quantities are zero or unavailable at ALC, demand code is nonrecurring, and advice codes BW/6P/6V/6W are not present.</li>
+          </ul>
+        </article>
+        <article class="wwrs-section">
+          <h3>Materiel Requisitioning</h3>
+          <p>WWRS materiel may be purchased via CaseTRAC, Army CISIL, or Navy MISIL systems. Purchasers submit requisitions using MILSTRIP and may force route requisitions to WWRS via RIC 'FWW'. Status, pricing, and shipping information is available through these systems, STARR-PC, AFSAC Online, and PMO reports.</p>
+          <p>MISIL customers continue to submit requisitions using RIC 'FWW'. CISIL customers continue to submit requisitions using RIC 'FWW'. For status questions, contact the WWRS PMO.</p>
+          <p>Navy input questions may be directed to barry.l.magagna@navy.mil. Army inquiries may be directed to benjamin.d.rutz.civ@army.mil. USG purchasers may use funding documents such as a MIPR or MORD.</p>
+        </article>
+      </section>
+
+      <section class="wwrs-tab-panel" data-wwrs-panel="seller" hidden>
+        <article class="wwrs-section">
+          <h3>Seller Information</h3>
+          <p>FMS customers who want to become materiel sellers should submit a Letter of Request (LOR), along with a data set of excess serviceable materiel. The required format is in Section III of the WWRS Customer Handbook. In addition to NSN, sellers provide quantity, desired unit price in US dollars and cents, and a unique alphanumeric ID code.</p>
+          <p>Sellers are required to have Internet access and request an AFSAC Online password to view WWRS web pages. Internet access should include e-mail capability for communications with the WWRS PMO. Potential purchasers may browse listings but do not see seller identity.</p>
+        </article>
+        <article class="wwrs-section">
+          <h3>Seller Order Processing</h3>
+          <p>Upon AFLCMC receipt of a requisition for WWRS-listed materiel, the selected seller is sent a Redistribution Order (RDO) with NSN, quantity, and extended dollar value. The RDO is authority for shipment to the In-Transit Inspection Point after seller acknowledgement and shipping data back to PMO.</p>
+        </article>
+        <article class="wwrs-section">
+          <h3>Financial</h3>
+          <p>Sellers pay a 10% redistribution fee (minimum $200) per RDO for materiel received at the In-Transit Inspection Point. Fees for seller-arranged lot transfers of at least 15 line items are discounted an additional 10% or 20%, depending on lot value.</p>
+          <p>The seller WWRS case is ordinarily written for approximately 10% of estimated value of materiel for sale and operates with terms of sale "Cash with Acceptance, Balance as Billed." Sellers eligible for Defense Transportation Services may request a transportation line be added to the WWRS case.</p>
+        </article>
+        <article class="wwrs-section">
+          <h3>Seller References</h3>
+          <ul class="wwrs-link-list">
+            <li><a href="https://afsac4.wpafb.af.mil/WWRS/Documents/WWRS%20How%20to%20become%20a%20seller.pdf" target="_blank" rel="noopener noreferrer">Steps to Become a Seller</a></li>
+            <li><a href="https://afsac4.wpafb.af.mil/WWRS/Documents/2014%20Intransit%20Inspection%20Point%20Perspective%20V1.pdf" target="_blank" rel="noopener noreferrer">IIP Shipping Slides</a></li>
+            <li><a href="https://afsac4.wpafb.af.mil/WWRS/Documents/Quick%20Reference%20for%20New%20Sellers.pdf" target="_blank" rel="noopener noreferrer">Quick Reference for New Sellers</a></li>
+            <li><a href="https://afsac4.wpafb.af.mil/WWRS/Documents/Quick%20Reference%20for%20Criteria%20Codes.pdf" target="_blank" rel="noopener noreferrer">Quick Reference for Criteria Codes</a></li>
+            <li><a href="https://afsac4.wpafb.af.mil/WWRS/Documents/Quick%20Reference%20RDO%20Definition.pdf" target="_blank" rel="noopener noreferrer">Quick Reference RDO Definition</a></li>
+            <li><a href="https://afsac4.wpafb.af.mil/WWRS/Documents/wwrs.pdf" target="_blank" rel="noopener noreferrer">WWRS User Guide</a></li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="wwrs-tab-panel" data-wwrs-panel="pmo" hidden>
+        <article class="wwrs-section">
+          <h3>Program Management Office</h3>
+          <p>Information on the AFLCMC WWRS Program Management Office.</p>
+          <p>WWRS Program Management Office is managed at Wright Patterson AFB, Ohio.</p>
+          <ul class="wwrs-list">
+            <li>Email: afsac.wwrspmo@us.af.mil</li>
+            <li>Address: 1940 Allbrook Drive, Wright Patterson AFB OH 45433-5337</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="wwrs-tab-panel" data-wwrs-panel="resources" hidden>
+        <article class="wwrs-section">
+          <h3>Resources</h3>
+          <ul class="wwrs-list">
+            <li>Helpful Information</li>
+            <li>2026 Non-Standard Supply PMR briefings</li>
+            <li>External References</li>
+            <li>WWRS References</li>
+            <li>Contact WWRS</li>
+            <li>Help &amp; Training</li>
+            <li>Broadcasts</li>
+          </ul>
+          <a href="https://afsac4.wpafb.af.mil/WWRS/Resources/Resources" target="_blank" rel="noopener noreferrer" class="wwrs-btn wwrs-btn-primary" style="margin-top:.45rem">Open Legacy Resources Page</a>
+        </article>
+      </section>
+
+      <section class="wwrs-tab-panel" data-wwrs-panel="help" hidden>
+        <article class="wwrs-section">
+          <h3>Help &amp; Training</h3>
+          <ul class="wwrs-list">
+            <li>WWRS Program Overview</li>
+            <li>WWRS Documentation</li>
+            <li>Seller Information</li>
+            <li>Buyer Information</li>
+            <li>Lot Buys</li>
+            <li>Contact WWRS</li>
+          </ul>
+          <a href="https://afsac4.wpafb.af.mil/WWRS/Home/HelpTraining" target="_blank" rel="noopener noreferrer" class="wwrs-btn wwrs-btn-primary" style="margin-top:.45rem">Open Legacy Help &amp; Training Page</a>
+        </article>
+        <article class="wwrs-section">
+          <h3>Training Videos</h3>
+          <p>Coming Soon.</p>
+          <a href="https://afsac4.wpafb.af.mil/WWRS/Home/TrainingVideos" target="_blank" rel="noopener noreferrer" class="wwrs-btn wwrs-btn-primary" style="margin-top:.45rem">Open Legacy Training Videos Page</a>
+        </article>
+      </section>
+
+      <section class="wwrs-tab-panel" data-wwrs-panel="contact" hidden>
+        <article class="wwrs-section">
+          <h3>Contact Us</h3>
+          <p>Request information, support, or report an issue.</p>
+          <ul class="wwrs-list">
+            <li>WWRS PMO: afsac.wwrspmo@us.af.mil</li>
+            <li>PROS PMO: aflcmc.wfalc.pros_pmo@us.af.mil</li>
+            <li>Air Force Security Assistance and Cooperation Directorate, 1940 Allbrook Drive, Wright Patterson AFB OH 45433-5337</li>
+          </ul>
+          <a href="https://afsac4.wpafb.af.mil/WWRS/Home/ContactUs" target="_blank" rel="noopener noreferrer" class="wwrs-btn wwrs-btn-primary" style="margin-top:.45rem">Open Legacy Contact Page</a>
+        </article>
+      </section>
+
+      <section class="wwrs-tab-panel" data-wwrs-panel="broadcasts" hidden>
+        <article class="wwrs-section">
+          <h3>Open Broadcasts</h3>
+          <p>A broadcast is an inquiry sent to the WWRS selling community for a particular item. Upon creating a broadcast, the selling community is notified of the materiel requirement, allowing them to check inventories for possible surplus.</p>
+          <div class="wwrs-table-wrap">
+            <table class="wwrs-data-table">
+              <thead>
+                <tr>
+                  <th>NSN</th>
+                  <th>Part Number</th>
+                  <th>Cage Code</th>
+                  <th>Item Name</th>
+                  <th>Quantity Requested</th>
+                  <th>DoD Unit Price</th>
+                  <th>Expires On</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1270010860716WF</td><td></td><td></td><td>REFERENCE SOURCE AS</td><td>10</td><td>35584.87</td><td>31-Dec-2026</td></tr>
+                <tr><td>1560008309732GA</td><td></td><td></td><td>DRAG BRACE ASSEMBLY</td><td>4</td><td>13711.11</td><td>31-Aug-2026</td></tr>
+                <tr><td>1560014656856</td><td>7-311122601-601</td><td></td><td>SPAR BOX ASSEMBLY</td><td>1</td><td>96661.99</td><td>30-Sep-2026</td></tr>
+                <tr><td>1610008688836</td><td>597946 / 597946-2</td><td>73030</td><td>CONTROL,PROPELLE</td><td>4</td><td>0</td><td>01-Sep-2026</td></tr>
+                <tr><td>1620000196125BP</td><td>39900-303</td><td>82106</td><td>VALVE,STEERING,NOSE</td><td>1</td><td>63157</td><td>01-Sep-2026</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <a href="https://afsac4.wpafb.af.mil/WWRS/Home/Broadcasts" target="_blank" rel="noopener noreferrer" class="wwrs-btn wwrs-btn-primary" style="margin-top:.45rem">Open Legacy Broadcasts Page</a>
+        </article>
+      </section>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="footer-brand-logo">
+            <div class="logo-emblem" style="width:48px;height:48px;font-size:.95rem"></div>
+            <span class="footer-brand-title">AFSAC Online</span>
+          </a>
+          <p class="footer-brand-desc">Air Force Security Assistance and Cooperation Directorate — supporting worldwide FMS partnerships through transparent, accessible information systems.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Applications</div>
+          <ul class="footer-links">
+            <li><a href="#">Requisition</a></li><li><a href="#">Logistics</a></li><li><a href="#">Case</a></li><li><a href="#">SDR</a></li><li><a href="#">CLSSA</a></li><li><a href="dashboard.html">PROS V</a></li><li><a href="wwrs.html">WWRS</a></li><li><a href="#">Metrics</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Resources</div>
+          <ul class="footer-links">
+            <li><a href="about.html">About AFSAC</a></li><li><a href="flo.html">Foreign Liaison Office</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="#">User Guides</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <div style="flex:1">
+          <button class="footer-legal-toggle">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span class="toggle-text">View Legal Framework &amp; Privacy</span>
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="footer-legal-panel" id="legal-panel">
+            <h4>U.S. Government System Notice</h4>
+            <p>You are accessing a U.S. Government (USG) Information System provided for USG-authorized use only. The USG routinely monitors communications, may inspect and seize data, and communications are not private.</p>
+            <h4>Authority</h4>
+            <p>10 U.S.C. 134; DoDD 5101.1; DoDD 5105.65 (DSCA); DoDD 5132.03; DoD Instruction 8550.01.</p>
+            <h4>Privacy Act</h4>
+            <p>Data is protected under the Privacy Act of 1974 (SORN K890.15). Section 508 compliant per 29 U.S.C. 794d.</p>
+          </div>
+          <div class="footer-copyright">&copy; Air Force Security Assistance and Cooperation Directorate &mdash; 2026</div>
+          <div class="footer-508">Section 508 Compliant &nbsp;&bull;&nbsp; Privacy Act Protected &nbsp;&bull;&nbsp; USG Authorized Use Only</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+  const wwrsTabButtons = document.querySelectorAll('[data-wwrs-tab]');
+  const wwrsTabPanels = document.querySelectorAll('[data-wwrs-panel]');
+  const resourcesToggle = document.getElementById('wwrs-resources-toggle');
+  const resourcesGroup = document.getElementById('wwrs-resources-group');
+  const TAB_TO_HASH = {
+    home: 'home',
+    about: 'about-us',
+    buyer: 'buyer-information',
+    seller: 'seller-information',
+    pmo: 'pmo',
+    resources: 'resources',
+    help: 'help-training',
+    contact: 'contact-us',
+    broadcasts: 'broadcasts'
+  };
+
+  const HASH_TO_TAB = {
+    home: 'home',
+    'about-us': 'about',
+    'buyer-information': 'buyer',
+    'seller-information': 'seller',
+    pmo: 'pmo',
+    resources: 'resources',
+    'help-training': 'help',
+    'training-videos': 'help',
+    'contact-us': 'contact',
+    broadcasts: 'broadcasts'
+  };
+
+  function closeResourcesMenu() {
+    if (!resourcesGroup || !resourcesToggle) return;
+    resourcesGroup.classList.remove('open');
+    resourcesToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  function toggleResourcesMenu() {
+    if (!resourcesGroup || !resourcesToggle) return;
+    const isOpen = resourcesGroup.classList.toggle('open');
+    resourcesToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+
+  function setWwrsTab(tabName, updateHash = true) {
+    wwrsTabButtons.forEach((btn) => {
+      const isActive = btn.dataset.wwrsTab === tabName;
+      btn.classList.toggle('is-active', isActive);
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+    wwrsTabPanels.forEach((panel) => {
+      panel.hidden = panel.dataset.wwrsPanel !== tabName;
+    });
+    closeResourcesMenu();
+
+    if (updateHash) {
+      const nextHash = TAB_TO_HASH[tabName] || 'home';
+      if (window.location.hash.replace('#', '') !== nextHash) {
+        window.location.hash = nextHash;
+      }
+    }
+  }
+
+  function getTabFromHash() {
+    const rawHash = window.location.hash.replace('#', '').trim().toLowerCase();
+    return HASH_TO_TAB[rawHash] || '';
+  }
+
+  wwrsTabButtons.forEach((btn) => {
+    btn.addEventListener('click', () => setWwrsTab(btn.dataset.wwrsTab));
+  });
+
+  if (resourcesToggle) {
+    resourcesToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleResourcesMenu();
+    });
+  }
+
+  document.querySelectorAll('.wwrs-tab-menu-item').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      closeResourcesMenu();
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!resourcesGroup) return;
+    if (!resourcesGroup.contains(e.target)) {
+      closeResourcesMenu();
+    }
+  });
+
+  window.addEventListener('hashchange', () => {
+    const hashTab = getTabFromHash();
+    if (hashTab) {
+      setWwrsTab(hashTab, false);
+    }
+  });
+
+  const initialHashTab = getTabFromHash();
+  setWwrsTab(initialHashTab || 'home', false);
+
+  const user = sessionStorage.getItem('afsacUser');
+  if (user) {
+    const display = document.getElementById('header-user-display');
+    const signout = document.getElementById('signout-btn');
+    if (display) display.textContent = user;
+    if (signout) {
+      signout.style.display = '';
+      signout.addEventListener('click', (e) => {
+        e.preventDefault();
+        sessionStorage.removeItem('afsacUser');
+        window.location.href = 'login.html';
+      });
+    }
+  } else {
+    window.location.href = 'login.html';
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AFSAC Online — Supporting Worldwide Partnerships</title>
+  <meta name="description" content="AFSAC Online provides business applications giving authorized FMS customers visibility into country programs, logistics, and security cooperation activities.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="index-page site-page">
+
+<!-- USG System Notice Modal (shown once per session) -->
+<div id="usg-modal" class="modal-overlay hidden">
+  <div class="modal-box">
+    <div class="modal-header">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--gold);flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <h2>U.S. Government Information System Notice</h2>
+    </div>
+    <div class="modal-body">
+      <p>You are accessing a U.S. Government (USG) Information System (IS) that is provided for <strong>USG-authorized use only</strong>. By using this IS, you consent to the following conditions:</p>
+      <ul>
+        <li>The USG routinely intercepts and monitors communications on this IS for purposes including penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.</li>
+        <li>At any time, the USG may inspect and seize data stored on this IS.</li>
+        <li>Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG authorized purpose.</li>
+        <li>This IS includes security measures to protect USG interests — not for your personal benefit or privacy.</li>
+      </ul>
+      <p class="modal-section-title">Authority</p>
+      <p>10 U.S.C. 134; DoDD 5101.1; DoDD 5105.65 (DSCA); DoDD 5132.03; DoD Instruction 8550.01.</p>
+      <p class="modal-section-title">Principle Purpose</p>
+      <p>AFSAC Online hosts a suite of applications for Foreign Military Sales (FMS) Customers supporting the Security Cooperation Mission. All users are bound by restrictions defined in SAAR form DD2875.</p>
+    </div>
+    <div class="modal-footer">
+      <span class="modal-footer-note">By clicking Accept, you acknowledge these conditions of use.</span>
+      <button id="usg-accept" class="btn btn-primary">I Accept &amp; Acknowledge</button>
+    </div>
+  </div>
+</div>
+
+<!-- Government Banner -->
+<div class="gov-banner">
+  <div class="container">
+    <div class="gov-banner-flag">
+      <svg width="18" height="13" viewBox="0 0 18 13" fill="none" style="flex-shrink:0">
+        <rect width="18" height="13" fill="#B22234"/>
+        <rect y="1" width="18" height="1" fill="white"/>
+        <rect y="3" width="18" height="1" fill="white"/>
+        <rect y="5" width="18" height="1" fill="white"/>
+        <rect y="7" width="18" height="1" fill="white"/>
+        <rect y="9" width="18" height="1" fill="white"/>
+        <rect y="11" width="18" height="1" fill="white"/>
+        <rect width="7" height="7" fill="#3C3B6E"/>
+      </svg>
+      An official website of the United States Government &mdash; Air Force Security Assistance &amp; Cooperation Directorate
+    </div>
+    <div class="gov-banner-right">
+      <span class="gov-banner-notice">Authorized Users Only</span>
+      <button class="gov-banner-dismiss">Dismiss</button>
+    </div>
+  </div>
+</div>
+
+<!-- Site Header -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">
+        <div class="logo-emblem"></div>
+        <div class="logo-text">
+          <span class="logo-title">AFSAC Online</span>
+          <span class="logo-subtitle">Air Force Security Assistance &amp; Cooperation</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="main-nav">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="toolbox.html">Applications</a></li>
+          <li class="nav-dropdown"><a href="flo.html">Resources <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a><div class="nav-dropdown-menu"><a href="flo.html">FLO Information</a><a href="#">LOR</a><a href="#">Report2Web</a><a href="#">SCIP Portal</a><a href="#">DSAMS</a></div></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <form class="search-form" role="search" onsubmit="return false">
+          <svg class="search-icon" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" class="search-input" placeholder="Search tools, guides&hellip;" aria-label="Search AFSAC tools">
+        </form>
+        <a href="login.html" class="header-login-btn">Sign In</a>
+      </div>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="toolbox.html">Applications</a>
+    <a href="flo.html">Resources</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html" style="color:var(--gold);font-weight:700">Sign In</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1 class="hero-title">Supporting<br><span>Worldwide</span> Partnerships</h1>
+        <p class="hero-desc">AFSAC Online provides a suite of secure business applications giving authorized FMS customers and partner nations direct visibility into country programs, case management, logistics, and security cooperation activities.</p>
+        <div class="hero-actions">
+          <a href="about.html" class="btn btn-gold btn-lg">About AFSAC</a>
+          <a href="toolbox.html" class="btn btn-ghost btn-lg">Explore Applications</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="page-wrapper" style="padding:0">
+
+  <!-- ── Split Section: Applications (2/3) + News (1/3) ─── -->
+  <section>
+    <!-- Split layout -->
+    <div class="container" style="padding-top:2.5rem;padding-bottom:3rem">
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:2rem;align-items:stretch">
+
+        <!-- LEFT 2/3: Application cards grid -->
+        <div>
+          <!-- Applications header -->
+          <div style="background:var(--navy);padding:1rem 1.25rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:1rem">
+            <div style="width:4px;height:1.75rem;background:var(--gold);flex-shrink:0"></div>
+            <h2 style="margin:0;font-size:1.125rem;font-weight:800;color:white;letter-spacing:.03em;text-transform:uppercase">Applications</h2>
+            <a href="toolbox.html" style="margin-left:auto;display:inline-flex;align-items:center;gap:.4rem;color:rgba(255,255,255,.6);font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-decoration:none">View More <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem">
+
+            <a href="toolbox.html" style="background:white;border-top:4px solid var(--gold);padding:1.75rem;box-shadow:0 2px 12px rgba(0,0,0,.07);text-decoration:none;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(0,0,0,.07)'">
+              <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.875rem;padding-bottom:.875rem;border-bottom:1px solid var(--border)">
+                <div style="width:38px;height:38px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" fill="none" stroke="#FFE680" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                <span style="font-size:1rem;font-weight:800;color:var(--navy);text-transform:none;letter-spacing:.03em">Requisition</span>
+              </div>
+              <p style="margin:0 0 1rem;color:var(--text-body);font-size:.84rem;line-height:1.6;flex:1">Submit and track requisitions for FMS supply and repair orders.</p>
+              <span style="color:var(--af-blue);font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase">Access &rarr;</span>
+            </a>
+
+            <a href="toolbox.html" style="background:white;border-top:4px solid var(--gold);padding:1.75rem;box-shadow:0 2px 12px rgba(0,0,0,.07);text-decoration:none;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(0,0,0,.07)'">
+              <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.875rem;padding-bottom:.875rem;border-bottom:1px solid var(--border)">
+                <div style="width:38px;height:38px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" fill="none" stroke="#FFE680" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+                <span style="font-size:1rem;font-weight:800;color:var(--navy);text-transform:none;letter-spacing:.03em">Logistics</span>
+              </div>
+              <p style="margin:0 0 1rem;color:var(--text-body);font-size:.84rem;line-height:1.6;flex:1">Monitor shipments, track discrepancies, and manage catalog data.</p>
+              <span style="color:var(--af-blue);font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase">Access &rarr;</span>
+            </a>
+
+            <a href="toolbox.html" style="background:white;border-top:4px solid var(--gold);padding:1.75rem;box-shadow:0 2px 12px rgba(0,0,0,.07);text-decoration:none;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(0,0,0,.07)'">
+              <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.875rem;padding-bottom:.875rem;border-bottom:1px solid var(--border)">
+                <div style="width:38px;height:38px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" fill="none" stroke="#FFE680" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+                <span style="font-size:1rem;font-weight:800;color:var(--navy);text-transform:none;letter-spacing:.03em">Case</span>
+              </div>
+              <p style="margin:0 0 1rem;color:var(--text-body);font-size:.84rem;line-height:1.6;flex:1">View case financial summaries, funding status, and billing details.</p>
+              <span style="color:var(--af-blue);font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase">Access &rarr;</span>
+            </a>
+
+            <a href="toolbox.html" style="background:white;border-top:4px solid var(--gold);padding:1.75rem;box-shadow:0 2px 12px rgba(0,0,0,.07);text-decoration:none;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(0,0,0,.07)'">
+              <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.875rem;padding-bottom:.875rem;border-bottom:1px solid var(--border)">
+                <div style="width:38px;height:38px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" fill="none" stroke="#FFE680" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+                <span style="font-size:.95rem;font-weight:800;color:var(--navy);letter-spacing:.02em">Parts and Repair Ordering System</span>
+              </div>
+              <p style="margin:0 0 1rem;color:var(--text-body);font-size:.84rem;line-height:1.6;flex:1">PROS V supports procurement and maintenance.</p>
+              <span style="color:var(--af-blue);font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase">Access &rarr;</span>
+            </a>
+
+            <a href="toolbox.html" style="background:white;border-top:4px solid var(--gold);padding:1.75rem;box-shadow:0 2px 12px rgba(0,0,0,.07);text-decoration:none;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(0,0,0,.07)'">
+              <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.875rem;padding-bottom:.875rem;border-bottom:1px solid var(--border)">
+                <div style="width:38px;height:38px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" fill="none" stroke="#FFE680" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+                <span style="font-size:.95rem;font-weight:800;color:var(--navy);letter-spacing:.02em">Supply Discrepancy Report</span>
+              </div>
+              <p style="margin:0 0 1rem;color:var(--text-body);font-size:.84rem;line-height:1.6;flex:1">SDR supports submission and management of discrepancy reports for FMS shipments.</p>
+              <span style="color:var(--af-blue);font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase">Access &rarr;</span>
+            </a>
+
+            <a href="toolbox.html" style="background:white;border-top:4px solid var(--gold);padding:1.75rem;box-shadow:0 2px 12px rgba(0,0,0,.07);text-decoration:none;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(0,0,0,.07)'">
+              <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.875rem;padding-bottom:.875rem;border-bottom:1px solid var(--border)">
+                <div style="width:38px;height:38px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" fill="none" stroke="#FFE680" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20"/></svg></div>
+                <span style="font-size:.95rem;font-weight:800;color:var(--navy);letter-spacing:.02em">Worldwide Redistribution System</span>
+              </div>
+              <p style="margin:0 0 1rem;color:var(--text-body);font-size:.84rem;line-height:1.6;flex:1">WWRS manages surplus materiel and logistics.</p>
+              <span style="color:var(--af-blue);font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase">Access &rarr;</span>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- RIGHT 1/3: News feed -->
+        <div style="background:white;border-top:4px solid var(--af-blue);box-shadow:0 2px 12px rgba(0,0,0,.07);display:flex;flex-direction:column;overflow:hidden">
+          <div style="padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+            <span style="font-size:.9rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.04em">FMS Stories</span>
+            <a href="https://www.aflcmc.af.mil/WELCOME/Organizations/Air-Force-Security-Assistance-Cooperation-Directorate/Stories/" target="_blank" rel="noopener" style="font-size:.75rem;color:var(--af-blue);font-weight:700;text-decoration:none;letter-spacing:.04em;text-transform:uppercase">View All &rarr;</a>
+          </div>
+          <div style="display:flex;flex-direction:column;flex:1">
+            <a href="https://www.aflcmc.af.mil/NEWS/Article/4442650/aflcmc-inspires-future-leaders-with-immersive-job-shadow-experience/" target="_blank" rel="noopener" style="display:flex;flex-direction:column;justify-content:center;flex:1;padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);text-decoration:none;transition:background .15s" onmouseover="this.style.background='#f5f7fa'" onmouseout="this.style.background=''">
+              <div style="font-size:.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;font-weight:600;margin-bottom:.375rem">Mar 25, 2026 &nbsp;<span class="badge badge-blue">Story</span></div>
+              <p style="margin:0;font-size:.875rem;font-weight:600;color:var(--navy);line-height:1.4">AFLCMC Inspires Future Leaders with Immersive Job Shadow Experience</p>
+            </a>
+            <a href="https://www.aflcmc.af.mil/NEWS/Article/4442542/consul-general-of-japan-in-detroit-visits-aflcmc/" target="_blank" rel="noopener" style="display:flex;flex-direction:column;justify-content:center;flex:1;padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);text-decoration:none;transition:background .15s" onmouseover="this.style.background='#f5f7fa'" onmouseout="this.style.background=''">
+              <div style="font-size:.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;font-weight:600;margin-bottom:.375rem">Mar 24, 2026 &nbsp;<span class="badge badge-gold">Partnership</span></div>
+              <p style="margin:0;font-size:.875rem;font-weight:600;color:var(--navy);line-height:1.4">Consul General of Japan in Detroit Visits AFLCMC</p>
+            </a>
+            <a href="https://www.aflcmc.af.mil/NEWS/Article/4207478/afsac-celebrates-30-years-of-collaboration-during-its-annual-flo-international/" target="_blank" rel="noopener" style="display:flex;flex-direction:column;justify-content:center;flex:1;padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);text-decoration:none;transition:background .15s" onmouseover="this.style.background='#f5f7fa'" onmouseout="this.style.background=''">
+              <div style="font-size:.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;font-weight:600;margin-bottom:.375rem">Jun 5, 2025 &nbsp;<span class="badge badge-gold">Milestone</span></div>
+              <p style="margin:0;font-size:.875rem;font-weight:600;color:var(--navy);line-height:1.4">AFSAC Celebrates 30 Years of Collaboration During Annual FLO International Reception</p>
+            </a>
+            <a href="https://www.aflcmc.af.mil/NEWS/Article/3949402/taking-her-power-back-aflcmc-logistics-chief-explains-decision-to-have-preventi/" target="_blank" rel="noopener" style="display:flex;flex-direction:column;justify-content:center;flex:1;padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);text-decoration:none;transition:background .15s" onmouseover="this.style.background='#f5f7fa'" onmouseout="this.style.background=''">
+              <div style="font-size:.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;font-weight:600;margin-bottom:.375rem">Oct 29, 2024 &nbsp;<span class="badge badge-blue">Story</span></div>
+              <p style="margin:0;font-size:.875rem;font-weight:600;color:var(--navy);line-height:1.4">Taking Her Power Back: AFLCMC Logistics Chief's Preventive Mastectomy Journey</p>
+            </a>
+            <a href="https://www.aflcmc.af.mil/NEWS/Article/3799036/afsac-hosts-its-29th-annual-flo-international-reception/" target="_blank" rel="noopener" style="display:flex;flex-direction:column;justify-content:center;flex:1;padding:1.25rem 1.5rem;text-decoration:none;transition:background .15s" onmouseover="this.style.background='#f5f7fa'" onmouseout="this.style.background=''">
+              <div style="font-size:.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;font-weight:600;margin-bottom:.375rem">Jun 6, 2024 &nbsp;<span class="badge badge-gold">Partnership</span></div>
+              <p style="margin:0;font-size:.875rem;font-weight:600;color:var(--navy);line-height:1.4">AFSAC Hosts 29th Annual FLO International Reception</p>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="footer-brand-logo">
+            <div class="logo-emblem" style="width:48px;height:48px;font-size:.95rem"></div>
+            <span class="footer-brand-title">AFSAC Online</span>
+          </a>
+          <p class="footer-brand-desc">Air Force Security Assistance and Cooperation Directorate — supporting worldwide FMS partnerships through transparent, accessible information systems for authorized customers and partner nations.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Applications</div>
+          <ul class="footer-links">
+            <li><a href="https://afsac.wpafb.af.mil/req_input.jsp">Requisition</a></li>
+            <li><a href="https://afsac.wpafb.af.mil/logistics.jsp">Logistics</a></li>
+            <li><a href="https://afsac.wpafb.af.mil/financial.jsp">Case</a></li>
+            <li><a href="https://afsac.wpafb.af.mil/sdr.jsp">SDR</a></li>
+            <li><a href="https://afsac.wpafb.af.mil/clssa.jsp">CLSSA</a></li>
+            <li><a href="https://afsac.wpafb.af.mil/pros.jsp">PROS</a></li>
+            <li><a href="https://afsac4.wpafb.af.mil/WWRS">WWRS</a></li>
+            <li><a href="afsac-metrics">Metrics</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Resources</div>
+          <ul class="footer-links">
+            <li><a href="about.html">About AFSAC</a></li>
+            <li><a href="flo.html">Foreign Liaison Office</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="AFSAC_Brochure.pdf">AFSAC Brochure</a></li>
+            <li><a href="#">User Guides</a></li>
+            <li><a href="#">DSCA</a></li>
+            <li><a href="login.html">Sign In</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <div style="flex:1">
+          <button class="footer-legal-toggle">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span class="toggle-text">View Legal Framework &amp; Privacy</span>
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="footer-legal-panel" id="legal-panel">
+            <h4>U.S. Government System Notice</h4>
+            <p>You are accessing a U.S. Government (USG) Information System (IS) provided for USG-authorized use only. The USG routinely monitors communications on this IS, may inspect and seize data at any time, and communications are not private. Security measures on this IS protect USG interests — not your personal benefit or privacy. Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of privileged communications. See User Agreement for details.</p>
+            <h4>Authority</h4>
+            <p>10 U.S.C. 134, Under Secretary of Defense for Policy; DoDD 5101.1, DoD Executive Agent; DoDD 5105.65, Defense Security Cooperation Agency (DSCA); DoDD 5132.03, DoD Policy and Responsibilities Relating to Security Cooperation; DoD Instruction 8550.01, DoD Internet Services and Internet-Based Capabilities.</p>
+            <h4>Principle Purpose</h4>
+            <p>AFSAC Online hosts a suite of applications for Foreign Military Sales (FMS) Customers and to support the Security Cooperation Mission. All users accessing AFSAC Online are bound by the restrictions defined in SAAR form (DD2875).</p>
+            <h4>Privacy Act</h4>
+            <p>AFSAC Online data is protected under the Privacy Act of 1974. The applicable Privacy Act System of Records Notice (K890.15) is available at the <a href="https://www.federalregister.gov/documents/2021/08/10/2021-17000/privacy-act-of-1974-system-of-records">Federal Register</a>. Information regarding safeguarding PII can be found at the <a href="https://dpcld.defense.gov/Privacy/About-the-Office/DoD-Federal-Privacy-Rule/Appendix-A/">DoD Privacy Office</a>.</p>
+            <h4>Section 508 Accessibility</h4>
+            <p>The U.S. Department of Defense is committed to making its electronic and information technologies accessible to individuals with disabilities in accordance with Section 508 of the Rehabilitation Act (29 U.S.C. 794d), as amended in 1998.</p>
+          </div>
+          <div class="footer-copyright">&copy; Air Force Security Assistance and Cooperation Directorate &mdash; 2026</div>
+          <div class="footer-508">Section 508 Compliant &nbsp;&bull;&nbsp; Privacy Act Protected &nbsp;&bull;&nbsp; USG Authorized Use Only</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
+

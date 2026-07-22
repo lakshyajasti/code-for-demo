@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Applications — AFSAC Online</title>
+  <meta name="description" content="Access AFSAC applications including PROS V, WWRS, Requisition, Logistics, Case, and more.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .apps-sections {
+      max-width: 940px;
+      margin: 0 auto;
+      display: grid;
+      gap: 2rem;
+    }
+    .apps-section {
+      display: grid;
+      gap: .9rem;
+    }
+    .apps-section-head {
+      display: flex;
+      align-items: baseline;
+      gap: .75rem;
+      border-bottom: 2px solid #d7deea;
+      padding-bottom: .55rem;
+    }
+    .apps-section-title {
+      margin: 0;
+      font-size: 1.06rem;
+      color: var(--navy);
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .apps-section-note {
+      margin: 0;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 300px);
+      gap: 1.2rem;
+      margin-left: auto;
+      margin-right: auto;
+      width: fit-content;
+    }
+    .apps-grid.apps-grid-live {
+      grid-template-columns: repeat(3, 300px);
+    }
+    .apps-grid.apps-grid-planned {
+      grid-template-columns: repeat(3, 300px);
+    }
+    .app-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-left: 4px solid transparent;
+      border-radius: 2px;
+      padding: 2rem;
+      cursor: pointer;
+      transition: all .2s;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      min-height: 200px;
+    }
+    .app-card:hover {
+      border-left-color: var(--gold);
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+      transform: translateY(-3px);
+    }
+    .app-card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 0;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+    .app-card-desc {
+      font-size: .875rem;
+      color: var(--text-body);
+      line-height: 1.6;
+      flex-grow: 1;
+      margin: 0;
+    }
+    .app-card-arrow {
+      color: var(--gold);
+      font-size: 1.25rem;
+      margin-top: auto;
+      font-weight: 700;
+    }
+    .app-card.is-live {
+      border-left-color: var(--success);
+    }
+    .app-card.is-planned {
+      opacity: .96;
+      border-left-color: #9aa4b2;
+    }
+    .app-card-meta {
+      margin: 0;
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .app-card.is-live .app-card-meta {
+      color: var(--success);
+    }
+    @media (max-width: 768px) {
+      .apps-grid { grid-template-columns: 1fr; }
+      .apps-section-head { align-items: flex-start; gap: .45rem; flex-direction: column; }
+    }
+    .page-header-section .apps-welcome {
+      margin: 0 0 1.35rem;
+      color: var(--gold);
+      font-size: 1.08rem;
+      font-weight: 600;
+      letter-spacing: .01em;
+    }
+  </style>
+</head>
+<body class="site-page">
+
+<!-- Government Banner -->
+<div class="gov-banner">
+  <div class="container">
+    <div class="gov-banner-flag">
+      <svg width="18" height="13" viewBox="0 0 18 13" fill="none" style="flex-shrink:0"><rect width="18" height="13" fill="#B22234"/><rect y="1" width="18" height="1" fill="white"/><rect y="3" width="18" height="1" fill="white"/><rect y="5" width="18" height="1" fill="white"/><rect y="7" width="18" height="1" fill="white"/><rect y="9" width="18" height="1" fill="white"/><rect y="11" width="18" height="1" fill="white"/><rect width="7" height="7" fill="#3C3B6E"/></svg>
+      An official website of the United States Government &mdash; Air Force Security Assistance &amp; Cooperation Directorate
+    </div>
+    <div class="gov-banner-right">
+      <span class="gov-banner-notice">Authorized Users Only</span>
+      <button class="gov-banner-dismiss">Dismiss</button>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">
+        <div class="logo-emblem"></div>
+        <div class="logo-text">
+          <span class="logo-title">AFSAC Online</span>
+          <span class="logo-subtitle">Air Force Security Assistance &amp; Cooperation</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="main-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="toolbox.html">Applications</a></li>
+          <li class="nav-dropdown"><a href="flo.html">Resources <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a><div class="nav-dropdown-menu"><a href="flo.html">FLO Information</a><a href="#">LOR</a><a href="#">Report2Web</a><a href="#">SCIP Portal</a><a href="#">DSAMS</a></div></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <form class="search-form" role="search" onsubmit="return false">
+          <svg class="search-icon" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" class="search-input" placeholder="Search applications&hellip;" aria-label="Search">
+        </form>
+        <span id="header-user-display" style="font-size:.84rem;color:var(--gold);font-weight:600"></span>
+        <a href="login.html" class="header-login-btn" id="signout-btn" style="display:none">Sign Out</a>
+      </div>
+      <button class="hamburger" aria-label="Open menu">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a><a href="about.html">About Us</a><a href="toolbox.html">Applications</a><a href="flo.html">Resources</a><a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- Page Header -->
+<section class="page-header-section">
+  <div class="container">
+    <p class="apps-welcome" id="apps-welcome"></p>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="breadcrumb-sep">/</span><span>My Applications</span>
+    </nav>
+    <h1>My Applications</h1>
+    <p>Select an application to begin working with AFSAC systems.</p>
+  </div>
+</section>
+
+<!-- Applications Grid -->
+<div class="page-wrapper">
+  <div class="apps-sections">
+    <section class="apps-section" aria-label="Demo-ready applications">
+      <div class="apps-section-head">
+        <h2 class="apps-section-title">Demo-Ready Applications</h2>
+        <p class="apps-section-note">Fully functional for this demo</p>
+      </div>
+      <div class="apps-grid apps-grid-live">
+        <a href="dashboard.html" class="app-card is-live">
+          <h3 class="app-card-title">PROS V</h3>
+          <p class="app-card-desc">Parts and Repair Ordering System — requisitions, reporting, and supply management.</p>
+          <p class="app-card-meta">Status: Active Model</p>
+          <div class="app-card-arrow">→</div>
+        </a>
+
+        <a href="wwrs-tools.html" class="app-card is-live">
+          <h3 class="app-card-title">WWRS</h3>
+          <p class="app-card-desc">Worldwide Redistribution System with mission context, operational workflows, and structured access paths.</p>
+          <p class="app-card-meta">Status: Active Model</p>
+          <div class="app-card-arrow">→</div>
+        </a>
+      </div>
+    </section>
+
+    <section class="apps-section" aria-label="In-development applications">
+      <div class="apps-section-head">
+        <h2 class="apps-section-title">In-Development Applications</h2>
+        <p class="apps-section-note">Planned from the full AFSAC toolset</p>
+      </div>
+      <div class="apps-grid apps-grid-planned">
+        <a href="#" class="app-card is-planned">
+          <h3 class="app-card-title">Requisition</h3>
+          <p class="app-card-desc">Submit and track requisitions for FMS supply and repair orders.</p>
+          <p class="app-card-meta">Status: In Progress</p>
+          <div class="app-card-arrow">→</div>
+        </a>
+
+        <a href="#" class="app-card is-planned">
+          <h3 class="app-card-title">Logistics</h3>
+          <p class="app-card-desc">Monitor shipments, track discrepancies, and manage catalog data.</p>
+          <p class="app-card-meta">Status: In Progress</p>
+          <div class="app-card-arrow">→</div>
+        </a>
+
+        <a href="#" class="app-card is-planned">
+          <h3 class="app-card-title">Case</h3>
+          <p class="app-card-desc">View case financial summaries, funding status, and billing details.</p>
+          <p class="app-card-meta">Status: In Progress</p>
+          <div class="app-card-arrow">→</div>
+        </a>
+
+        <a href="#" class="app-card is-planned">
+          <h3 class="app-card-title">SDR</h3>
+          <p class="app-card-desc">Submit and manage Supply Discrepancy Reports for FMS shipments.</p>
+          <p class="app-card-meta">Status: In Progress</p>
+          <div class="app-card-arrow">→</div>
+        </a>
+
+        <a href="#" class="app-card is-planned">
+          <h3 class="app-card-title">CLSSA</h3>
+          <p class="app-card-desc">Coordinate cooperative logistics supply support arrangements for partner programs.</p>
+          <p class="app-card-meta">Status: In Progress</p>
+          <div class="app-card-arrow">→</div>
+        </a>
+
+        <a href="#" class="app-card is-planned">
+          <h3 class="app-card-title">Metrics</h3>
+          <p class="app-card-desc">Build recurring performance reports and executive-level readiness snapshots.</p>
+          <p class="app-card-meta">Status: In Progress</p>
+          <div class="app-card-arrow">→</div>
+        </a>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="footer-brand-logo">
+            <div class="logo-emblem" style="width:48px;height:48px;font-size:.95rem"></div>
+            <span class="footer-brand-title">AFSAC Online</span>
+          </a>
+          <p class="footer-brand-desc">Air Force Security Assistance and Cooperation Directorate — supporting worldwide FMS partnerships through transparent, accessible information systems.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Applications</div>
+          <ul class="footer-links">
+            <li><a href="#">Requisition</a></li><li><a href="#">Logistics</a></li><li><a href="#">Case</a></li><li><a href="#">SDR</a></li><li><a href="#">CLSSA</a></li><li><a href="#">PROS</a></li><li><a href="#">WWRS</a></li><li><a href="#">Metrics</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Resources</div>
+          <ul class="footer-links">
+            <li><a href="about.html">About AFSAC</a></li><li><a href="flo.html">Foreign Liaison Office</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="#">User Guides</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <div style="flex:1">
+          <button class="footer-legal-toggle">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span class="toggle-text">View Legal Framework &amp; Privacy</span>
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="footer-legal-panel" id="legal-panel">
+            <h4>U.S. Government System Notice</h4>
+            <p>You are accessing a U.S. Government (USG) Information System provided for USG-authorized use only. The USG routinely monitors communications, may inspect and seize data, and communications are not private.</p>
+            <h4>Authority</h4>
+            <p>10 U.S.C. 134; DoDD 5101.1; DoDD 5105.65 (DSCA); DoDD 5132.03; DoD Instruction 8550.01.</p>
+            <h4>Privacy Act</h4>
+            <p>Data is protected under the Privacy Act of 1974 (SORN K890.15). Section 508 compliant per 29 U.S.C. 794d.</p>
+          </div>
+          <div class="footer-copyright">&copy; Air Force Security Assistance and Cooperation Directorate &mdash; 2026</div>
+          <div class="footer-508">Section 508 Compliant &nbsp;&bull;&nbsp; Privacy Act Protected &nbsp;&bull;&nbsp; USG Authorized Use Only</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+  // Hide public navigation when authenticated
+  const user = sessionStorage.getItem('afsacUser');
+  if (user) {
+    const mainNav = document.querySelector('.main-nav');
+    const searchForm = document.querySelector('.search-form');
+    const welcome = document.getElementById('apps-welcome');
+    if (mainNav) mainNav.style.display = 'none';
+    if (searchForm) searchForm.style.display = 'none';
+    if (welcome) welcome.textContent = `Welcome to your dashboard, ${user}.`;
+    
+    const display = document.getElementById('header-user-display');
+    const signout = document.getElementById('signout-btn');
+    if (display) display.textContent = user;
+    if (signout) {
+      signout.style.display = '';
+      signout.addEventListener('click', (e) => {
+        e.preventDefault();
+        sessionStorage.removeItem('afsacUser');
+        window.location.href = 'login.html';
+      });
+    }
+  } else {
+    // Redirect to login if not authenticated
+    window.location.href = 'login.html';
+  }
+</script>
+</body>
+</html>
+
+
+

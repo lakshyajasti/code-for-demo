@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — AFSAC Online</title>
+  <meta name="description" content="Contact AFSAC Online — submit inquiries, request access, or get help with your FMS program.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="contact-page site-page">
+
+<!-- Gov Banner -->
+<div class="gov-banner">
+  <div class="container">
+    <div class="gov-banner-flag">
+      <svg width="18" height="13" viewBox="0 0 18 13" fill="none" style="flex-shrink:0"><rect width="18" height="13" fill="#B22234"/><rect y="1" width="18" height="1" fill="white"/><rect y="3" width="18" height="1" fill="white"/><rect y="5" width="18" height="1" fill="white"/><rect y="7" width="18" height="1" fill="white"/><rect y="9" width="18" height="1" fill="white"/><rect y="11" width="18" height="1" fill="white"/><rect width="7" height="7" fill="#3C3B6E"/></svg>
+      An official website of the United States Government &mdash; Air Force Security Assistance &amp; Cooperation Directorate
+    </div>
+    <div class="gov-banner-right">
+      <span class="gov-banner-notice">Authorized Users Only</span>
+      <button class="gov-banner-dismiss">Dismiss</button>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">
+        <div class="logo-emblem"></div>
+        <div class="logo-text">
+          <span class="logo-title">AFSAC Online</span>
+          <span class="logo-subtitle">Air Force Security Assistance &amp; Cooperation</span>
+        </div>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="main-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="toolbox.html">Applications</a></li>
+          <li class="nav-dropdown"><a href="flo.html">Resources <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a><div class="nav-dropdown-menu"><a href="flo.html">FLO Information</a><a href="#">LOR</a><a href="#">Report2Web</a><a href="#">SCIP Portal</a><a href="#">DSAMS</a></div></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <form class="search-form" role="search" onsubmit="return false">
+          <svg class="search-icon" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" class="search-input" placeholder="Search tools, guides&hellip;" aria-label="Search">
+        </form>
+        <a href="login.html" class="header-login-btn">Sign In</a>
+      </div>
+      <button class="hamburger" aria-label="Open menu">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a><a href="about.html">About Us</a><a href="toolbox.html">Applications</a><a href="flo.html">Resources</a><a href="contact.html">Contact</a><a href="login.html" style="color:var(--gold);font-weight:700">Sign In</a>
+  </nav>
+</header>
+
+<!-- Page Hero -->
+<section class="page-header-section">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="breadcrumb-sep">/</span><span>Contact Us</span>
+    </nav>
+    <h1>Contact Us</h1>
+    <p>Submit an inquiry, request portal access, or get help with your FMS program. We typically respond within 2 business days.</p>
+  </div>
+</section>
+
+<div class="page-wrapper">
+
+  <div class="contact-layout" style="padding-bottom:3rem;display:flex;justify-content:center">
+
+    <!-- Contact Form -->
+    <div style="background:white;border-top:4px solid var(--gold);padding:2.25rem;box-shadow:0 2px 12px rgba(0,0,0,.07);max-width:700px;margin:0 auto">
+      <p style="color:var(--text-muted);font-size:.9rem;margin-bottom:1.5rem">All fields marked with <span style="color:var(--error)">*</span> are required. Do not include classified information in this form.</p>
+
+        <div id="form-success" style="display:none" class="alert alert-info">
+          <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Message sent.</strong> Thank you — a member of the AFSAC team will respond within 2 business days.</span>
+        </div>
+
+        <form id="contact-form" novalidate>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+            <div class="form-group">
+              <label class="form-label" for="first-name">First Name <span class="req">*</span></label>
+              <input type="text" id="first-name" class="form-control" placeholder="First name" required autocomplete="given-name">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="last-name">Last Name <span class="req">*</span></label>
+              <input type="text" id="last-name" class="form-control" placeholder="Last name" required autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address <span class="req">*</span></label>
+            <input type="email" id="email" class="form-control" placeholder="your.email@example.mil" required autocomplete="email">
+            <div class="form-hint">Use your official government or military email address.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="country">Country / Organization <span class="req">*</span></label>
+            <input type="text" id="country" class="form-control" placeholder="e.g., United Kingdom Ministry of Defence" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inquiry-type">Inquiry Type <span class="req">*</span></label>
+            <select id="inquiry-type" class="form-control" required>
+              <option value="" disabled selected>Select a topic&hellip;</option>
+              <option value="access">Portal Access Request</option>
+              <option value="requisition">Requisition / Order Status</option>
+              <option value="logistics">Logistics / Shipment Inquiry</option>
+              <option value="case">Case Question</option>
+              <option value="sdr">Supply Discrepancy Report (SDR)</option>
+              <option value="clssa">CLSSA Program Question</option>
+              <option value="pros">PROS / Procurement Inquiry</option>
+              <option value="wwrs">WWRS / Redistribution</option>
+              <option value="metrics">Metrics &amp; Reporting</option>
+              <option value="flo">Foreign Liaison Office Inquiry</option>
+              <option value="technical">Technical Issue / System Problem</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="case-number">Case / Document Number <span style="color:var(--text-muted);font-weight:400">(if applicable)</span></label>
+            <input type="text" id="case-number" class="form-control" placeholder="e.g., JA-D-GAK or requisition number">
+            <div class="form-hint">Include your FMS case number or requisition number to help us route your inquiry faster.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">Message <span class="req">*</span></label>
+            <textarea id="message" class="form-control" placeholder="Describe your inquiry in detail. Do not include classified, CUI, or sensitive personal information." required style="min-height:160px"></textarea>
+          </div>
+
+          <div class="form-group" style="margin-bottom:0">
+            <div class="alert alert-warning" style="margin-bottom:1.25rem">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span style="font-size:.84rem"><strong>Security Notice:</strong> This form transmits over a secure government network. Do not include classified, Controlled Unclassified Information (CUI), or sensitive PII in your message.</span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Submit Inquiry
+            </button>
+          </div>
+        </form>
+    </div>
+
+    <!-- Sidebar -->
+    <div style="display:flex;flex-direction:column;gap:1.25rem">
+
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="footer-brand-logo">
+            <div class="logo-emblem" style="width:48px;height:48px;font-size:.95rem"></div>
+            <span class="footer-brand-title">AFSAC Online</span>
+          </a>
+          <p class="footer-brand-desc">Air Force Security Assistance and Cooperation Directorate — supporting worldwide FMS partnerships.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Applications</div>
+          <ul class="footer-links">
+            <li><a href="https://afsac.wpafb.af.mil/req_input.jsp">Requisition</a></li><li><a href="https://afsac.wpafb.af.mil/logistics.jsp">Logistics</a></li><li><a href="https://afsac.wpafb.af.mil/financial.jsp">Case</a></li><li><a href="https://afsac.wpafb.af.mil/sdr.jsp">SDR</a></li><li><a href="https://afsac.wpafb.af.mil/clssa.jsp">CLSSA</a></li><li><a href="https://afsac.wpafb.af.mil/pros.jsp">PROS</a></li><li><a href="https://afsac4.wpafb.af.mil/WWRS">WWRS</a></li><li><a href="afsac-metrics">Metrics</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Resources</div>
+          <ul class="footer-links">
+            <li><a href="about.html">About AFSAC</a></li><li><a href="flo.html">Foreign Liaison Office</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="login.html">Sign In</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <div style="flex:1">
+          <button class="footer-legal-toggle">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span class="toggle-text">View Legal Framework &amp; Privacy</span>
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="footer-legal-panel" id="legal-panel">
+            <h4>U.S. Government System Notice</h4>
+            <p>USG-authorized use only. Communications monitored and not private. Data protected under Privacy Act of 1974 (SORN K890.15). Section 508 compliant.</p>
+            <h4>Authority</h4>
+            <p>10 U.S.C. 134; DoDD 5101.1; DoDD 5105.65 (DSCA); DoDD 5132.03; DoD Instruction 8550.01.</p>
+          </div>
+          <div class="footer-copyright">&copy; Air Force Security Assistance and Cooperation Directorate &mdash; 2026</div>
+          <div class="footer-508">Section 508 Compliant &nbsp;&bull;&nbsp; Privacy Act Protected &nbsp;&bull;&nbsp; USG Authorized Use Only</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const required = this.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(el => {
+      el.style.borderColor = '';
+      if (!el.value.trim()) { el.style.borderColor = 'var(--error)'; valid = false; }
+    });
+    if (!valid) { required[0].focus(); return; }
+    this.style.display = 'none';
+    document.getElementById('form-success').style.display = 'flex';
+    window.scrollTo({ top: document.getElementById('form-success').offsetTop - 100, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>
+
