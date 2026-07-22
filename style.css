@@ -439,7 +439,6 @@ ul, ol { padding-left: 1.5rem; }
   top: 0;
   z-index: 100;
   box-shadow: 0 2px 16px rgba(0,0,0,.3);
-  overflow: hidden;
 }
 .header-inner {
   display: flex;
@@ -448,7 +447,6 @@ ul, ol { padding-left: 1.5rem; }
   height: var(--nav-h);
   flex-wrap: nowrap;
   min-height: var(--nav-h);
-  overflow-x: hidden;
 }
 
 /* Logo */
@@ -484,7 +482,6 @@ ul, ol { padding-left: 1.5rem; }
   top: 100%;
   left: 0;
   background: var(--navy);
-  border-top: 3px solid var(--gold);
   min-width: 190px;
   flex-direction: column;
   box-shadow: 0 8px 24px rgba(0,0,0,.35);
@@ -511,7 +508,6 @@ ul, ol { padding-left: 1.5rem; }
   flex: 1 1 auto;
   margin-left: .75rem;
   min-width: 0;
-  overflow: hidden;
 }
 .main-nav a {
   display: flex;
