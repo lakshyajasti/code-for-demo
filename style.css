@@ -439,14 +439,16 @@ ul, ol { padding-left: 1.5rem; }
   top: 0;
   z-index: 100;
   box-shadow: 0 2px 16px rgba(0,0,0,.3);
+  overflow: hidden;
 }
 .header-inner {
   display: flex;
   align-items: center;
   gap: 1.25rem;
   height: var(--nav-h);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   min-height: var(--nav-h);
+  overflow-x: hidden;
 }
 
 /* Logo */
@@ -506,17 +508,18 @@ ul, ol { padding-left: 1.5rem; }
   align-items: center;
   list-style: none;
   gap: .125rem;
-  flex: 1;
+  flex: 1 1 auto;
   margin-left: .75rem;
-  flex-wrap: wrap;
+  min-width: 0;
+  overflow: hidden;
 }
 .main-nav a {
   display: flex;
   align-items: center;
   gap: .375rem;
-  padding: .5rem 1rem;
+  padding: .5rem .75rem;
   color: rgba(255,255,255,.78);
-  font-size: .8125rem;
+  font-size: .75rem;
   font-weight: 600;
   letter-spacing: .04em;
   text-transform: uppercase;
@@ -527,12 +530,13 @@ ul, ol { padding-left: 1.5rem; }
   border-bottom: 3px solid transparent;
   height: var(--nav-h);
   align-items: center;
+  flex-shrink: 1;
 }
 .main-nav a:hover { color: white; border-bottom-color: rgba(255,255,255,.3); background: none; }
 .main-nav a.active { color: var(--gold); border-bottom-color: var(--gold); background: none; }
 
 /* Header right */
-.header-actions { display: flex; align-items: center; gap: .75rem; margin-left: auto; flex-wrap: nowrap; }
+.header-actions { display: flex; align-items: center; gap: .5rem; margin-left: auto; flex-wrap: nowrap; flex-shrink: 0; }
 
 .search-form { position: relative; display: flex; align-items: center; }
 .search-input {
@@ -543,8 +547,9 @@ ul, ol { padding-left: 1.5rem; }
   color: white;
   font-family: var(--font);
   font-size: .875rem;
-  width: 210px;
+  width: 180px;
   transition: all var(--transition);
+  flex-shrink: 1;
 }
 .search-input::placeholder { color: rgba(255,255,255,.45); }
 .search-input:focus { outline: none; background: rgba(255,255,255,.14); border-color: var(--gold); width: 255px; }
@@ -554,10 +559,10 @@ ul, ol { padding-left: 1.5rem; }
   background: var(--gold);
   color: var(--navy);
   font-weight: 700;
-  font-size: .75rem;
+  font-size: .7rem;
   letter-spacing: .07em;
   text-transform: uppercase;
-  padding: .6rem 1.5rem;
+  padding: .55rem 1rem;
   border-radius: 2px;
   text-decoration: none;
   transition: all var(--transition);
